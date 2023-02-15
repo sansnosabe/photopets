@@ -14,15 +14,23 @@
 
 - Ejecutar `npm run dev` o `npm start` para lanzar el servidor.
 
+## Depencias:
+
+- Express
+- Sharp
+-
+-
+
 ## Base de datos
 
-- **`users:`** id, username`*`, email`*`, password`*`, avatar, registrationCode, active, createdAt, modifiedAt.
+- **`users:`** id, username`*`, email`*`, password`*`, sobreMi, avatar(default), especie`*`, raza`*`, rol('user(default)', 'admin', 'god'), regCode, active(boolean),
+  createdAt, modifiedAt.
 
-- **`posts:`** id, title`*`, description`*`, image, idUser, createdAt.
+- **`posts:`** id, title`*`, text, image`*`, id_user, idPhoto, createdAt.
 
-- **`postedPhotos:`** id, name, idPhoto, createdAt.
+- **`postedPhotos:`** id, name, idPhoto, idPost, modifiedAt, createdAt.
 
-- **`likedPhotos:`** id, value`*`, idPhoto, idUser, createdAt.
+- **`likedPost:`** id, value`*`, idUser, idPost, modifiedAt, createdAt.
 
 ## Endpoints del usuario
 
@@ -39,6 +47,14 @@
 - **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`
 - **GET** - [`/posts`] - Retorna el listado de entradas.
 - **GET** - [`/posts/:idPhoto`] - Retorna una entrada en concreto.
+- **GET** - [`/post/search`] - Busqueda de post por palabra (por params).
+
 - **POST** [/posts/:idPhoto/likes] - Añade un like a una entrada. `Token`
-- **DELETE** [/tweets/:idTweet/likes] - Deshace un like de un post. `Token`
-- **DELETE** [/tweets/:id] - Borra un post solo si eres quien lo creó. `Token`
+- **DELETE** [/posts/:idPhoto/likes] - Deshace un like de un post. `Token`
+- **DELETE** [/posts/:id] - Borra un post solo si eres quien lo creó. `Token`
+
+## Para joder al usuario:
+
+- Enviar emails cuando se le da like a un post.
+
+- //**Anuncios personalizados**//(FRONT)
