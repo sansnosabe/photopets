@@ -23,14 +23,12 @@
 
 ## Base de datos
 
-- **`users:`** id, username`*`, email`*`, password`*`, sobreMi, avatar(default), especie`*`, raza`*`, rol('user(default)', 'admin', 'god'), regCode, active(boolean),
-  createdAt, modifiedAt.
+- **`users:`** id, user_name`*`, email`*`, password`*`, about_me, avatar(default), kind`*`, breed`*`, rol('user(default)', 'admin', 'god'), reg_code, active(boolean),
+  created_at, modified_at.
 
-- **`posts:`** id, title`*`, text, image`*`, id_user, idPhoto, createdAt.
+- **`posts:`** id, text, image`*`, id_user, created_at, modified_at.
 
-- **`postedPhotos:`** id, name, idPhoto, idPost, modifiedAt, createdAt.
-
-- **`likedPost:`** id, value`*`, idUser, idPost, modifiedAt, createdAt.
+- **`likedPost:`** id, value`*`, id_user, id_post, modified_at, created_at.
 
 ## Endpoints del usuario
 
