@@ -22,5 +22,8 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.8.4",
     "standart": "^6.1.0"
+  },
+  "dependencies": {
+    "mysql2": "^3.1.2"
   }
 }
