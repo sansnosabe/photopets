@@ -28,28 +28,33 @@
 
 - **`posts:`** id, text, image`*`, id_user, created_at, modified_at.
 
-- **`likedPost:`** id, value`*`, id_user, id_post, modified_at, created_at.
+- **`likes:`** id, value`*`, id_user, id_post, modified_at, created_at.
+
+- **`comments`** id, comment`*`, id_user, id_post, modified_at, created_at.
 
 ## Endpoints del usuario
 
 - **POST** - [`/users`] - Crea un usuario pendiente de validar y se envía un correo de verificación.
 - **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado.
-- **POST** - [`/users/login`] - Logea a un usuario retornando un token.
+- **POST** - [`/users/login`] - Logging a un usuario retornando un token.
 
 - **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token`
 - **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token`
-- **DELETE** [/users] - Eliminar un usuario. `Token`
+- **DELETE** [`/users`] - Eliminar un usuario. `Token`
 
 ## Endpoints del post
 
 - **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`
 - **GET** - [`/posts`] - Retorna el listado de entradas.
-- **GET** - [`/posts/:idPhoto`] - Retorna una entrada en concreto.
-- **GET** - [`/post/search`] - Busqueda de post por palabra (por params).
+- **GET** - [`/posts/:idPost`] - Retorna una entrada en concreto.
+- **GET** - [`/posts`] - Búsqueda de post por palabra (por params).
 
-- **POST** [/posts/:idPhoto/likes] - Añade un like a una entrada. `Token`
-- **DELETE** [/posts/:idPhoto/likes] - Deshace un like de un post. `Token`
-- **DELETE** [/posts/:id] - Borra un post solo si eres quien lo creó. `Token`
+- **POST** [`/posts/:idPost/likes`] - Añade un like a una entrada. `Token`
+- **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token`
+- **DELETE** [`/posts/:idPost`] - Borra un post solo si eres quien lo creó. `Token`
+
+- **POST** [`/posts/:idPost/comments`] - Agregar un comentario a un post. `Token`
+- **DELETE** [`/comments/:idComment`] - Eliminar un comentario del post. `Token`
 
 ## Para joder al usuario:
 
