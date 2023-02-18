@@ -39,7 +39,7 @@
 ## Endpoints del usuario
 
 - **POST** - [`/users`] - Crea un usuario pendiente de validar y se envía un correo de verificación. ✅
-- **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado.
+- **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado. ✅
 - **POST** - [`/users/login`] - Logging a un usuario retornando un token.
 
 - **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token`
