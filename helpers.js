@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const { SMTP_USER, SMTP_PASS } = process.env;
 
 const transport = nodemailer.createTransport({
-  host: "smtp-instapets.com",
+  host: "smtp-relay.sendinblue.com",
   port: 587,
   auth: {
     user: SMTP_USER,
