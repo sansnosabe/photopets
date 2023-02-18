@@ -20,15 +20,13 @@ const createTables = async () => {
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      user_name VARCHAR(15) UNIQUE NOT NULL,
-      first_name VARCHAR(100) UNIQUE NOT NULL,
-      last_name VARCHAR(100) UNIQUE NOT NULL,
+      name VARCHAR(15) UNIQUE NOT NULL,
+      kind VARCHAR(50) NOT NULL,
+      breed VARCHAR(50) NOT NULL,
       email VARCHAR(100) UNIQUE NOT NULL,
       password VARCHAR(100) NOT NULL,
       about_me TEXT,
       avatar VARCHAR(100) DEFAULT 'default.jpg',
-      kind VARCHAR(50) NOT NULL,
-      breed VARCHAR(50) NOT NULL,
       role ENUM('user', 'admin', 'god') DEFAULT 'user',
       reg_code VARCHAR(100),
       active ENUM('false', 'true') DEFAULT 'false',
