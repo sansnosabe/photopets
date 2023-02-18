@@ -2,6 +2,10 @@
 
 - Aplicación que permite publicar tus fotos (añadiendo o no textos) y que otras personas puedan verlas.
 
+- Permite comentar los posts de los demas.
+
+- Permite dar like a las publicaciones.
+
 ## Instalar
 
 - Crear una base de datos vacía en una instancia de MySQL local.
@@ -23,8 +27,8 @@
 
 ## Base de datos
 
-- **`users:`** id, user_name`*`,first_name`*`, last_name`*`, email`*`, password`*`, about_me, avatar(default), kind`*`, breed`*`, rol('user(default)', 'admin', 'god'),
-  reg_code, active(boolean), created_at, modified_at.
+- **`users:`** id, name`*`, kind`*`, breed`*`, email`*`, password`*`, about_me, avatar(default), rol('user(default)', 'admin', 'god'), reg_code, active(boolean), created_at,
+  modified_at.
 
 - **`posts:`** id, text, image`*`, id_user, created_at, modified_at.
 
@@ -34,7 +38,7 @@
 
 ## Endpoints del usuario
 
-- **POST** - [`/users`] - Crea un usuario pendiente de validar y se envía un correo de verificación.
+- **POST** - [`/users`] - Crea un usuario pendiente de validar y se envía un correo de verificación. ✅
 - **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado.
 - **POST** - [`/users/login`] - Logging a un usuario retornando un token.
 
