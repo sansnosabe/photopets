@@ -10,10 +10,10 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-const { createUser } = require("./controllers/users");
+const { createUser, validateUser } = require("./controllers/users");
 
 app.post("/users", createUser);
-// app.put("/users/validate/:registrationCode", validateUser);
+app.put("/users/validate/:registrationCode", validateUser);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
