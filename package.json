@@ -4,7 +4,8 @@
   "description": "- Aplicación que permite publicar tus fotos (añadiendo o no textos) y que otras personas puedan verlas.",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "initDB": "node db/initDB.js"
   },
   "repository": {
     "type": "git",
@@ -17,13 +18,17 @@
     "url": "https://github.com/sansnosabe/instapets/issues"
   },
   "homepage": "https://github.com/sansnosabe/instapets#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "morgan": "^1.10.0",
+    "express": "^4.18.2",
+    "mysql2": "^3.1.2"
+  },
   "devDependencies": {
     "eslint": "^8.34.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.4",
     "standart": "^6.1.0"
-  },
-  "dependencies": {
-    "mysql2": "^3.1.2"
   }
 }
