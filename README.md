@@ -23,8 +23,8 @@
 
 ## Base de datos
 
-- **`users:`** id, user_name`*`, email`*`, password`*`, about_me, avatar(default), kind`*`, breed`*`, rol('user(default)', 'admin', 'god'), reg_code, active(boolean),
-  created_at, modified_at.
+- **`users:`** id, user_name`*`,first_name`*`, last_name`*`, email`*`, password`*`, about_me, avatar(default), kind`*`, breed`*`, rol('user(default)', 'admin', 'god'),
+  reg_code, active(boolean), created_at, modified_at.
 
 - **`posts:`** id, text, image`*`, id_user, created_at, modified_at.
 
