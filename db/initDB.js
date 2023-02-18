@@ -20,7 +20,9 @@ const createTables = async () => {
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      name VARCHAR(100) UNIQUE NOT NULL,
+      user_name VARCHAR(15) UNIQUE NOT NULL,
+      first_name VARCHAR(100) UNIQUE NOT NULL,
+      last_name VARCHAR(100) UNIQUE NOT NULL,
       email VARCHAR(100) UNIQUE NOT NULL,
       password VARCHAR(100) NOT NULL,
       about_me TEXT,
