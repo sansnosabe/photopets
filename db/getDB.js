@@ -20,6 +20,7 @@ const getDB = async () => {
     return await pool.getConnection();
   } catch (err) {
     console.error(err);
+    throw new Error("Error al conectar con MySQL");
   }
 };
 
