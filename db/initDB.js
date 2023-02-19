@@ -29,7 +29,7 @@ const createTables = async () => {
       avatar VARCHAR(100) DEFAULT 'default.jpg',
       role ENUM('user', 'admin', 'god') DEFAULT 'user',
       reg_code VARCHAR(100),
-      active ENUM('false', 'true') DEFAULT 'false',
+      active BOOLEAN DEFAULT false,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
     );

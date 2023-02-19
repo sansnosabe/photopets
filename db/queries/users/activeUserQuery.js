@@ -13,7 +13,6 @@ const activeUserQuery = async (registrationCode) => {
       generateError("Código incorrecto", 404);
     }
 
-    // Activamos el usuario.
     await connection.query(`UPDATE users SET active = true, reg_code = null WHERE reg_code = ?`, [registrationCode]);
   } finally {
     if (connection) connection.release();
