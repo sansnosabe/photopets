@@ -19,6 +19,7 @@ app.use(express.json());
 const { createUser, validateUser, loginUser, getOwnUser } = require("./controllers/users");
 const isAuth = require("./middlewares/isAuth");
 
+
 app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
 app.post("/users/login", loginUser);
