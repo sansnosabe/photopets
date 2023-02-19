@@ -11,16 +11,28 @@ const transport = nodemailer.createTransport({
   },
 });
 
+/**
+ * ####################
+ * ## Generate Error ##
+ * ####################
+ */
+
 const generateError = (msg, code) => {
   const err = new Error(msg);
   err.httpStatus = code;
   throw err;
 };
 
+/**
+ * ###############
+ * ## Send Mail ##
+ * ###############
+ */
+
 const sendMail = async (to, subject, text) => {
   try {
     await transport.sendMail({
-      from: "instapets@instapets.com",
+      from: SMTP_USER,
       to,
       subject,
       text,
