@@ -42,7 +42,7 @@
 - **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado. ✅
 - **POST** - [`/users/login`] - Logging a un usuario retornando un token. ✅
 
-- **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token`
+- **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token`  ✅
 - **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token`
 - **DELETE** [`/users`] - Eliminar un usuario. `Token`
 
