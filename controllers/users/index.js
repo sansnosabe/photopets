@@ -1,7 +1,8 @@
 const createUser = require("./createUser");
 const validateUser = require("./validateUser");
 const loginUser = require('./loginUser');
-const getOwnUser = require("./getownuser");
+const getOwnUser = require("./getOwnUser");
+
 
 module.exports = {
   createUser,

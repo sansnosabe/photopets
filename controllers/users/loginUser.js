@@ -21,7 +21,6 @@ const loginUser = async (req, res, next) => {
       generateError("Contraseña incorrecta", 401);
     }
 
-    // Si el usuario no está activo lanzamos un error.
     if (!user.active) {
       generateError("Usuario pendiente de activar", 401);
     }
