@@ -19,11 +19,10 @@ app.use(express.json());
 const { createUser, validateUser, loginUser, getOwnUser } = require("./controllers/users");
 const isAuth = require("./middlewares/isAuth");
 
-
 app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
 app.post("/users/login", loginUser);
-app.get("users", isAuth, getOwnUser);
+app.get("/users", isAuth, getOwnUser);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
