@@ -42,9 +42,10 @@
 - **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado. ✅
 - **POST** - [`/users/login`] - Logging a un usuario retornando un token. ✅
 - **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token` ✅
+- **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
+- **DELETE** [`/users`] - Eliminar un usuario. `Token` ✅ (FALTA PONER LA IMAGEN DEFAULT DE AVATAR)⁇
 
-- **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token`
-- **DELETE** [`/users`] - Eliminar un usuario. `Token`
+- **PUT** - [`/users/profile`] - Permite actualizar la password del usuario. ➡️ `Token`
 
 ## Endpoints del post
 
