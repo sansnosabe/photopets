@@ -7,10 +7,8 @@ const activeUserQuery = async (registrationCode) => {
   try {
     connection = await getDB();
 
-    // Seleccionamos a los usuarios con ese código de registro.
     const [users] = await connection.query(`SELECT id FROM users WHERE reg_code = ?`, [registrationCode]);
 
-    // Si no existe ningún usuario lanzamos un error.
     if (users.length < 1) {
       generateError("Código incorrecto", 404);
     }
