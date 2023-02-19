@@ -32,7 +32,7 @@ const generateError = (msg, code) => {
 const sendMail = async (to, subject, text) => {
   try {
     await transport.sendMail({
-      from: SMTP_USER,
+      from: SMTP_EMAIL,
       to,
       subject,
       text,
