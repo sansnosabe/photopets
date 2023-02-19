@@ -10,10 +10,20 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-const { createUser, validateUser } = require("./controllers/users");
+const isAuth = require("./middlewares/isAuth");
+
+/**
+ * ##############################
+ * ## Controladores de Usuario ##
+ * ##############################
+*/
+
+const { createUser, validateUser, loginUser, getOwnUser, } = require("./controllers/users");
 
 app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
+app.post('/users/login', loginUser);
+app.get('users', isAuth, getOwnUser);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
@@ -32,8 +42,8 @@ app.use((req, res) => {
   });
 });
 
-const PORT = process.env.PORT;
+const MYSQL_PORT = process.env.MYSQL_PORT;
 
-app.listen(PORT, () => {
-  console.log(`Server listening at http://localhost:${PORT}`);
+app.listen(MYSQL_PORT, () => {
+  console.log(`Server listening at http://localhost:${MYSQL_PORT}`);
 });
