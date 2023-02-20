@@ -14,16 +14,28 @@
 
 - Ejecutar el comando `npm install` o `npm i` para instalar las dependencias.
 
-- Ejecutar `npm run initDB` para crear las tablas necesarias en la base de datos anteriormente creada.
+- Ejecutar `npm run initDB` para crear las tablas necesarias en la base de datos.
 
 - Ejecutar `npm run dev` o `npm start` para lanzar el servidor.
 
 ## Depencias:
 
 - Express
-- Sharp
--
--
+- Cors
+- Dotenv
+- Mysql2
+- Uuid
+- Bcrypt
+- Jsonwebtoken
+- Morgan
+- Nodemailer
+
+  ## DevDependencias:
+
+  - Nodemon
+  - Eslint
+  - Prettier
+  - Standart
 
 ## Base de datos
 
@@ -61,7 +73,7 @@
 - **POST** [`/posts/:idPost/comments`] - Agregar un comentario a un post. `Token`
 - **DELETE** [`/comments/:idComment`] - Eliminar un comentario del post. `Token`
 
-## Para joder al usuario:
+## A mayores:
 
 - Enviar emails cuando se le da like a un post.
 

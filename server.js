@@ -10,22 +10,21 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-const isAuth = require("./middlewares/isAuth");
-
 /**
  * ##############################
  * ## Controladores de Usuario ##
  * ##############################
-*/
+ */
 
 const { createUser, validateUser, loginUser, getOwnUser, editUser, deleteUser } = require("./controllers/users");
+const isAuth = require("./middlewares/isAuth");
 
-app.post('/users', createUser);
-app.put('/users/validate/:registrationCode', validateUser);
-app.post('/users/login', loginUser);
-app.get('/users', isAuth, getOwnUser);
-app.put('/users/profile', isAuth, editUser);
-app.delete('/users', isAuth, deleteUser);
+app.post("/users", createUser);
+app.put("/users/validate/:registrationCode", validateUser);
+app.post("/users/login", loginUser);
+app.get("/users", isAuth, getOwnUser);
+app.put("/users/profile", isAuth, editUser);
+app.delete("/users", isAuth, deleteUser);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
@@ -36,6 +35,7 @@ app.use((err, req, res, next) => {
     message: err.message,
   });
 });
+
 // Middleware de ruta no encontrada.
 app.use((req, res) => {
   res.status(404).send({
