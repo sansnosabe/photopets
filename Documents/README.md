@@ -61,7 +61,7 @@
 
 ## Endpoints del post
 
-- **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`
+- **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`✅
 - **GET** - [`/posts`] - Retorna el listado de entradas.
 - **GET** - [`/posts/:idPost`] - Retorna una entrada en concreto.
 - **GET** - [`/posts`] - Búsqueda de post por palabra (por params).
