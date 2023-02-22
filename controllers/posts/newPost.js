@@ -8,13 +8,11 @@ const newPost = async (req, res, next) => {
     const { text } = req.body;
 
     // Comprobamos si tenemos imagen sino la hay el post no se puede crear.
-    if (req.files?.image) {
+    if (!req.files?.image) {
       generateError('Faltan campos', 400);
     }
     // Guardamos el nombre de la imagen.
-    let image;
-    
-    image = await saveImg(req.files.image, 500);
+    let image = await saveImg(req.files.image, 500);
 
 
     // Creamos el post.

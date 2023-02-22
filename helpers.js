@@ -1,15 +1,7 @@
-const nodemailer = require("nodemailer");
-
-const { SMTP_USER, SMTP_PASS } = process.env;
-
-const transport = nodemailer.createTransport({
-  host: "smtp-relay.sendinblue.com",
-  port: 587,
-  auth: {
-    user: SMTP_USER,
-    pass: SMTP_PASS,
-  },
-});
+const fs = require('fs/promises');
+const path = require('path');
+const sharp = require('sharp');
+const { v4: uuid } = require('uuid');
 
 /**
  * ####################
@@ -17,30 +9,10 @@ const transport = nodemailer.createTransport({
  * ####################
  */
 
-const generateError = (msg, code) => {
-  const err = new Error(msg);
-  err.httpStatus = code;
-  throw err;
-};
-
-/**
- * ###############
- * ## Send Mail ##
- * ###############
- */
-
-const sendMail = async (to, subject, text) => {
-  try {
-    await transport.sendMail({
-      from: SMTP_USER,
-      to,
-      subject,
-      text,
-    });
-  } catch (err) {
-    console.error(err);
-    generateError("Error al enviar el email de verificación");
-  }
+const generateError = (msg, status) => {
+    const err = new Error(msg);
+    err.httpStatus = status;
+    throw err;
 };
 
 /**
@@ -49,15 +21,18 @@ const sendMail = async (to, subject, text) => {
  * ################
  */
 
-const saveImg = async (img, width) => {
-  try {
+const saveImg = async (img, resizePx) => {
     const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
 
-    await fs.ensureDir(uploadsPath);
+    try {
+        await fs.access(uploadsPath);
+    } catch {
+        await fs.mkdir(uploadsPath);
+    }
 
     const sharpImg = sharp(img.data);
 
-    sharpImg.resize(width);
+    sharpImg.resize(resizePx);
 
     const imgName = `${uuid()}.jpg`;
 
@@ -66,10 +41,6 @@ const saveImg = async (img, width) => {
     await sharpImg.toFile(imgPath);
 
     return imgName;
-  } catch (err) {
-    console.error(err);
-    generateError("Error al intentar guardar la imagen en disco");
-  }
 };
 
 /**
@@ -78,25 +49,30 @@ const saveImg = async (img, width) => {
  * ##################
  */
 
-// const deleteImg = async (imgName) => {
-//   try {
-//     const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, imgName);
+const deleteImg = async (imgName) => {
+    try {
+        // Creamos la ruta absoluta a la imagen que queremos eliminar.
+        const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, imgName);
 
-//     try {
-//       await fs.access(imgPath);
-//     } catch (error) {
-//       return;
-//     }
+        try {
+            // Intentamos acceder a la imagen utilizando el método "access" de fs. Este
+            // método genera un error si no es posible acceder al archivo.
+            await fs.access(imgPath);
+        } catch (error) {
+            // Si "access" genera un error entramos en el "catch". Finalizamos la función
+            // dado que la imagen no existe, no tiene sentido borrarla.
+            return;
+        }
 
-//     await fs.unlink(imgPath);
-//   } catch {
-//     generateError("Error al eliminar la imagen del servidor");
-//   }
-// };
+        // Si llegamos hasta aquí quiere decir que la imagen existe. La eliminamos.
+        await fs.unlink(imgPath);
+    } catch {
+        generateError('Error al eliminar la imagen del servidor');
+    }
+};
 
 module.exports = {
-  generateError,
-  sendMail,
-  // saveImg,
-  // deleteImg,
+    generateError,
+    saveImg,
+    deleteImg,
 };
