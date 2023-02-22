@@ -49,28 +49,28 @@ const sendMail = async (to, subject, text) => {
  * ################
  */
 
-// const saveImg = async (img, width) => {
-//   try {
-//     const uploadsPath = path.join(__dirname, UPLOADS_DIR);
+const saveImg = async (img, width) => {
+  try {
+    const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
 
-//     await fs.ensureDir(uploadsPath);
+    await fs.ensureDir(uploadsPath);
 
-//     const sharpImg = sharp(img.data);
+    const sharpImg = sharp(img.data);
 
-//     sharpImg.resize(width);
+    sharpImg.resize(width);
 
-//     const imgName = `${uuid()}.jpg`;
+    const imgName = `${uuid()}.jpg`;
 
-//     const imgPath = path.join(uploadsPath, imgName);
+    const imgPath = path.join(uploadsPath, imgName);
 
-//     await sharpImg.toFile(imgPath);
+    await sharpImg.toFile(imgPath);
 
-//     return imgName;
-//   } catch (err) {
-//     console.error(err);
-//     generateError("Error al intentar guardar la imagen en disco");
-//   }
-// };
+    return imgName;
+  } catch (err) {
+    console.error(err);
+    generateError("Error al intentar guardar la imagen en disco");
+  }
+};
 
 /**
  * ##################

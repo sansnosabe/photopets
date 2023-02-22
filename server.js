@@ -17,6 +17,7 @@ app.use(express.json());
  */
 
 const { createUser, validateUser, loginUser, getOwnUser, editUser, deleteUser } = require("./controllers/users");
+const { newPost } = require("./controllers/posts");
 const isAuth = require("./middlewares/isAuth");
 
 app.post("/users", createUser);
@@ -25,6 +26,14 @@ app.post("/users/login", loginUser);
 app.get("/users", isAuth, getOwnUser);
 app.put("/users/profile", isAuth, editUser);
 app.delete("/users", isAuth, deleteUser);
+
+/**
+ * ############################
+ * ## Controladores de Posts ##
+ * ############################
+ */
+
+app.post("/posts", isAuth, newPost);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
@@ -49,3 +58,4 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });
+
