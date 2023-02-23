@@ -14,6 +14,7 @@ const newPost = async (req, res, next) => {
     const post = await insertPostQuery(image, text, req.user.id);
 
     res.send({
+      code: 200,
       status: "ok",
       message: "Post creado",
       data: {
