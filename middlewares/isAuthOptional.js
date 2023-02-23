@@ -6,8 +6,6 @@ const isAuthOptional = async (req, res, next) => {
     try {
         const { authorization } = req.headers;
 
-        // Si existe token creamos la propiedad user, de lo contrario pasamos el control
-        // al siguiente middleware o función controladora.
         if (authorization) {
             let userInfo;
 

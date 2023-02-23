@@ -12,6 +12,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpload());
 
+const isAuth = require("./middlewares/isAuth");
+const isAuthOptional = require("./middlewares/isAuthOptional");
+
+
 /**
  * ##############################
  * ## Controladores de Usuario ##
@@ -19,8 +23,6 @@ app.use(fileUpload());
  */
 
 const { createUser, validateUser, loginUser, getOwnUser, editUser, deleteUser } = require("./controllers/users");
-const { newPost } = require("./controllers/posts");
-const isAuth = require("./middlewares/isAuth");
 
 app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
@@ -33,9 +35,12 @@ app.delete("/users", isAuth, deleteUser);
  * ############################
  * ## Controladores de Posts ##
  * ############################
- */
+*/
+
+const { newPost, listPosts, } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
+app.get('/posts', listPosts, isAuthOptional);
 
 // Middleware de error.
 app.use((err, req, res, next) => {

@@ -16,6 +16,26 @@ const generateError = (msg, status) => {
 };
 
 /**
+ * ###############
+ * ## Send Mail ##
+ * ###############
+ */
+
+const sendMail = async (to, subject, text) => {
+    try {
+        await transport.sendMail({
+            from: SMTP_USER,
+            to,
+            subject,
+            text,
+        });
+    } catch (err) {
+        console.error(err);
+        generateError('Error al enviar el email de verificación');
+    }
+};
+
+/**
  * ################
  * ## Save Image ##
  * ################

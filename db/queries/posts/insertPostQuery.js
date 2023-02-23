@@ -8,13 +8,13 @@ const insertPostQuery = async (text, image, id_user) => {
 
     const [post] = await connection.query(
       `INSERT INTO posts (text, image, id_user) VALUES (?, ?, ?)`,
-      [text, image, id_user]
+      [image, text, id_user]
     );
 
     return {
       id: post.insertId,
-      text,
       image,
+      text,
       id_user,
       createdAt: new Date(),
     };
