@@ -55,13 +55,13 @@
 - **POST** - [`/users/login`] - Logging a un usuario retornando un token. ✅
 - **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token` ✅
 - **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
-- **DELETE** [`/users`] - Eliminar un usuario. `Token` ✅ (FALTA PONER LA IMAGEN DEFAULT DE AVATAR)⁇
+- **DELETE** [`/users`] - Eliminar un usuario. `Token` ✅ FALTA PONER LA IMAGEN DEFAULT DE AVATAR!!
 
-- **PUT** - [`/users/profile`] - Permite actualizar la password del usuario. ➡️ `Token`
+
 
 ## Endpoints del post
 
-- **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`
+- **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`✅
 - **GET** - [`/posts`] - Retorna el listado de entradas.
 - **GET** - [`/posts/:idPost`] - Retorna una entrada en concreto.
 - **GET** - [`/posts`] - Búsqueda de post por palabra (por params).
@@ -75,6 +75,13 @@
 
 ## A mayores:
 
-- Enviar emails cuando se le da like a un post.
+- **PUT** - [`/users/profile`] - Permite actualizar la password del usuario. ➡️ `Token`
+
+- **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
+
+## A super mayores:
+
+- //**Creación de mensajes privados**//(BACK)
 
 - //**Anuncios personalizados**//(FRONT)
+
