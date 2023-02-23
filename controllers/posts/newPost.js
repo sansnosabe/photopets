@@ -4,7 +4,6 @@ const { generateError, saveImg } = require("../../helpers");
 
 const newPost = async (req, res, next) => {
   try {
-    // Insertamos texto si existe.
     const { text } = req.body;
 
     if (!req.files?.image || !text) {
