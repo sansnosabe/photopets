@@ -57,7 +57,7 @@
 - **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
 - **DELETE** [`/users`] - Eliminar un usuario. `Token` ✅ FALTA PONER LA IMAGEN DEFAULT DE AVATAR!!
 
-- **PUT** - [`/users/profile`] - Permite actualizar la password del usuario. ➡️ `Token`
+
 
 ## Endpoints del post
 
@@ -75,6 +75,13 @@
 
 ## A mayores:
 
-- Enviar emails cuando se le da like a un post.
+- **PUT** - [`/users/profile`] - Permite actualizar la password del usuario. ➡️ `Token`
+
+- **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
+
+## A super mayores:
+
+- //**Creación de mensajes privados**//(BACK)
 
 - //**Anuncios personalizados**//(FRONT)
+
