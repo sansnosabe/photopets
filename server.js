@@ -35,6 +35,7 @@ app.delete("/users", isAuth, deleteUser);
  * ## Controladores de Posts ##
  * ############################
  */
+
 const { newPost, listPosts } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
