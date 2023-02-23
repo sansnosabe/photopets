@@ -19,7 +19,7 @@ const selectPostsQuery = async (id_user, keyword = "") => {
       LEFT JOIN likes L ON L.id_post = P.id
       WHERE P.text LIKE ?
       GROUP BY P.id
-    ORDER BY P.created_at DESC
+      ORDER BY P.created_at DESC
       `,
       [id_user, id_user, `%${keyword}%`]
     );
