@@ -1,22 +1,22 @@
 {
 	"info": {
-		"_postman_id": "2c07d990-f038-40f6-845f-a453fefc07fe",
-		"name": "Instapets",
+		"_postman_id": "1656b688-f073-44d0-bc96-df63a99a90d4",
+		"name": "z-INSTAPETS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25582132"
+		"_exporter_id": "20815067"
 	},
 	"item": [
 		{
-			"name": "Users",
+			"name": "users",
 			"item": [
 				{
-					"name": "New User",
+					"name": "Create user",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Wolf17\",\n    \"kind\": \"Wolf\",\n    \"breed\": \"European\",\n    \"email\": \"javier.lop.cif@gmail.com\",\n    \"password\": \"1234567\"\n}",
+							"raw": "{\r\n    \"name\": \"Silver\",\r\n    \"kind\": \"Cat\",\r\n    \"breed\": \"Crossbreed\",\r\n    \"email\": \"silver@silver.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,12 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3306/users",
+							"raw": "http://localhost:4000/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
 								"users"
 							]
@@ -38,34 +38,34 @@
 					"response": []
 				},
 				{
-					"name": "Validate User",
+					"name": "Validate user",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3306/users/validate/e0c06dd9-c443-495d-907a-e87d6e8f78b4",
+							"raw": "http://localhost:4000/users/validate/cc62dad9-8ec3-434f-bca5-b8b7f841167d",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
 								"users",
 								"validate",
-								"e0c06dd9-c443-495d-907a-e87d6e8f78b4"
+								"cc62dad9-8ec3-434f-bca5-b8b7f841167d"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Login User",
+					"name": "Login user",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"javier.lop.cif@gmail.com\",\n    \"password\": \"1234567\"\n}",
+							"raw": "{\r\n    \"email\": \"sandraerentxun93@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,12 +73,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3306/users/login",
+							"raw": "http://localhost:4000/users/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
 								"users",
 								"login"
@@ -88,23 +88,49 @@
 					"response": []
 				},
 				{
-					"name": "Get Own user",
+					"name": "Get own user",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{Token}}",
-								"type": "text"
+								"value": "{{token_user_2}}",
+								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3306/users",
+							"raw": "http://localhost:4000/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_2}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
 							"path": [
 								"users"
 							]
@@ -113,19 +139,19 @@
 					"response": []
 				},
 				{
-					"name": "Update User",
+					"name": "Edit user",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{Token}}",
+								"value": "{{token_user_1}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"kind\": \"Tortle\"\n}",
+							"raw": "{\r\n    \"name\": \"AvadaKedavra\",\r\n    \"kind\": \"Dog\",\r\n    \"breed\": \"Crossbreed\",\r\n    \"aboutMe\": \"Soy la perra más peligrosa que existe\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,14 +159,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3306/users/profile",
+							"raw": "http://localhost:4000/user/profile",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
-								"users",
+								"user",
 								"profile"
 							]
 						}
@@ -148,29 +174,25 @@
 					"response": []
 				},
 				{
-					"name": "Delete User",
+					"name": "Delete user",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{Token}}",
+								"value": "{{token_user_1}}",
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3306/users",
+							"raw": "http://localhost:4000/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
-								"users"
+								"user"
 							]
 						}
 					},
@@ -179,16 +201,16 @@
 			]
 		},
 		{
-			"name": "Posts",
+			"name": "posts",
 			"item": [
 				{
-					"name": "New Post",
+					"name": "Create post",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{Token}}",
+								"value": "{{token_user_1}}",
 								"type": "text"
 							}
 						],
@@ -196,24 +218,24 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "text",
-									"value": "Perfil Jirafa",
-									"type": "text"
-								},
-								{
 									"key": "image",
 									"type": "file",
-									"src": "/Users/javi/Downloads/1.jpg"
+									"src": "/C:/Users/sandr/OneDrive/Escritorio/casa hl.png"
+								},
+								{
+									"key": "text",
+									"value": "Casa harry potter",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3306/posts",
+							"raw": "http://localhost:4000/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
 								"posts"
 							]
@@ -222,24 +244,24 @@
 					"response": []
 				},
 				{
-					"name": "List Posts",
+					"name": "Get Post",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{Token}}",
+								"value": "{{token_user_1}}",
 								"type": "text",
 								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3306/posts",
+							"raw": "http://localhost:4000/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3306",
+							"port": "4000",
 							"path": [
 								"posts"
 							]
@@ -272,7 +294,12 @@
 	],
 	"variable": [
 		{
-			"key": "Token",
+			"key": "token_user_1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_user_2",
 			"value": "",
 			"type": "string"
 		}
