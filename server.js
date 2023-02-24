@@ -40,6 +40,7 @@ const { newPost, listPosts } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
 app.get("/posts", listPosts, isAuthOptional);
+// app.get("/posts/:userId", listPost, isAuthOptional);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
