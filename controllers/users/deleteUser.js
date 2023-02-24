@@ -9,6 +9,7 @@ const deleteUser = async (req, res, next) => {
 
     if (user.avatar) {
       await deleteImg(user.avatar);
+      //await deleteImg(posts.image); ESPERAR A deletePostQuery
     }
 
     await deleteUserQuery(req.user.id);
