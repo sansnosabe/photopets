@@ -54,9 +54,10 @@
 - **POST** - [`/users`] - Crea un usuario pendiente de validar y se envía un correo de verificación. ✅
 - **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado. ✅
 - **POST** - [`/users/login`] - Logging a un usuario retornando un token. ✅
-- **GET** - [`/users`] - Retorna información de un usuario. ➡️ `Token` ✅
-- **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
-- **DELETE** [`/users`] - Eliminar un usuario. `Token` ✅ FALTA PONER LA IMAGEN DEFAULT DE AVATAR!!
+- **GET** - [`/user`] - Retorna información del usuario. ➡️ `Token` ✅
+- **GET** - [`/users`] - Retorna información de todos los usuarios. ✅
+- **PUT** - [`/user/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
+- **DELETE** [`/user`] - Eliminar un usuario. `Token` ✅
 
 ## Endpoints del post
 
@@ -74,7 +75,8 @@
 
 ## A mayores:
 
-- **PUT** - [`/users/profile`] - Permite actualizar la password del usuario. ➡️ `Token`
+- **PUT** - [`/users/profile`] - Permite actualizar el email o la password del usuario (estaría guay que al cambiar la password te llege un email de confirmación o algo así).
+  ➡️ `Token`
 
 - **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
 
