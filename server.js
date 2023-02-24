@@ -44,7 +44,8 @@ app.get("/posts", isAuthOptional, listPosts);
 app.get("/posts/myPosts", isAuth, listMyPosts);
 app.get("/posts/myPosts/:idPost", isAuth, listMyPostById);
 app.get("/posts/:idUser", isAuthOptional, listUserPosts);
-app.get("/posts/:idUser/:idPost", isAuthOptional, listUserPostById); //
+app.get("/posts/:idUser/:idPost", isAuthOptional, listUserPostById);
+
 // Middleware de error.
 app.use((err, req, res, next) => {
   console.error(err);
