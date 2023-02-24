@@ -21,14 +21,15 @@ const isAuthOptional = require("./middlewares/isAuthOptional");
  * ##############################
  */
 
-const { createUser, validateUser, loginUser, getOwnUser, editUser, deleteUser } = require("./controllers/users");
+const { createUser, validateUser, loginUser, getOwnUser, getUsers, editUser, deleteUser } = require("./controllers/users");
 
 app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
 app.post("/users/login", loginUser);
-app.get("/users", isAuth, getOwnUser);
-app.put("/users/:idUser", isAuth, editUser);
-app.delete("/users/:idUser", isAuth, deleteUser);
+app.get("/user", isAuth, getOwnUser);
+app.get("/users", isAuthOptional, getUsers);
+app.put("/user/profile", isAuth, editUser);
+app.delete("/user", isAuth, deleteUser);
 
 /**
  * ############################
@@ -40,7 +41,6 @@ const { newPost, listPosts } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
 app.get("/posts", listPosts, isAuthOptional);
-// app.get("/posts/:userId", listPost, isAuthOptional);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
