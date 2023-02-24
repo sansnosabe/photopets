@@ -4,8 +4,7 @@ const sharp = require("sharp");
 const { v4: uuid } = require("uuid");
 const nodemailer = require("nodemailer");
 
-const { SMTP_USER, SMTP_PASS, SMTP_EMAIL } = process.env;
-
+const { SMTP_USER, SMTP_PASS, SMTP_EMAIL, UPLOADS_DIR } = process.env;
 
 const transport = nodemailer.createTransport({
   host: "smtp-relay.sendinblue.com",
@@ -55,7 +54,7 @@ const sendMail = async (to, subject, text) => {
  */
 
 const saveImg = async (img, resizePx) => {
-  const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
+  const uploadsPath = path.join(__dirname, UPLOADS_DIR);
 
   try {
     await fs.access(uploadsPath);
@@ -99,8 +98,8 @@ const deleteImg = async (imgName) => {
 };
 
 module.exports = {
-    generateError,
-    sendMail,
-    saveImg,
-    deleteImg,
+  generateError,
+  sendMail,
+  saveImg,
+  deleteImg,
 };
