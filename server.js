@@ -27,8 +27,8 @@ app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
 app.post("/users/login", loginUser);
 app.get("/users", isAuth, getOwnUser);
-app.put("/users/profile", isAuth, editUser);
-app.delete("/users", isAuth, deleteUser);
+app.put("/users/:idUser", isAuth, editUser);
+app.delete("/users/:idUser", isAuth, deleteUser);
 
 /**
  * ############################
