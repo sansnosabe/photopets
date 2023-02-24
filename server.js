@@ -15,7 +15,6 @@ app.use(fileUpload());
 const isAuth = require("./middlewares/isAuth");
 const isAuthOptional = require("./middlewares/isAuthOptional");
 
-
 /**
  * ##############################
  * ## Controladores de Usuario ##
@@ -35,12 +34,12 @@ app.delete("/users", isAuth, deleteUser);
  * ############################
  * ## Controladores de Posts ##
  * ############################
-*/
+ */
 
-const { newPost, listPosts, } = require("./controllers/posts");
+const { newPost, listPosts } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
-app.get('/posts', listPosts, isAuthOptional);
+app.get("/posts", listPosts, isAuthOptional);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
@@ -65,4 +64,3 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });
-

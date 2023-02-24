@@ -58,12 +58,10 @@
 - **PUT** - [`/users/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
 - **DELETE** [`/users`] - Eliminar un usuario. `Token` ✅ FALTA PONER LA IMAGEN DEFAULT DE AVATAR!!
 
-
-
 ## Endpoints del post
 
 - **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`✅
-- **GET** - [`/posts`] - Retorna el listado de entradas.
+- **GET** - [`/posts`] - Retorna el listado de entradas. ✅
 - **GET** - [`/posts/:idPost`] - Retorna una entrada en concreto.
 - **GET** - [`/posts`] - Búsqueda de post por palabra (por params).
 
@@ -85,4 +83,3 @@
 - //**Creación de mensajes privados**//(BACK)
 
 - //**Anuncios personalizados**//(FRONT)
-

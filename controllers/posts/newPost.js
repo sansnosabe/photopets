@@ -7,15 +7,17 @@ const newPost = async (req, res, next) => {
     const { text } = req.body;
 
     if (!req.files?.image || !text) {
-      generateError('Faltan campos', 400);
+      generateError("Faltan campos", 400);
     }
     let image = await saveImg(req.files.image, 500);
 
-    const post = await insertPostQuery(image, text, req.user.id);
+    const post = await insertPostQuery(text, image, req.user.id);
+
 
     res.send({
+      code: 200,
       status: "ok",
-      message: 'Post creado',
+      message: "Post creado",
       data: {
         post,
       },

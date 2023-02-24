@@ -1,20 +1,21 @@
-const selectPostsQuery = require('../../db/queries/posts/selectPostsQuery');
+const selectPostsQuery = require("../../db/queries/posts/selectPostsQuery");
 
 const listPosts = async (req, res, next) => {
-    try {
-        const { keyword } = req.query;
+  try {
+    const { keyword } = req.query;
 
-        const posts = await selectPostsQuery(req.user?.id, keyword);
+    const posts = await selectPostsQuery(req.user?.id, keyword);
 
-        res.send({
-            status: 'ok',
-            data: {
-                posts,
-            },
-        });
-    } catch (err) {
-        next(err);
-    }
+    res.send({
+      code: 200,
+      status: "ok",
+      data: {
+        posts,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = listPosts;
