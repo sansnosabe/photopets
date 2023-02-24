@@ -210,7 +210,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text"
 							}
 						],
@@ -224,7 +224,7 @@
 								},
 								{
 									"key": "text",
-									"value": "Casa harry potter",
+									"value": "Casa de Harry Potter Seleccionada",
 									"type": "text"
 								}
 							]
@@ -244,17 +244,10 @@
 					"response": []
 				},
 				{
-					"name": "Get Post",
+					"name": "Get post",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token_user_1}}",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://localhost:4000/posts",
 							"protocol": "http",
@@ -264,6 +257,100 @@
 							"port": "4000",
 							"path": [
 								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_2}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/posts/myPosts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"posts",
+								"myPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my post by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_1}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/posts/myPosts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"posts",
+								"myPosts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user post by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/posts/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"posts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user post by userId/postId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/posts/2/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"posts",
+								"2",
+								"3"
 							]
 						}
 					},
