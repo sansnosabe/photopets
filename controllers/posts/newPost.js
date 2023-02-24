@@ -13,6 +13,7 @@ const newPost = async (req, res, next) => {
 
     const post = await insertPostQuery(text, image, req.user.id);
 
+
     res.send({
       code: 200,
       status: "ok",

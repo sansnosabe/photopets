@@ -6,6 +6,7 @@ const nodemailer = require("nodemailer");
 
 const { SMTP_USER, SMTP_PASS, SMTP_EMAIL } = process.env;
 
+
 const transport = nodemailer.createTransport({
   host: "smtp-relay.sendinblue.com",
   port: 587,
@@ -14,6 +15,7 @@ const transport = nodemailer.createTransport({
     pass: SMTP_PASS,
   },
 });
+
 /**
  * ####################
  * ## Generate Error ##
@@ -97,8 +99,8 @@ const deleteImg = async (imgName) => {
 };
 
 module.exports = {
-  generateError,
-  sendMail,
-  saveImg,
-  deleteImg,
+    generateError,
+    sendMail,
+    saveImg,
+    deleteImg,
 };
