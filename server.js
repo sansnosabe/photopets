@@ -26,8 +26,8 @@ const { createUser, validateUser, loginUser, getOwnUser, getUsers, editUser, del
 app.post("/users", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
 app.post("/users/login", loginUser);
-app.get("/user", isAuth, getOwnUser);
 app.get("/users", isAuthOptional, getUsers);
+app.get("/user", isAuth, getOwnUser);
 app.put("/user/profile", isAuth, editUser);
 app.delete("/user", isAuth, deleteUser);
 
@@ -37,11 +37,14 @@ app.delete("/user", isAuth, deleteUser);
  * ############################
  */
 
-const { newPost, listPosts } = require("./controllers/posts");
+const { newPost, listPosts, listMyPosts, listMyPostById, listUserPosts, listUserPostById } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
-app.get("/posts", listPosts, isAuthOptional);
-
+app.get("/posts", isAuthOptional, listPosts);
+app.get("/posts/myPosts", isAuth, listMyPosts);
+app.get("/posts/myPosts/:idPost", isAuth, listMyPostById);
+app.get("/posts/:idUser", isAuthOptional, listUserPosts);
+app.get("/posts/:idUser/:idPost", isAuthOptional, listUserPostById); //
 // Middleware de error.
 app.use((err, req, res, next) => {
   console.error(err);
