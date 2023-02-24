@@ -83,7 +83,7 @@ const saveImg = async (img, resizePx) => {
 
 const deleteImg = async (imgName) => {
   try {
-    const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, imgName);
+    const imgPath = path.join(__dirname, UPLOADS_DIR, imgName);
 
     try {
       await fs.access(imgPath);
