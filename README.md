@@ -63,8 +63,11 @@
 
 - **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`✅
 - **GET** - [`/posts`] - Retorna el listado de entradas. ✅
-- **GET** - [`/posts/:idPost`] - Retorna una entrada en concreto.
-- **GET** - [`/posts`] - Búsqueda de post por palabra (por params).
+- **GET** - [`/posts`] - Retorna el listado de entradas del usuario logeado. ➡️ `Token`
+- **GET** - [`/posts/:idUser`] - Retorna el listado de entradas del usuario que le pasas por parametro.
+- **GET** - [`/posts/:idUser/:idPost`] - Retorna una entrada del usuario que le pasas por parametro.
+- **GET** - [`/posts/%keyword%`] - Búsqueda de post por palabra (texto descriptivo) por params usando keywords.
+- **GET** - ??? [`/posts/%nombreusuario%`] - Búsqueda de post por usuario, por params usando keywords, devuelve info del usuario y sus posts.
 
 - **POST** [`/posts/:idPost/likes`] - Añade un like a una entrada. `Token`
 - **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token`
