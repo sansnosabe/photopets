@@ -4,6 +4,7 @@ const listMyPosts = require("./listMyPosts");
 const listMyPostById = require("./listMyPostById");
 const listUserPosts = require("./listUserPosts");
 const listUserPostById = require("./listUserPostById");
+const listUserAndPostsByUsernameParam = require("./listUserAndPostsByUsernameParam");
 
 module.exports = {
   newPost,
@@ -12,4 +13,5 @@ module.exports = {
   listMyPostById,
   listUserPosts,
   listUserPostById,
+  listUserAndPostsByUsernameParam,
 };

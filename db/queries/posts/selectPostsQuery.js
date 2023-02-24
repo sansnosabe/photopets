@@ -1,6 +1,6 @@
 const getDB = require("../../getDB");
 
-const selectPostsQuery = async (idUser, keyword = "") => {
+const selectPostsQuery = async (idUser) => {
   let connection;
 
   try {
@@ -17,11 +17,10 @@ const selectPostsQuery = async (idUser, keyword = "") => {
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id
-      WHERE P.text LIKE ?
       GROUP BY P.id
-      ORDER BY P.created_at DESC
+      ORDER BY P.created_at ASC
       `,
-      [idUser, idUser, `%${keyword}%`]
+      [idUser, idUser]
     );
 
     return posts;
