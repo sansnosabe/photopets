@@ -4,13 +4,13 @@ const sharp = require("sharp");
 const { v4: uuid } = require("uuid");
 const nodemailer = require("nodemailer");
 
-const { SMTP_MAIL, SMTP_PASS, UPLOADS_DIR } = process.env;
+const { SMTP_USER, SMTP_PASS, SMTP_EMAIL, UPLOADS_DIR } = process.env;
 
 const transport = nodemailer.createTransport({
   host: "smtp-relay.sendinblue.com",
   port: 587,
   auth: {
-    user: SMTP_MAIL,
+    user: SMTP_USER,
     pass: SMTP_PASS,
   },
 });
@@ -36,7 +36,7 @@ const generateError = (msg, status) => {
 const sendMail = async (to, subject, text) => {
   try {
     await transport.sendMail({
-      from: SMTP_MAIL,
+      from: SMTP_EMAIL,
       to,
       subject,
       text,
