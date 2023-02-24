@@ -18,26 +18,6 @@
 
 - Ejecutar `npm run dev` o `npm start` para lanzar el servidor.
 
-## Depencias:
-
-- Express
-- Cors
-- Dotenv
-- Mysql2
-- Uuid
-- Bcrypt
-- Jsonwebtoken
-- Morgan
-- Nodemailer
-- Fileupload
-
-  ## DevDependencias:
-
-  - Nodemon
-  - Eslint
-  - Prettier
-  - Standart
-
 ## Base de datos
 
 - **`users:`** id, name`*`, kind`*`, breed`*`, email`*`, password`*`, about_me, avatar(default), rol('user(default)', 'admin', 'god'), reg_code, active(boolean), created_at,
@@ -51,20 +31,23 @@
 
 ## Endpoints del usuario
 
-- **POST** - [`/users`] - Crea un usuario pendiente de validar y se envía un correo de verificación. ✅
-- **PUT** - [`/users/validate/:registerCode`] - Valida a un usuario recién registrado. ✅
-- **POST** - [`/users/login`] - Logging a un usuario retornando un token. ✅
-- **GET** - [`/user`] - Retorna información del usuario. ➡️ `Token` ✅
-- **GET** - [`/users`] - Retorna información de todos los usuarios. ✅
-- **PUT** - [`/user/profile`] - Permite actualizar el perfil del usuario. ➡️ `Token` ✅
-- **DELETE** [`/user`] - Eliminar un usuario. `Token` ✅
+- **POST** - [`/users`] - Crea un usuario pendiente de validar y envia un correo de verificación. ✅
+- **PUT** - [`/users/validate/:registerCode`] - Valida al usuario registrado con el código de verificación. ✅
+- **POST** - [`/users/login`] - Hace el login del usuario devolviendo un token. ✅
+- **GET** - [`/users`] - Devuelve la información de todos los usuarios. ✅
+- **GET** - [`/user`] - Devuelve la información del usuario logueado. ➡️`Token` ✅
+- **PUT** - [`/user/profile`] - Permite actualizar el perfil del usuario(menos password y email). ➡️ `Token` ✅
+- **DELETE** [`/user`] - Elimina al usuario logueado. `Token` ✅
 
-## Endpoints del post
+## Endpoints de posts
 
-- **POST** - [`/posts`] - Permite crear una entrada. ➡️ `Token`✅
-- **GET** - [`/posts`] - Retorna el listado de entradas. ✅
-- **GET** - [`/posts/:idPost`] - Retorna una entrada en concreto.
-- **GET** - [`/posts`] - Búsqueda de post por palabra (por params).
+- **POST** - [`/posts`] - Crea un post desde el usuario logueado. ➡️ `Token` ✅
+- **GET** - [`/posts`] - Devuelve el listado de todas las publicaciones. ✅
+- **GET** - [`/posts/myPosts`] - Devuelve el listado de las publicaciones del usuario logueado. ➡️ `Token`✅
+- **GET** - [`/posts/myPosts/:idPost`] - Devuelve la publicación del usuario logueado con el id que le pasas por parametro. ➡️ `Token`✅
+- **GET** - [`/posts/:idUser`] - Devuelve las publicaciones del usuario que le pasas por parametro. ✅
+- **GET** - [`/posts/:idUser/:idPost`] - Devuelve la publicación del usuario que le pasas por parametro con el id que le pasas por parametro. ✅
+- **GET** - [`/posts/%nombreusuario%`] - Búsqueda de posts por usuario, por params usando keywords. (Devuelve info de usuario más publicaciones)
 
 - **POST** [`/posts/:idPost/likes`] - Añade un like a una entrada. `Token`
 - **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token`

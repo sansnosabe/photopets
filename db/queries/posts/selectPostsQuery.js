@@ -1,6 +1,6 @@
 const getDB = require("../../getDB");
 
-const selectPostsQuery = async (id_user, keyword = "") => {
+const selectPostsQuery = async (idUser, keyword = "") => {
   let connection;
 
   try {
@@ -21,7 +21,7 @@ const selectPostsQuery = async (id_user, keyword = "") => {
       GROUP BY P.id
       ORDER BY P.created_at DESC
       `,
-      [id_user, id_user, `%${keyword}%`]
+      [idUser, idUser, `%${keyword}%`]
     );
 
     return posts;
