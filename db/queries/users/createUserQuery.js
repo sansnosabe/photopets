@@ -20,7 +20,8 @@ const createUserQuery = async (name, kind, breed, email, password, registrationC
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await connection.query(`INSERT INTO users (name, kind, breed, email, password, reg_code) VALUE(?, ?, ?, ?, ?, ?)`, [
+
+    await connection.query(`INSERT INTO users (name, kind, breed, email,  password, reg_code) VALUE(?, ?, ?, ?, ?, ?)`, [
       name,
       kind,
       breed,
