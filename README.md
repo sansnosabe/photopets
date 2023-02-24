@@ -18,26 +18,6 @@
 
 - Ejecutar `npm run dev` o `npm start` para lanzar el servidor.
 
-## Depencias:
-
-- Express
-- Cors
-- Dotenv
-- Mysql2
-- Uuid
-- Bcrypt
-- Jsonwebtoken
-- Morgan
-- Nodemailer
-- Fileupload
-
-  ## DevDependencias:
-
-  - Nodemon
-  - Eslint
-  - Prettier
-  - Standart
-
 ## Base de datos
 
 - **`users:`** id, name`*`, kind`*`, breed`*`, email`*`, password`*`, about_me, avatar(default), rol('user(default)', 'admin', 'god'), reg_code, active(boolean), created_at,
