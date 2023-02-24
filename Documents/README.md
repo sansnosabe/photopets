@@ -29,6 +29,7 @@
 - Jsonwebtoken
 - Morgan
 - Nodemailer
+- Fileupload
 
   ## DevDependencias:
 

@@ -14,8 +14,9 @@ const createUser = async (req, res, next) => {
     await createUserQuery(name, kind, breed, email, password, registrationCode);
 
     const subject = "Activa tu usuario en Instapets";
+    
     const emailContent = `
-      ¡Bienvenid@ ${name}!
+      ¡Woof Woof ${name}!
 
       Por favor, verifica tu usuario de instapets a través del siguiente enlace:
       http://${HOST}:${PORT}/users/validate/${registrationCode}
