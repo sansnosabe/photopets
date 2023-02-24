@@ -1,18 +1,16 @@
 const selectUserByIdQuery = require("../../db/queries/users/selectUserByIdQuery");
 const deleteUserQuery = require("../../db/queries/users/deleteUserQuery");
 
-const { deleteImg } = require("../../helpers");
-
 const deleteUser = async (req, res, next) => {
   try {
-    const user = await selectUserByIdQuery(req.user.id);
+    const { idUser } = req.params;
 
-    if (user.avatar) {
-      await deleteImg(user.avatar);
-      //await deleteImg(posts.image); ESPERAR A deletePostQuery
+    const user = await selectUserByIdQuery(idUser, req.user.id);
+
+    if (!user) {
+      generateError("No tienes suficientes permisos", 401);
     }
-
-    await deleteUserQuery(req.user.id);
+    await deleteUserQuery(idUser);
 
     res.send({
       code: 200,
