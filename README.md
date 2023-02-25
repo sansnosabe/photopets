@@ -48,7 +48,7 @@
 - **GET** - [`/posts/:idUser`] - Devuelve las publicaciones del usuario que le pasas por parametro. ✅
 - **GET** - [`/posts/:idUser/:idPost`] - Devuelve la publicación del usuario que le pasas por parametro con el id que le pasas por parametro. ✅
 - **GET** - [`/postsUsername] - Búsqueda de posts por usuario, por params usando keywords. (Devuelve info de usuario más publicaciones) ✅
-- **DELETE** [`/posts/:idPost`] - Borra un post solo si eres quien lo creó. `Token`
+- **DELETE** [`/posts/:idPost`] - Borra un post solo si eres quien lo creó. `Token` ✅
 
 - **POST** [`/posts/:idPost/likes`] - Añade un like a una entrada. `Token`
 - **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token`
