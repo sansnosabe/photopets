@@ -1,5 +1,5 @@
-const deleteLikeQuery = require("../../db/queries/posts/deleteLikeQuery");
-const getLikeQuery = require("../../db/queries/posts/getLikeQuery");
+const deleteLikeQuery = require("../../db/queries/likes/deleteLikeQuery");
+const getLikeQuery = require("../../db/queries/likes/getLikeQuery");
 const { generateError } = require("../../helpers");
 
 const unlikePost = async (req, res, next) => {

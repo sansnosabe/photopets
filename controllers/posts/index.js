@@ -8,6 +8,8 @@ const listUserAndPostsByUsernameParam = require("./listUserAndPostsByUsernamePar
 const deletePost = require("./deletePost");
 const likePost = require("./likePost");
 const unlikePost = require("./unlikePost");
+const commentPost = require("./commentPost");
+const deleteCommentPost = require("./deleteCommentPost");
 
 module.exports = {
   newPost,
@@ -20,4 +22,6 @@ module.exports = {
   deletePost,
   likePost,
   unlikePost,
+  commentPost,
+  deleteCommentPost,
 };

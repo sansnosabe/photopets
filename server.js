@@ -48,6 +48,8 @@ const {
   deletePost,
   likePost,
   unlikePost,
+  commentPost,
+  deleteCommentPost,
 } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
@@ -61,9 +63,8 @@ app.delete("/posts/:idPost", isAuth, deletePost);
 app.post("/posts/:idPost/likes", isAuth, likePost);
 app.delete("/posts/:idPost/unlikes", isAuth, unlikePost);
 
-app.delete("/posts/comments/:idPost", isAuth, deleteCommentPost);
 app.post("/posts/comments/:idPost", isAuth, commentPost);
-app.delete("/posts/comments/:idPost", isAuth, deleteCommentPost);
+app.delete("/posts/comments/:idComment", isAuth, deleteCommentPost);
 
 // Middleware de error.
 app.use((err, req, res, next) => {

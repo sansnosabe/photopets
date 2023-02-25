@@ -1,4 +1,4 @@
-const insertLikeQuery = require("../../db/queries/posts/insertLikeQuery");
+const insertLikeQuery = require("../../db/queries/likes/insertLikeQuery");
 const { generateError } = require("../../helpers");
 
 const likePost = async (req, res, next) => {
