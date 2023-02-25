@@ -13,12 +13,10 @@ const deleteCommentPost = async (req, res, next) => {
       throw generateError("El comentario no existe", 404);
     }
 
-    // Comprueba si el usuario autenticado es el autor del comentario
-    if (comment.id_user !== req.user.id) {
+    if (comment[0].id_user !== req.user.id) {
       throw generateError("No estás autorizado para borrar este comentario", 401);
     }
 
-    // Borra el comentario
     await deleteCommentQuery(idComment);
 
     res.send({
