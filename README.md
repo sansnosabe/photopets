@@ -58,9 +58,9 @@
 
 ## A mayores:
 
-- **PUT** - [`/users/profile/email`] - Permite actualizar el email.
-- **PUT** - [`/users/profile/password`] - Permite actualizar la password del usuario (estaría guay que al cambiar la password te llege un email de confirmación o algo así). ➡️
-  `Token`
+- **GET** - [`/users/posts/:idPost/comments`] - Devuelve los comentarios de un post.
+- **GET** - [`/users/posts/:idPost/comments/:idComment`] - Devuelve un comentario de un post.
+- **PUT** - [`/users/profile/password`] - Permite actualizar la password del usuario. ➡️ `Token`
 
 - **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
 
