@@ -20,6 +20,7 @@ const likePost = async (req, res, next) => {
     await insertLikeQuery(like.vote, req.user.id, idPost);
 
     res.send({
+      code: 200,
       status: "ok",
       message: "Like realizado",
     });

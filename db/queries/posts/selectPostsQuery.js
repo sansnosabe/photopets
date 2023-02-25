@@ -17,9 +17,8 @@ const selectPostsQuery = async (idUser) => {
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id
       GROUP BY P.id
-      ORDER BY P.created_at ASC
       `,
-      [idUser, idUser]
+      [idUser]
     );
 
     return posts;

@@ -6,7 +6,19 @@ const selectPostByIdQuery = async (idUser, idPost) => {
 
   try {
     connection = await getDB();
-    const [post] = await connection.query("SELECT id, text, image FROM posts WHERE id = ? AND id_user = ?", [idPost, idUser]);
+    const [post] = await connection.query(
+      `
+      SELECT P.id, P.image, P.text,
+      COUNT(L.id) AS likes, 
+      U.name AS user
+      FROM posts P
+      INNER JOIN users U ON U.id = P.id_user
+      LEFT JOIN likes L ON L.id_post = P.id
+      WHERE P.id = ? AND P.id_user = ?
+      GROUP BY P.id
+      `,
+      [idPost, idUser]
+    );
 
     if (post.length === 0) {
       return generateError("El post no existe o no pertenece al usuario", 404);

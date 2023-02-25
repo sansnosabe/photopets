@@ -14,6 +14,7 @@ const unlikePost = async (req, res, next) => {
     await deleteLikeQuery(req.user.id, idPost);
 
     res.send({
+      code: 200,
       status: "ok",
       message: "Like eliminado",
     });
