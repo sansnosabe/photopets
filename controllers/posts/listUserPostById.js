@@ -5,7 +5,6 @@ const listUserPostById = async (req, res, next) => {
   try {
     const idUser = req.params.idUser;
     const idPost = req.params.idPost;
-    console.log(idUser, idPost);
 
     const post = await selectPostByIdQuery(idUser, idPost);
 

@@ -6,6 +6,8 @@ const listUserPosts = require("./listUserPosts");
 const listUserPostById = require("./listUserPostById");
 const listUserAndPostsByUsernameParam = require("./listUserAndPostsByUsernameParam");
 const deletePost = require("./deletePost");
+const likePost = require("./likePost");
+const unlikePost = require("./unlikePost");
 
 module.exports = {
   newPost,
@@ -16,4 +18,6 @@ module.exports = {
   listUserPostById,
   listUserAndPostsByUsernameParam,
   deletePost,
+  likePost,
+  unlikePost,
 };

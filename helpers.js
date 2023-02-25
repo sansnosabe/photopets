@@ -82,11 +82,8 @@ const saveImg = async (img, resizePx) => {
  */
 
 const deleteImg = async (imgName) => {
-  console.log(imgName);
   try {
     const imgPath = path.join(__dirname, "uploads", imgName);
-    console.log("imgPathhhhhhhh:", imgPath);
-
     try {
       await fs.access(imgPath);
     } catch (err) {
@@ -96,7 +93,6 @@ const deleteImg = async (imgName) => {
 
     await fs.unlink(imgPath);
   } catch (err) {
-    console.log("unlink error:", err);
     generateError("Error al eliminar la imagen del servidor");
   }
 };

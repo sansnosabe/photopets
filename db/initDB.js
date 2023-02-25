@@ -50,7 +50,7 @@ const createTables = async () => {
     await connection.query(`
       CREATE TABLE IF NOT EXISTS likes (
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      value INT DEFAULT '0',
+      value BOOLEAN DEFAULT false,
       id_user INT UNSIGNED NOT NULL,
       id_post INT UNSIGNED NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,

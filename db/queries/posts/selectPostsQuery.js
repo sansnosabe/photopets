@@ -11,7 +11,6 @@ const selectPostsQuery = async (idUser) => {
       SELECT 
         P.*,
         COUNT(L.id) AS likes,
-        BIT_OR(L.id_user = ?) AS myLikes,
         U.name AS user,
         IFNULL(P.id_user = ?, 0) AS owner
       FROM posts P
