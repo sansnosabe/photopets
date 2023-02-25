@@ -50,16 +50,17 @@
 - **GET** - [`/postsUsername] - Búsqueda de posts por usuario, por params usando keywords. (Devuelve info de usuario más publicaciones) ✅
 - **DELETE** [`/posts/:idPost`] - Borra un post solo si eres quien lo creó. `Token` ✅
 
-- **POST** [`/posts/:idPost/likes`] - Añade un like a un post. `Token`
-- **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token`
+- **POST** [`/posts/:idPost/likes`] - Añade un like a un post. `Token` ✅
+- **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token` ✅
 
-- **POST** [`/posts/:idPost/comments`] - Agregar un comentario a un post. `Token`
-- **DELETE** [`/comments/:idComment`] - Eliminar un comentario del post. `Token`
+- **POST** [`/posts/comments/:idPost`] - Agregar un comentario a un post. `Token`
+- **DELETE** [`posts/comments/:idPost`] - Eliminar un comentario del post. `Token`
 
 ## A mayores:
 
-- **PUT** - [`/users/profile`] - Permite actualizar el email o la password del usuario (estaría guay que al cambiar la password te llege un email de confirmación o algo así).
-  ➡️ `Token`
+- **PUT** - [`/users/profile/email`] - Permite actualizar el email.
+- **PUT** - [`/users/profile/password`] - Permite actualizar la password del usuario (estaría guay que al cambiar la password te llege un email de confirmación o algo así). ➡️
+  `Token`
 
 - **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
 
