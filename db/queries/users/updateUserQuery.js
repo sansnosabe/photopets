@@ -2,7 +2,7 @@ const getDB = require("../../getDB");
 
 const { generateError } = require("../../../helpers");
 
-const updateUserQuery = async (name, kind, breed, aboutMe, idUser) => {
+const updateUserQuery = async (name, email, kind, breed, aboutMe, idUser) => {
   let connection;
 
   try {
@@ -16,6 +16,16 @@ const updateUserQuery = async (name, kind, breed, aboutMe, idUser) => {
       }
 
       await connection.query(`UPDATE users SET name = ? WHERE id = ?`, [name, idUser]);
+    }
+
+    if (email) {
+      const [usersEmail] = await connection.query(`SELECT id FROM users WHERE email = ?`, [email]);
+
+      if (usersEmail.length > 0) {
+        generateError("Ya existe un usuario con este email", 403);
+      }
+
+      await connection.query(`UPDATE users SET email = ? WHERE id = ?`, [email, idUser]);
     }
 
     if (kind) {

@@ -37,7 +37,20 @@ app.delete("/user", isAuth, deleteUser);
  * ############################
  */
 
-const { newPost, listPosts, listMyPosts, listMyPostById, listUserPosts, listUserPostById, listUserAndPostsByUsernameParam } = require("./controllers/posts");
+const {
+  newPost,
+  listPosts,
+  listMyPosts,
+  listMyPostById,
+  listUserPosts,
+  listUserPostById,
+  listUserAndPostsByUsernameParam,
+  deletePost,
+  likePost,
+  unlikePost,
+  commentPost,
+  deleteCommentPost,
+} = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
 app.get("/posts", isAuthOptional, listPosts);
@@ -46,7 +59,12 @@ app.get("/posts/myPosts/:idPost", isAuth, listMyPostById);
 app.get("/posts/:idUser", isAuthOptional, listUserPosts);
 app.get("/posts/:idUser/:idPost", isAuthOptional, listUserPostById);
 app.get("/postsUsername", isAuthOptional, listUserAndPostsByUsernameParam);
-app.delete("/posts/:idPost", isAuth);
+app.delete("/posts/:idPost", isAuth, deletePost);
+app.post("/posts/:idPost/likes", isAuth, likePost);
+app.delete("/posts/:idPost/unlikes", isAuth, unlikePost);
+
+app.post("/posts/comments/:idPost", isAuth, commentPost);
+app.delete("/posts/comments/:idComment", isAuth, deleteCommentPost);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
