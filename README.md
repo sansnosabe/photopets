@@ -50,7 +50,7 @@
 - **GET** - [`/postsUsername] - Búsqueda de posts por usuario, por params usando keywords. (Devuelve info de usuario más publicaciones) ✅
 - **DELETE** [`/posts/:idPost`] - Borra un post solo si eres quien lo creó. `Token` ✅
 
-- **POST** [`/posts/:idPost/likes`] - Añade un like a una entrada. `Token`
+- **POST** [`/posts/:idPost/likes`] - Añade un like a un post. `Token`
 - **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token`
 
 - **POST** [`/posts/:idPost/comments`] - Agregar un comentario a un post. `Token`
