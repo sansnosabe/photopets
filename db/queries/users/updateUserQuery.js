@@ -2,7 +2,7 @@ const getDB = require("../../getDB");
 
 const { generateError } = require("../../../helpers");
 
-const updateUserQuery = async (name, email, kind, breed, aboutMe, idUser) => {
+const updateUserQuery = async (name, email, kind, breed, aboutMe, avatar, idUser) => {
   let connection;
 
   try {
@@ -38,6 +38,10 @@ const updateUserQuery = async (name, email, kind, breed, aboutMe, idUser) => {
 
     if (aboutMe) {
       await connection.query(`UPDATE users SET about_me = ? WHERE id = ?`, [aboutMe, idUser]);
+    }
+
+    if (avatar) {
+      await connection.query(`UPDATE users SET avatar = ? WHERE id = ?`, [avatar, idUser]);
     }
   } finally {
     if (connection) connection.release();
