@@ -5,7 +5,6 @@ const { generateError, deleteImg } = require("../../helpers");
 const deletePost = async (req, res, next) => {
   try {
     const { idPost } = req.params;
-
     const post = await selectPostByIdQuery(req.user.id, idPost);
 
     if (!post) {

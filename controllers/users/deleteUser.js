@@ -7,7 +7,6 @@ const deleteUser = async (req, res, next) => {
   try {
     const user = await selectUserByIdQuery(req.user.id);
     const posts = await selectPostsByUserIdQuery(req.user.id);
-
     if (user.avatar) {
       await deleteImg(user.avatar);
     }

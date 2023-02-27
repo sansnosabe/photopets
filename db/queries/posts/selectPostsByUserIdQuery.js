@@ -25,7 +25,7 @@ const selectPostsByUserIdQuery = async (idUser) => {
     );
 
     if (userPosts.length < 1) {
-      throw generateError("El Usuario no tiene ningun post", 404);
+      throw generateError("El usuario no tiene ningun post", 404);
     }
 
     return userPosts;

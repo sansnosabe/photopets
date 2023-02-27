@@ -3,11 +3,11 @@ const { saveImg } = require("../../helpers");
 
 const editUser = async (req, res, next) => {
   try {
-    let { name, email, kind, breed, aboutMe } = req.body;
+    const { name, kind, breed, about_me } = req.body;
 
-    let avatar = await saveImg(req.files.avatar, 500);
+    const image = await saveImg(req.files.avatar, 500);
 
-    await updateUserQuery(name, email, kind, breed, aboutMe, avatar, req.user.id);
+    await updateUserQuery(name, kind, breed, about_me, image, req.user.id);
 
     res.send({
       code: 200,
