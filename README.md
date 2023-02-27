@@ -50,22 +50,28 @@
 - **GET** - [`/postsUsername] - Búsqueda de posts por usuario, por params usando keywords. (Devuelve info de usuario más publicaciones) ✅
 - **DELETE** [`/posts/:idPost`] - Borra un post solo si eres quien lo creó. `Token` ✅
 
-- **POST** [`/posts/:idPost/likes`] - Añade un like a un post. `Token` ✅
-- **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token` ✅
+  ### Endpoints de likes
 
-- **POST** [`/posts/comments/:idPost`] - Agregar un comentario a un post. `Token`
-- **DELETE** [`posts/comments/:idPost`] - Eliminar un comentario del post. `Token`
+  - **POST** [`/posts/:idPost/likes`] - Añade un like a un post. `Token` ✅
+  - **DELETE** [`/posts/:idPost/likes`] - Deshace un like de un post. `Token` ✅
 
-## A mayores:
+  ### Endpoints de comentarios
+
+  - **POST** [`/posts/comments/:idPost`] - Agregar un comentario a un post. `Token` ✅
+  - **DELETE** [`posts/comments/:idPost`] - Eliminar un comentario del post. `Token` ✅
+
+# Más adelante(fuera de fecha de proyecto):
 
 - **GET** - [`/users/posts/:idPost/comments`] - Devuelve los comentarios de un post.
 - **GET** - [`/users/posts/:idPost/comments/:idComment`] - Devuelve un comentario de un post.
+
+- **PUT** - [`/users/profile/email`] - Permite actualizar el email del usuario. ➡️ `Token`
 - **PUT** - [`/users/profile/password`] - Permite actualizar la password del usuario. ➡️ `Token`
 
 - **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
 
-## A super mayores:
-
-- //**Creación de mensajes privados**//(BACK)
-
-- //**Anuncios personalizados**//(FRONT)
+- **Añadir @username**
+- **Añadir #hashtag**
+- **Creación de mensajes privados**
+- **Dejar likes a comentarios**
+- **Anuncios personalizados**
