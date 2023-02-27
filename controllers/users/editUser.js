@@ -2,9 +2,9 @@ const updateUserQuery = require("../../db/queries/users/updateUserQuery");
 
 const editUser = async (req, res, next) => {
   try {
-    let { name, kind, breed, aboutMe } = req.body;
+    let { name, email, kind, breed, aboutMe } = req.body;
 
-    await updateUserQuery(name, kind, breed, aboutMe, req.user.id);
+    await updateUserQuery(name, email, kind, breed, aboutMe, req.user.id);
 
     res.send({
       code: 200,
