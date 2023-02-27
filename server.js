@@ -37,20 +37,7 @@ app.delete("/user", isAuth, deleteUser);
  * ############################
  */
 
-const {
-  newPost,
-  listPosts,
-  listMyPosts,
-  listMyPostById,
-  listUserPosts,
-  listUserPostById,
-  listUserAndPostsByUsernameParam,
-  deletePost,
-  likePost,
-  unlikePost,
-  commentPost,
-  deleteCommentPost,
-} = require("./controllers/posts");
+const { newPost, listPosts, listMyPosts, listMyPostById, listUserPosts, listUserPostById, listUserAndPostsByUsernameParam, deletePost } = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
 app.get("/posts", isAuthOptional, listPosts);
@@ -60,9 +47,25 @@ app.get("/posts/:idUser", isAuthOptional, listUserPosts);
 app.get("/posts/:idUser/:idPost", isAuthOptional, listUserPostById);
 app.get("/postsUsername", isAuthOptional, listUserAndPostsByUsernameParam);
 app.delete("/posts/:idPost", isAuth, deletePost);
+
+/**
+ * ############################
+ * ## Controladores de Likes ##
+ * ############################
+ */
+
+const { likePost, unlikePost } = require("./controllers/likes");
+
 app.post("/posts/:idPost/likes", isAuth, likePost);
 app.delete("/posts/:idPost/unlikes", isAuth, unlikePost);
 
+/**
+ * ###############################
+ * ## Controladores de comments ##
+ * ###############################
+ */
+
+const { commentPost, deleteCommentPost } = require("./controllers/comments");
 app.post("/posts/comments/:idPost", isAuth, commentPost);
 app.delete("/posts/comments/:idComment", isAuth, deleteCommentPost);
 
