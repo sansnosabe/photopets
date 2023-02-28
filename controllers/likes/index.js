@@ -1,7 +1,9 @@
 const likePost = require("./likePost");
-const unlikePost = require("./unlikePost");
+const dislikePost = require("./dislikePost");
+const likeDislikePost = require("./likeDislikePost");
 
 module.exports = {
   likePost,
-  unlikePost,
+  dislikePost,
+  likeDislikePost,
 };
