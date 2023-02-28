@@ -24,10 +24,6 @@ const selectPostsByUserIdQuery = async (idUser) => {
       [idUser]
     );
 
-    if (userPosts.length === 0) {
-      generateError("No existe ningún post con este ID", 404);
-    }
-
     return userPosts;
   } finally {
     if (connection) connection.release();

@@ -12,7 +12,7 @@ const deletePostQuery = async (idPost) => {
     await connection.query(`DELETE FROM posts WHERE id = ?`, [idPost]);
 
     if (!idPost) {
-      return generateError("El post no pertenece al usuario", 404);
+      generateError("El post no pertenece al usuario", 404);
     }
   } finally {
     if (connection) connection.release();
