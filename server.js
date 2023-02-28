@@ -54,10 +54,12 @@ app.delete("/posts/:idPost", isAuth, deletePost);
  * ############################
  */
 
-const { likePost, unlikePost } = require("./controllers/likes");
+const { likePost, dislikePost, likeDislikePost } = require("./controllers/likes");
 
 app.post("/posts/:idPost/likes", isAuth, likePost);
-app.delete("/posts/:idPost/unlikes", isAuth, unlikePost);
+app.delete("/posts/:idPost/dislikes", isAuth, dislikePost);
+
+app.post("/posts/:idPost/likeDislike", isAuth, likeDislikePost);
 
 /**
  * ###############################
