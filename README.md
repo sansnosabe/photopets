@@ -32,7 +32,7 @@
 ## Endpoints del usuario
 
 - **POST** - [`/users`] - Crea un usuario pendiente de validar y envia un correo de verificación. ✅
-- **PUT** - [`/users/validate/:registerCode`] - Valida al usuario registrado con el código de verificación. ✅
+- **PUT** - [`/users/validate/:registrationCode`] - Valida al usuario registrado con el código de verificación. ✅
 - **POST** - [`/users/login`] - Hace el login del usuario devolviendo un token. ✅
 - **GET** - [`/users`] - Devuelve la información de todos los usuarios. ✅
 - **GET** - [`/user`] - Devuelve la información del usuario logueado. ➡️`Token` ✅
@@ -76,4 +76,3 @@
 - **Añadir #hashtag**
 - **Creación de mensajes privados**
 - **Dejar likes a comentarios**
-- **Anuncios personalizados**
