@@ -1,5 +1,5 @@
 const getDB = require("../../getDB");
-
+const { generateError } = require("../../../helpers");
 const selectPostsQuery = async (idUser) => {
   let connection;
 
@@ -9,13 +9,12 @@ const selectPostsQuery = async (idUser) => {
     const [posts] = await connection.query(
       `
       SELECT 
-      P.id AS post_id,
-      U.name AS user,
-      P.text, P.image,
-      COUNT(L.id) AS likes,
-      COUNT(C.id) AS comments_count,
-      IFNULL(JSON_ARRAYAGG(JSON_OBJECT('comment', C.comment, 'user', UC.name)), JSON_ARRAY()) AS comments,
-      IFNULL(P.id_user = ?, 0) AS owner
+        P.id AS post_id, 
+        IFNULL(P.id_user = ?, U.name) AS owner,
+        P.text, P.image,
+        COUNT(L.id) AS likes,
+        COUNT(C.id) AS comments_count,
+        IFNULL(JSON_ARRAYAGG(CONCAT('{ "id": "', P.id, '", "comment": "', C.comment, '", "user": "', UC.name, '" }')), JSON_ARRAY()) AS comments
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id
@@ -26,7 +25,21 @@ const selectPostsQuery = async (idUser) => {
       [idUser]
     );
 
-    return posts;
+    if (posts.length < 1) {
+      return generateError("No existe ningun post para este usuario", 404);
+    }
+
+    return posts.map((post) => {
+      const { comments, ...rest } = post;
+      return {
+        ...rest,
+        comments: comments.length
+          ? comments.map((comment) => ({
+              ...JSON.parse(comment),
+            }))
+          : [],
+      };
+    });
   } finally {
     if (connection) connection.release();
   }
