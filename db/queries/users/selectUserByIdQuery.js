@@ -1,5 +1,4 @@
 const getDB = require("../../getDB");
-
 const { generateError } = require("../../../helpers");
 
 const selectUserByIdQuery = async (idUser) => {
