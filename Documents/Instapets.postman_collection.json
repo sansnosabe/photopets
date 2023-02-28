@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Avada Kedavra\",\r\n    \"kind\": \"Cat\",\r\n    \"breed\": \"Crossbreed\",\r\n    \"email\": \"sandraerentxun93@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Silver\",\r\n    \"kind\": \"Cat\",\r\n    \"breed\": \"Crossbreed\",\r\n    \"email\": \"silver@silver.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/users/validate/d2e89f84-5794-4585-ac68-2b8487e060fe",
+							"raw": "http://localhost:4000/users/validate/9f738a3d-5153-42ce-9cf1-4d412e7e740f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -52,7 +52,7 @@
 							"path": [
 								"users",
 								"validate",
-								"d2e89f84-5794-4585-ac68-2b8487e060fe"
+								"9f738a3d-5153-42ce-9cf1-4d412e7e740f"
 							]
 						}
 					},
@@ -65,7 +65,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"sandraerentxun93@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"email\": \"avada@avada.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -145,7 +145,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text"
 							}
 						],
@@ -154,29 +154,30 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "AvadaKedavra",
-									"type": "text",
-									"disabled": true
+									"value": "Silver Surfer",
+									"type": "text"
 								},
 								{
 									"key": "kind",
 									"value": "Dog",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "breed",
 									"value": "Crossbreed",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "about_me",
-									"value": "Soy muy peligrosaa",
+									"value": "El más dormilón!",
 									"type": "text"
 								},
 								{
 									"key": "avatar",
 									"type": "file",
-									"src": "/C:/Users/sandr/OneDrive/Escritorio/configurar eslint.png"
+									"src": "/C:/Users/sandr/OneDrive/Escritorio/silver.png"
 								}
 							]
 						},
@@ -202,7 +203,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text"
 							}
 						],
@@ -242,11 +243,11 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/D:/Sandra/fotos gus/20170226_121535.jpg"
+									"src": "/C:/Users/sandr/OneDrive/Escritorio/configurar eslint.png"
 								},
 								{
 									"key": "text",
-									"value": "Durmiendo con mi hermanito!",
+									"value": "Configurar eslint",
 									"type": "text"
 								}
 							]
@@ -272,7 +273,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text",
 								"disabled": true
 							}
@@ -324,12 +325,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:4000/posts/myPosts/1",
+							"raw": "http://localhost:4000/posts/myPosts/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -338,7 +339,7 @@
 							"path": [
 								"posts",
 								"myPosts",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -350,7 +351,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/posts/1",
+							"raw": "http://localhost:4000/posts/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -358,7 +359,7 @@
 							"port": "4000",
 							"path": [
 								"posts",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -397,7 +398,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:4000/postsUsername?keyword=av",
+							"raw": "http://localhost:4000/postsUsername?keyword=si",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -409,7 +410,7 @@
 							"query": [
 								{
 									"key": "keyword",
-									"value": "av"
+									"value": "si"
 								}
 							]
 						}
@@ -423,12 +424,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:4000/posts/1",
+							"raw": "http://localhost:4000/posts/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -436,6 +437,74 @@
 							"port": "4000",
 							"path": [
 								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "Put comment in post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_1}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"Este es un comentario a eslint\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/posts/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"posts",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment in post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_1}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/posts/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"posts",
+								"comments",
 								"1"
 							]
 						}
@@ -490,12 +559,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_user_1}}",
+								"value": "{{token_user_2}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:4000/posts/3/unlikes",
+							"raw": "http://localhost:4000/posts/4/dislikes",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -503,20 +572,15 @@
 							"port": "4000",
 							"path": [
 								"posts",
-								"3",
-								"unlikes"
+								"4",
+								"dislikes"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "comments",
-			"item": [
+				},
 				{
-					"name": "Put comment in post",
+					"name": "Like and unlike",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -528,7 +592,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\": \"Este es un comentario\"\r\n}",
+							"raw": "{\r\n    \"vote\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -536,7 +600,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/posts/comments/1",
+							"raw": "http://localhost:4000/posts/1/likeDislike",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -544,35 +608,8 @@
 							"port": "4000",
 							"path": [
 								"posts",
-								"comments",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete comment in post",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token_user_1}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:4000/posts/comments/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"posts",
-								"comments",
-								"1"
+								"1",
+								"likeDislike"
 							]
 						}
 					},
@@ -611,6 +648,12 @@
 			"key": "token_user_2",
 			"value": "",
 			"type": "string"
+		},
+		{
+			"key": "token_user_3",
+			"value": "",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }

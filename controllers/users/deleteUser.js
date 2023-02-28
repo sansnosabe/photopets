@@ -18,7 +18,7 @@ const deleteUser = async (req, res, next) => {
     }
 
     for (const post of posts) {
-      await deletePostQuery(post.id);
+      await deletePostQuery(post.post_id);
     }
 
     await deleteUserQuery(req.user.id);

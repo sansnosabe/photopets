@@ -1,18 +1,18 @@
-const selectPostByIdQuery = require("../../db/queries/posts/selectPostByIdQuery");
+const selectPostByIdsQuery = require("../../db/queries/posts/selectPostByIdsQuery");
 const deletePostQuery = require("../../db/queries/posts/deletePostQuery");
 const { generateError, deleteImg } = require("../../helpers");
 
 const deletePost = async (req, res, next) => {
   try {
     const { idPost } = req.params;
-    const post = await selectPostByIdQuery(req.user.id, idPost);
+    const post = await selectPostByIdsQuery(req.user.id, idPost);
 
     if (!post) {
       generateError("No se encontró el post", 404);
     }
 
-    if (post[0].image) {
-      await deleteImg(post[0].image);
+    if (post.image) {
+      await deleteImg(post.image);
     }
 
     await deletePostQuery(idPost);

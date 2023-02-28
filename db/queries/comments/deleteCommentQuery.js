@@ -8,7 +8,7 @@ const deleteCommentQuery = async (idComment) => {
     const [result] = await connection.query("DELETE FROM comments WHERE id = ?", [idComment]);
 
     if (result.affectedRows === 0) {
-      generateError(`No existe el comentario con ${idComment}`, 404);
+      generateError(`No existe el comentario con ID ${idComment}`, 404);
     }
   } finally {
     if (connection) connection.release();

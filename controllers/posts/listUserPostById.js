@@ -1,4 +1,4 @@
-const selectPostByIdQuery = require("../../db/queries/posts/selectPostByIdQuery");
+const selectPostByIdsQueryry = require("../../db/queries/posts/selectPostByIdsQuery");
 const { generateError } = require("../../helpers");
 
 const listUserPostById = async (req, res, next) => {
@@ -6,7 +6,7 @@ const listUserPostById = async (req, res, next) => {
     const idUser = req.params.idUser;
     const idPost = req.params.idPost;
 
-    const post = await selectPostByIdQuery(idUser, idPost);
+    const post = await selectPostByIdsQueryry(idUser, idPost);
 
     if (!post) {
       generateError("No existe ningun post con ese ID en este usuario", 404);

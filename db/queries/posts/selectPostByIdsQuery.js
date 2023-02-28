@@ -1,12 +1,11 @@
 const getDB = require("../../getDB");
 const { generateError } = require("../../../helpers");
 
-const selectPostsQuery = async (idUser) => {
+const selectPostByIdsQuery = async (idUser, idPost) => {
   let connection;
 
   try {
     connection = await getDB();
-
     const [rows] = await connection.query(
       `
       SELECT 
@@ -68,4 +67,4 @@ const selectPostsQuery = async (idUser) => {
   }
 };
 
-module.exports = selectPostsQuery;
+module.exports = selectPostByIdsQuery;

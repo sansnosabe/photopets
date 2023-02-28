@@ -1,30 +1,63 @@
 const getDB = require("../../getDB");
 
-const { generateError } = require("../../../helpers");
-
 const selectPostsByUserIdQuery = async (idUser) => {
   let connection;
 
   try {
     connection = await getDB();
-    const [userPosts] = await connection.query(
+
+    const [rows] = await connection.query(
       `
-      SELECT U.name AS user,
-        P.id, P.image, P.text,
+      SELECT P.id AS post_id, U.name AS owner, P.text, P.image,
         COUNT(L.id) AS likes,
-        JSON_ARRAYAGG(JSON_OBJECT('id', P.id, 'comment', C.comment, 'user', CU.name)) AS comments
+        C.id AS comment_id,
+        C.comment,
+        CU.name AS user_name
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id
       LEFT JOIN comments C ON C.id_post = P.id
       LEFT JOIN users CU ON C.id_user = CU.id
       WHERE P.id_user = ?
-      GROUP BY P.id
+      GROUP BY P.id, C.id
       `,
       [idUser]
     );
 
-    return userPosts;
+    const postsMap = new Map();
+
+    for (const row of rows) {
+      const { post_id, owner, text, image, likes } = row;
+
+      let post = postsMap.get(post_id);
+
+      if (!post) {
+        post = {
+          post_id,
+          owner,
+          text,
+          image,
+          likes,
+          comments_count: 0,
+          comments: [],
+        };
+
+        postsMap.set(post_id, post);
+      }
+
+      if (row.comment_id) {
+        post.comments.push({
+          id: row.comment_id,
+          comment: row.comment,
+          user: row.user_name,
+        });
+        post.comments_count++;
+      }
+    }
+
+    const posts = Array.from(postsMap.values());
+
+    return posts;
   } finally {
     if (connection) connection.release();
   }

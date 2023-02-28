@@ -1,4 +1,5 @@
 const insertCommentQuery = require("../../db/queries/comments/insertCommentQuery");
+const selectPostByIdPostQuery = require("../../db/queries/posts/selectPostByIdPostQuery");
 const { generateError } = require("../../helpers");
 
 const commentPost = async (req, res, next) => {
@@ -8,6 +9,12 @@ const commentPost = async (req, res, next) => {
 
     if (!comment || !comment.comment) {
       generateError("Faltan campos", 400);
+    }
+
+    const post = await selectPostByIdPostQuery(idPost);
+
+    if (!post) {
+      throw generateError(`No existe el post con id ${idPost}`, 404);
     }
 
     await insertCommentQuery(+idPost, req.user.id, comment.comment);
