@@ -1,5 +1,6 @@
 const selectUserByIdQuery = require("../../db/queries/users/selectUserByIdQuery");
 const selectPostsByUserIdQuery = require("../../db/queries/posts/selectPostsByUserIdQuery");
+const deletePostQuery = require("../../db/queries/posts/deletePostQuery");
 const deleteUserQuery = require("../../db/queries/users/deleteUserQuery");
 const { deleteImg, generateError } = require("../../helpers");
 
@@ -17,13 +18,7 @@ const deleteUser = async (req, res, next) => {
     }
 
     for (const post of posts) {
-      try {
-        if (post.image) {
-          await deleteImg(post.image);
-        }
-      } catch (err) {
-        generateError("Error al eliminar la imagen del post", 500);
-      }
+      await deletePostQuery(post.id);
     }
 
     await deleteUserQuery(req.user.id);
