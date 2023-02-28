@@ -55,7 +55,7 @@
   - **POST** [`/posts/:idPost/likes`] - Añade like a un post. `Token` ✅
   - **DELETE** [`/posts/:idPost/dislikes`] - Deshace like de un post. `Token` ✅
 
-  - **DELETE** [`/posts/:idPost/likeDislike`] - Añade o deshace like de un post. `Token` ✅
+  - **POST** [`/posts/:idPost/likeDislike`] - Añade o deshace like de un post. `Token` ✅
 
   ### Endpoints de comentarios
 
