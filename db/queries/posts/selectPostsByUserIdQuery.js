@@ -1,34 +1,63 @@
 const getDB = require("../../getDB");
 
-const { generateError } = require("../../../helpers");
-
 const selectPostsByUserIdQuery = async (idUser) => {
   let connection;
 
   try {
     connection = await getDB();
-    const [userPosts] = await connection.query(
+
+    const [rows] = await connection.query(
       `
-      SELECT posts.id, posts.image, posts.text,
-        COUNT(likes.id) AS likes,
-        JSON_ARRAYAGG(JSON_OBJECT('comment', comments.comment, 'user', comment_users.name)) AS comments,
-        users.name AS user
-      FROM posts
-      INNER JOIN users ON users.id = posts.id_user
-      LEFT JOIN likes ON likes.id_post = posts.id
-      LEFT JOIN comments ON comments.id_post = posts.id
-      LEFT JOIN users AS comment_users ON comments.id_user = comment_users.id
-      WHERE posts.id_user = ?
-      GROUP BY posts.id
+      SELECT P.id AS post_id, U.name AS owner, P.text, P.image,
+        COUNT(L.id) AS likes,
+        C.id AS comment_id,
+        C.comment,
+        CU.name AS user_name
+      FROM posts P
+      INNER JOIN users U ON U.id = P.id_user
+      LEFT JOIN likes L ON L.id_post = P.id
+      LEFT JOIN comments C ON C.id_post = P.id
+      LEFT JOIN users CU ON C.id_user = CU.id
+      WHERE P.id_user = ?
+      GROUP BY P.id, C.id
       `,
       [idUser]
     );
 
-    if (userPosts.length < 1) {
-      throw generateError("El Usuario no tiene ningun post", 404);
+    const postsMap = new Map();
+
+    for (const row of rows) {
+      const { post_id, owner, text, image, likes } = row;
+
+      let post = postsMap.get(post_id);
+
+      if (!post) {
+        post = {
+          post_id,
+          owner,
+          text,
+          image,
+          likes,
+          comments_count: 0,
+          comments: [],
+        };
+
+        postsMap.set(post_id, post);
+      }
+
+      if (row.comment_id) {
+        post.comments.push({
+          id: row.comment_id,
+          comment: row.comment,
+          user: row.user_name,
+        });
+        post.comments_count++;
+      }
     }
 
-    return userPosts;
+    const posts = Array.from(postsMap.values());
+
+    return posts;
   } finally {
     if (connection) connection.release();
   }

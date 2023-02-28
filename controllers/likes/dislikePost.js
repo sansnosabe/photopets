@@ -2,7 +2,7 @@ const deleteLikeQuery = require("../../db/queries/likes/deleteLikeQuery");
 const getLikeQuery = require("../../db/queries/likes/getLikeQuery");
 const { generateError } = require("../../helpers");
 
-const unlikePost = async (req, res, next) => {
+const dislikePost = async (req, res, next) => {
   try {
     const { idPost } = req.params;
 
@@ -23,4 +23,4 @@ const unlikePost = async (req, res, next) => {
   }
 };
 
-module.exports = unlikePost;
+module.exports = dislikePost;

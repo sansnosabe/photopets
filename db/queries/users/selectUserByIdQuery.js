@@ -1,5 +1,4 @@
 const getDB = require("../../getDB");
-
 const { generateError } = require("../../../helpers");
 
 const selectUserByIdQuery = async (idUser) => {
@@ -8,7 +7,17 @@ const selectUserByIdQuery = async (idUser) => {
   try {
     connection = await getDB();
 
-    const [users] = await connection.query(`SELECT id, name, kind, breed, email, about_me, avatar, role, active, created_at FROM users WHERE id = ?`, [idUser]);
+    const [users] = await connection.query(
+      `
+      SELECT U.id, U.name, U.kind, U.breed, U.email, U.about_me, U.avatar, U.role, U.active, 
+      COUNT(P.id) AS posts_count
+      FROM users U
+      LEFT JOIN posts P ON U.id = P.id_user
+      WHERE U.id = ?
+      GROUP BY U.id
+      `,
+      [idUser]
+    );
 
     if (users.length < 1) {
       generateError("Usuario no encontrado", 404);

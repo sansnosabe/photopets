@@ -16,7 +16,7 @@ const selectCommentByIdQuery = async (idComment) => {
     );
 
     if (comment.length === 0) {
-      generateError("No se encontró el comentario", 404);
+      generateError("No existe ningún comentario con este ID", 404);
     }
 
     return comment;
