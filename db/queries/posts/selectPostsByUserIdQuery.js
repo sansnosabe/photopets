@@ -9,23 +9,23 @@ const selectPostsByUserIdQuery = async (idUser) => {
     connection = await getDB();
     const [userPosts] = await connection.query(
       `
-      SELECT posts.id, posts.image, posts.text,
-        COUNT(likes.id) AS likes,
-        JSON_ARRAYAGG(JSON_OBJECT('comment', comments.comment, 'user', comment_users.name)) AS comments,
-        users.name AS user
-      FROM posts
-      INNER JOIN users ON users.id = posts.id_user
-      LEFT JOIN likes ON likes.id_post = posts.id
-      LEFT JOIN comments ON comments.id_post = posts.id
-      LEFT JOIN users AS comment_users ON comments.id_user = comment_users.id
-      WHERE posts.id_user = ?
-      GROUP BY posts.id
+      SELECT U.name AS user,
+        P.id, P.image, P.text,
+        COUNT(L.id) AS likes,
+        JSON_ARRAYAGG(JSON_OBJECT('id', P.id, 'comment', C.comment, 'user', CU.name)) AS comments
+      FROM posts P
+      INNER JOIN users U ON U.id = P.id_user
+      LEFT JOIN likes L ON L.id_post = P.id
+      LEFT JOIN comments C ON C.id_post = P.id
+      LEFT JOIN users CU ON C.id_user = CU.id
+      WHERE P.id_user = ?
+      GROUP BY P.id
       `,
       [idUser]
     );
 
-    if (userPosts.length < 1) {
-      throw generateError("El usuario no tiene ningun post", 404);
+    if (userPosts.length === 0) {
+      generateError("No existe ningún post con este ID", 404);
     }
 
     return userPosts;

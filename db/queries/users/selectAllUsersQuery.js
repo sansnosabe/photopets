@@ -1,4 +1,5 @@
 const getDB = require("../../getDB");
+const { generateError } = require("../../../helpers");
 
 const selectAllUsersQuery = async () => {
   let connection;
@@ -14,6 +15,10 @@ const selectAllUsersQuery = async () => {
     LEFT JOIN posts P ON U.id = P.id_user
     GROUP BY U.id`
     );
+
+    if (users.length < 1) {
+      generateError("No se ha encontrado ningún usuario", 404);
+    }
 
     return users;
   } finally {
