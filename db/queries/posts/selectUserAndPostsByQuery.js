@@ -19,7 +19,7 @@ const selectUserAndPostsByQuery = async (name = "") => {
     );
 
     if (user.length === 0) {
-      throw generateError("No existe ningún usuario con ese nombre", 404);
+      generateError("No existe ningún usuario con ese nombre", 404);
     }
 
     return { user };

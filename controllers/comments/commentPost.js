@@ -7,7 +7,7 @@ const commentPost = async (req, res, next) => {
     const comment = req.body;
 
     if (!comment || !comment.comment) {
-      throw generateError("Faltan campos", 400);
+      generateError("Faltan campos", 400);
     }
 
     await insertCommentQuery(+idPost, req.user.id, comment.comment);

@@ -6,15 +6,14 @@ const deleteCommentPost = async (req, res, next) => {
   try {
     const { idComment } = req.params;
 
-    // Comprueba si el comentario existe
     const comment = await selectCommentByIdQuery(idComment);
 
     if (!comment) {
-      throw generateError("El comentario no existe", 404);
+      generateError("El comentario no existe", 404);
     }
 
     if (comment[0].id_user !== req.user.id) {
-      throw generateError("No estás autorizado para borrar este comentario", 401);
+      generateError("No estás autorizado para borrar este comentario", 401);
     }
 
     await deleteCommentQuery(idComment);
