@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const { generateError } = require("../../helpers");
+const { SECRET } = process.env;
 
 const loginUser = async (req, res, next) => {
   try {
@@ -30,7 +31,7 @@ const loginUser = async (req, res, next) => {
       role: user.role,
     };
 
-    const token = jwt.sign(userInfo, process.env.SECRET, {
+    const token = jwt.sign(userInfo, SECRET, {
       expiresIn: "7d",
     });
 
