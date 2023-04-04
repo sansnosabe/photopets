@@ -64,15 +64,5 @@
 
 # Más adelante(fuera de fecha de proyecto):
 
-- **GET** - [`/users/posts/:idPost/comments`] - Devuelve los comentarios de un post.
-- **GET** - [`/users/posts/:idPost/comments/:idComment`] - Devuelve un comentario de un post.
-
 - **PUT** - [`/users/profile/email`] - Permite actualizar el email del usuario. ➡️ `Token`
 - **PUT** - [`/users/profile/password`] - Permite actualizar la password del usuario. ➡️ `Token`
-
-- **GET** - [`/posts/saved`] - Permite ver los posts guardados por el usuario. ➡️ `Token`
-
-- **Añadir @username**
-- **Añadir #hashtag**
-- **Creación de mensajes privados**
-- **Dejar likes a comentarios**
