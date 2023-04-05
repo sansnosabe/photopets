@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import './App.css'
-import Login from './Login'
-
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <h1 className="text-5xl font-bold underline">Photopets</h1>
-      <Login />
-    </div>
-  );
+	return (
+		<main>
+			<Header />
+			<Footer />
+		</main>
+	);
 }
 
-export default App
+export default App;
