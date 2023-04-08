@@ -26,6 +26,5 @@ function App() {
       <Footer />
     </main>
   );
-}
 
 export default App;
