@@ -1,7 +1,10 @@
+import Auth from "../components/Auth";
+
 export const HomePage = () => {
   return (
     <section>
-      <h1>Home page</h1>
+      <h2 className="font-ubuntu text-center text-black text-2xl"> Regístrate para ver de tus amigos peludos.</h2>
+      <Auth />
     </section>
   );
 };
