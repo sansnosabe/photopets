@@ -11,9 +11,13 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpload());
+app.use("/uploads", express.static("./uploads"));
 
 const isAuth = require("./middlewares/isAuth");
 const isAuthOptional = require("./middlewares/isAuthOptional");
+
+
+
 
 /**
  * ##############################

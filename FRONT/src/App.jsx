@@ -1,23 +1,30 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import { HomePage } from "./pages/HomePage";
+import { PostsPage } from "./pages/PostsPage";
 import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import PostPage from "./pages/HomePage";
 
 function App() {
 	return (
-		<main>
-			<Routes>
-				<Route path="/" element={<HomePage/>} />
-				<Route path="/login" element={<LoginPage/>} />
-				<Route path="/register" element={<RegisterPage/>} />
-				<Route path="/post/:id" element={<PostPage/>} />
-			</Routes>
-			<Footer />
-		</main>
-	);
-}
+    <main>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/users" element={<RegisterPage />} />
+        <Route path="/users/validate/:registrationCode" element={<ValidatePage />} />
+        <Route path="/users/login" element={<LoginPage />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/user/profile" element={<UserEditPage />} /> */}
+
+        <Route path="/posts" element={<PostsPage />} />
+        {/* <Route path="/posts/myPosts" element={<UserPots />} /> */}
+				
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
+      </Routes>
+      <Footer />
+    </main>
+  );
 
 export default App;
