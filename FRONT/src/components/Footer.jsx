@@ -1,6 +1,6 @@
 function Footer() {
 	return (
-    <footer>
+    <footer className="mt-96">
       <h1 className="logoFooter">Photopets</h1>
       <p>by</p>
       <p>nuestros porfolios</p>

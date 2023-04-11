@@ -17,8 +17,6 @@ const isAuth = require("./middlewares/isAuth");
 const isAuthOptional = require("./middlewares/isAuthOptional");
 
 
-
-
 /**
  * ##############################
  * ## Controladores de Usuario ##
