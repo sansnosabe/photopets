@@ -1,7 +1,10 @@
 function Header() {
 	return (
-		<header className="mt-40">
+		<header>
 			<h1 className="logo">Photopets</h1>
+			<nav>
+				<Auth />
+			</nav>
 		</header>
 	);
 }
