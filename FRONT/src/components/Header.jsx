@@ -1,3 +1,5 @@
+import Auth from "./Auth";
+
 function Header() {
 	return (
 		<header>
