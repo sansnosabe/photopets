@@ -1,4 +1,5 @@
 import usePosts from "../hooks/usePosts";
+import HeaderSmall from '../components/HeaderSmall'
 import { PostList } from '../components/PostList';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { Loading } from "../components/Loading";
@@ -11,6 +12,7 @@ export const PostsPage = () => {
 
   return (
     <section >
+      <HeaderSmall />
       <h1 className="mt-5 mb-5">Latest posts</h1>
       <PostList  posts={posts} />
     </section>

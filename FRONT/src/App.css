@@ -3,18 +3,27 @@
 #root {
   min-height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 0 2rem;
   text-align: center;
 }
 
-.logo {
+/* .logo {
+  font-size: 7rem;
   font-family: 'Dancing Script', cursive;
   background: linear-gradient(90deg, rgba(242,43,150,1) 0%, rgba(93,192,247,1) 50%, rgba(252,144,115,1) 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.gradient-pers{
+.logoFooter {
+  font-size: 2rem;
+  font-family: 'Dancing Script', cursive;
+  background: linear-gradient(90deg, rgba(242,43,150,1) 0%, rgba(93,192,247,1) 50%, rgba(252,144,115,1) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}  */
+
+.fotos{
   background: linear-gradient(90deg, rgba(242,43,150,1) 0%, rgba(93,192,247,1) 50%, rgba(252,144,115,1) 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;

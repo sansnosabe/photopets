@@ -1,4 +1,4 @@
-function PostPage() {
+export const  PostPage = () => {
 	return (
 		<section>
 			<h1>Posts</h1>
@@ -6,5 +6,3 @@ function PostPage() {
 		</section>
 	)
 }
-
-export default PostPage;
