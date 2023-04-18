@@ -6,8 +6,8 @@ export const HomePage = () => {
 	return (
 		<section>
 			<Header />
-			<h2 className="text-center text-xl mb-5">
-				Regístrate para ver <span className="fotos text-blue-500">fotos</span> de tus amigos peludos.
+			<h2 className="text-xl mb-5">
+				Regístrate para ver <span className="gradientTitle">fotos</span> de tus amigos peludos.
 			</h2>
 			<nav>
 				<Auth />

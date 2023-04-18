@@ -18,6 +18,14 @@ export const createUser = async (formData) => {
 	return json.data;
 };
 
+export const activateUser = async (activationCode) => {
+  const response = await fetch(`${API_URL}/users/validate/${activationCode}`, {
+    method: 'PUT'
+  });
+  const data = await response.json();
+  return data;
+}
+
 export const loginUser = async (email, password) => {
 	const response = await fetch(`${API_URL}/users/login`, {
 		method: "POST",
@@ -38,6 +46,8 @@ export const loginUser = async (email, password) => {
 
 	return json.data;
 };
+
+
 
 export const getPostsData = async () => {
 	const response = await fetch(`${API_URL}/posts`);

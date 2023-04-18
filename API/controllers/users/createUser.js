@@ -1,7 +1,7 @@
 const createUserQuery = require("../../db/queries/users/createUserQuery");
 const { v4: uuid } = require("uuid");
 const { sendMail, generateError } = require("../../helpers");
-const { HOST, PORT } = process.env;
+const { HOST, PORT, HOST_PORT } = process.env;
 
 const createUser = async (req, res, next) => {
   try {
@@ -20,8 +20,9 @@ const createUser = async (req, res, next) => {
       ¡Woof Woof ${username}!
 
       Por favor, verifica tu usuario de instapets a través del siguiente enlace:
-      http://${HOST}:${PORT}/users/validate/${regCode}
-    `;
+      http://${HOST}:${HOST_PORT}/users/validate/${regCode}
+      `;
+      // http://${HOST}:${HOST_PORT}/users/validate/${regCode}
 
     await sendMail(email, subject, emailContent);
 

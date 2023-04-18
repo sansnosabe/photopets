@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
-import { ValidatedPage } from "./pages/ValidatedPage"; //???
+import { ValidatedPage } from "./pages/ValidatedPage";
 import { PostsPage } from "./pages/PostsPage";
 
 import Footer from "./components/Footer";

@@ -5,7 +5,12 @@
   font-family: system-ui, sans-serif;
 }
 
-.fotos{
+input{
+  background-color: #e8f0fe;
+  border-radius: 5px;
+}
+
+.gradientTitle{
   background: linear-gradient(90deg, rgba(242,43,150,1) 0%, rgba(93,192,247,1) 50%, rgba(252,144,115,1) 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;

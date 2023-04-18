@@ -18,7 +18,7 @@ const loginUser = async (req, res, next) => {
 
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
-      generateError(`Contraseña incorrecta, ${password}`, 401);
+      generateError("Contraseña incorrecta", 401);
     }
 
     if (!user.active) {
