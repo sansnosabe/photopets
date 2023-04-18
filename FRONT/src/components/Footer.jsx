@@ -4,11 +4,11 @@ import Portfolio from './Portfolio';
 
 function Footer() {
   return (
-    <footer className='mt-300 flex flex-col justify-center items-center mt-10'>
-			<Link to={'/'}><img src={logo} alt='Logo photopets' className='h-10'/></Link>
-			<span className='text-[#D9D9D9] text-sm'>by</span>
+    <footer className='flex flex-col justify-center items-center mt-5 mb-1'>
+			<span className='text-[#cacaca] text-[10px]'>by</span>
+			<Link to={'/'}><img src={logo} alt='Logo photopets' className='h-8'/></Link>
 			<Portfolio />
-      <p>© 2023 Hack a Boss</p>
+      <p className='text-[#cacaca] text-[10px]'>© 2023 Hack a Boss</p>
     </footer>
   );
 }
