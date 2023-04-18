@@ -8,11 +8,11 @@ const selectPostsByUserIdQuery = async (idUser) => {
 
     const [rows] = await connection.query(
       `
-      SELECT P.id AS post_id, U.name AS owner, P.text, P.image,
+      SELECT P.id AS post_id, U.username AS owner, P.text, P.image,
         COUNT(L.id) AS likes,
         C.id AS comment_id,
         C.comment,
-        CU.name AS user_name
+        CU.username AS user_name
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id

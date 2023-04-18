@@ -25,10 +25,9 @@ const isAuthOptional = require("./middlewares/isAuthOptional");
 
 const { createUser, validateUser, loginUser, getOwnUser, getUsers, editUser, deleteUser } = require("./controllers/users");
 
-app.post("/users", createUser);
+app.post("/users/register", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
 app.post("/users/login", loginUser);
-app.get('/users/registerMe', isAuthOptional);
 app.get("/users", isAuthOptional, getUsers);
 app.get("/user", isAuth, getOwnUser);
 app.put("/user/profile", isAuth, editUser);

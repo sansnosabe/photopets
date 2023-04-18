@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Silver\",\r\n    \"kind\": \"Cat\",\r\n    \"breed\": \"Crossbreed\",\r\n    \"email\": \"silver@silver.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Silver\",\r\n    \"kind\": \"Cat\",\r\n    \"breed\": \"Crossbreed\",\r\n    \"email\": \"silver@silver.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,7 +153,7 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
+									"key": "username",
 									"value": "Silver Surfer",
 									"type": "text"
 								},

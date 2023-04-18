@@ -20,7 +20,7 @@ const createTables = async () => {
 		await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      name VARCHAR(30) UNIQUE NOT NULL,
+      username VARCHAR(30) UNIQUE NOT NULL,
       kind VARCHAR(50) NOT NULL,
       breed VARCHAR(50) NOT NULL,
       email VARCHAR(100) UNIQUE NOT NULL,
@@ -78,7 +78,7 @@ const createTables = async () => {
 		console.log("Creating users, posts, comments and likes");
 
 		await connection.query(`
-      INSERT INTO users (name, kind, breed, email, password, about_me, avatar, role, reg_code, active)
+      INSERT INTO users (username, kind, breed, email, password, about_me, avatar, role, reg_code, active)
       VALUES 
         ('GatoAstuto','Felino','Siamés','gatoastuto@photopets.wouf','miau1234','Soy un gato muy astuto y me gusta cazar ratones.','default.jpg','user', NULL, 1),
         ('PerritoSalchicha','Canino','Salchicha','perritosalchicha@photopets.wouf','woof1234','Soy un perro pequeño y muy juguetón.','default.jpg','user', NULL, 1),

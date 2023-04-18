@@ -2,13 +2,13 @@ const getDB = require("../../getDB");
 const bcrypt = require("bcrypt");
 const { generateError } = require("../../../helpers");
 
-const createUserQuery = async (name, kind, breed, email, password, regCode) => {
+const createUserQuery = async (username, kind, breed, email, password, regCode) => {
   let connection;
 
   try {
     connection = await getDB();
 
-    let [users] = await connection.query(`SELECT id FROM users WHERE name = ?`, [name]);
+    let [users] = await connection.query(`SELECT id FROM users WHERE username = ?`, [username]);
     if (users.length > 0) {
       generateError("Nombre de usuario no disponible", 403);
     }
@@ -20,7 +20,7 @@ const createUserQuery = async (name, kind, breed, email, password, regCode) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await connection.query(`INSERT INTO users (name, kind, breed, email, password, reg_code) VALUE(?, ?, ?, ?, ?, ?)`, [name, kind, breed, email, hashedPassword, regCode]);
+    await connection.query(`INSERT INTO users (username, kind, breed, email, password, reg_code) VALUE(?, ?, ?, ?, ?, ?)`, [username, kind, breed, email, hashedPassword, regCode]);
   } finally {
     if (connection) connection.release();
   }

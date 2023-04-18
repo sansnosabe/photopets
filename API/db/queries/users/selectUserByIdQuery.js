@@ -9,7 +9,7 @@ const selectUserByIdQuery = async (idUser) => {
 
     const [users] = await connection.query(
       `
-      SELECT U.id, U.name, U.kind, U.breed, U.email, U.about_me, U.avatar, U.role, U.active, 
+      SELECT U.id, U.username, U.kind, U.breed, U.email, U.about_me, U.avatar, U.role, U.active, 
       COUNT(P.id) AS posts_count
       FROM users U
       LEFT JOIN posts P ON U.id = P.id_user

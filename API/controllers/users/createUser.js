@@ -5,18 +5,19 @@ const { HOST, PORT } = process.env;
 
 const createUser = async (req, res, next) => {
   try {
-    const { name, kind, breed, email, password } = req.body;
-    if (!name || !kind || !breed || !email || !password) {
-      generateError("Faltan campos", 400);
+    const { username, password, email, kind, breed } = req.body;
+    if (!username || !kind || !breed || !email || !password) {
+      console.log(username);
+      generateError(`Faltan campos ${username}`, 400);
     }
 
     const regCode = uuid();
-    await createUserQuery(name, kind, breed, email, password, regCode);
+    await createUserQuery(username, kind, breed, email, password, regCode);
 
     const subject = "Activa tu usuario en Instapets";
 
     const emailContent = `
-      ¡Woof Woof ${name}!
+      ¡Woof Woof ${username}!
 
       Por favor, verifica tu usuario de instapets a través del siguiente enlace:
       http://${HOST}:${PORT}/users/validate/${regCode}

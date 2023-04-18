@@ -11,14 +11,14 @@ const selectPostsQuery = async (idUser) => {
       `
       SELECT 
         P.id AS post_id, 
-        IFNULL(P.id_user = ?, U.name) AS owner,
+        IFNULL(P.id_user = ?, U.username) AS owner,
         P.text, 
         P.image,
         COUNT(DISTINCT L.id) AS likes,
         COUNT( C.id) AS comments_count,
         C.id AS comment_id,
         C.comment,
-        UC.name AS user_name
+        UC.username AS user_name
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id

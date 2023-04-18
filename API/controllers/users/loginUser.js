@@ -17,9 +17,8 @@ const loginUser = async (req, res, next) => {
     const user = await selectUserByEmailQuery(email);
 
     const validPassword = await bcrypt.compare(password, user.password);
-
     if (!validPassword) {
-      generateError("Contraseña incorrecta", 401);
+      generateError(`Contraseña incorrecta, ${password}`, 401);
     }
 
     if (!user.active) {

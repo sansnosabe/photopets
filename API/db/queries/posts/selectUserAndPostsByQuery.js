@@ -1,7 +1,7 @@
 const getDB = require("../../getDB");
 const { generateError } = require("../../../helpers");
 
-const selectUserAndPostsByQuery = async (name = "") => {
+const selectUserAndPostsByQuery = async (username = "") => {
   let connection;
 
   try {
@@ -9,13 +9,13 @@ const selectUserAndPostsByQuery = async (name = "") => {
 
     const [user] = await connection.query(
       `
-      SELECT U.id, U.name, U.about_me, U.avatar, P.id AS post_id, P.text, P.image
+      SELECT U.id, U.username, U.about_me, U.avatar, P.id AS post_id, P.text, P.image
       FROM users U
       LEFT JOIN posts P ON U.id = P.id_user
-      WHERE U.name LIKE ?
+      WHERE U.username LIKE ?
       ORDER BY U.id, P.id
       `,
-      [`%${name}%`]
+      [`%${username}%`]
     );
 
     if (user.length === 0) {

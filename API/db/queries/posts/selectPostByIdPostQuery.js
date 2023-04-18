@@ -9,16 +9,16 @@ const selectPostByIdPostQuery = async (idPost) => {
     const [post] = await connection.query(
       `
       SELECT P.id, P.image, P.text,
-        JSON_OBJECT('id', U.id, 'name', U.name) AS user,
+        JSON_OBJECT('id', U.id, 'username', U.username) AS user,
         COUNT(L.id) AS likes,
-        IF(COUNT(C.id) > 0, JSON_ARRAYAGG(JSON_OBJECT('id', C.id, 'comment', C.comment, 'user', CU.name)), NULL) AS comments
+        IF(COUNT(C.id) > 0, JSON_ARRAYAGG(JSON_OBJECT('id', C.id, 'comment', C.comment, 'user', CU.username)), NULL) AS comments
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
       LEFT JOIN likes L ON L.id_post = P.id
       LEFT JOIN comments C ON C.id_post = P.id
       LEFT JOIN users CU ON C.id_user = CU.id
       WHERE P.id = ?
-      GROUP BY P.id, U.id, U.name
+      GROUP BY P.id, U.id, U.username
       `,
       [idPost]
     );

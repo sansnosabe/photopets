@@ -2,20 +2,20 @@ const getDB = require("../../getDB");
 
 const { generateError } = require("../../../helpers");
 
-const updateUserQuery = async (name, kind, breed, aboutMe, image, idUser) => {
+const updateUserQuery = async (username, kind, breed, aboutMe, image, idUser) => {
   let connection;
 
   try {
     connection = await getDB();
 
-    if (name) {
-      const [users] = await connection.query(`SELECT id FROM users WHERE name = ?`, [name]);
+    if (username) {
+      const [users] = await connection.query(`SELECT id FROM users WHERE username = ?`, [username]);
 
       if (users.length > 0) {
         generateError("Ya existe un usuario con este nombre", 403);
       }
 
-      await connection.query(`UPDATE users SET name = ? WHERE id = ?`, [name, idUser]);
+      await connection.query(`UPDATE users SET username = ? WHERE id = ?`, [username, idUser]);
     }
 
     if (kind) {
