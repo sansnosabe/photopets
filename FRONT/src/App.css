@@ -5,6 +5,7 @@
 	font-family: system-ui, sans-serif;
 }
 
+
 input {
 	background-color: #e8f0fe;
 	border-radius: 5px;
@@ -22,6 +23,7 @@ label {
 } */
 
 .headersmall{
+	top: 0;
 	height: 4rem;
 	display: flex;
 	align-items: center;

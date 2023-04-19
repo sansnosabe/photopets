@@ -1,11 +1,10 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import adjust from "../../public/images/adjust.svg";
 
 function ToggleMenu() {
-  const navigate = useNavigate();
 	const { logOut } = useContext(AuthContext);
 
 	const [showMenu, setShowMenu] = useState(false);
@@ -14,10 +13,6 @@ function ToggleMenu() {
 		setShowMenu(!showMenu);
 	};
 
-  const goAdjusts = () => {
-    navigate('/users/login'); //Para que no de error pongo esta ruta
-    // navigate('/ajustes');
-  };
 
 	return (
 		<div className="toggle">
@@ -27,8 +22,12 @@ function ToggleMenu() {
 			{showMenu && (
 				<div className="menu">
 					<ul>
-						<li onClick={() => logOut()}>Cerrar sesión</li>
-						<li onClick={goAdjusts}>Ajustes</li>
+						<Link to="/">
+							<li onClick={() => logOut()}>Cerrar sesión</li>
+						</Link>
+						<Link to="/settings">
+							<li>Ajustes</li>
+						</Link>
 						<li onClick={() => setShowMenu(false)}>Cancelar</li>
 					</ul>
 				</div>
