@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import { activateUser } from "../services/index.js";
+import { activateUserService } from "../services/index.js";
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -11,7 +11,7 @@ export const ValidatedPage = () => {
 
 	const handleActivation = async () => {
 		try {
-			await activateUser(registrationCode);
+			await activateUserService(registrationCode);
 		} catch (error) {
 			console.error(error);
 		}

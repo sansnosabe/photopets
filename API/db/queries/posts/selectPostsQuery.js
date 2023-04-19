@@ -14,6 +14,7 @@ const selectPostsQuery = async (idUser) => {
         IFNULL(P.id_user = ?, U.username) AS owner,
         P.text, 
         P.image,
+        P.created_at,
         COUNT(DISTINCT L.id) AS likes,
         COUNT( C.id) AS comments_count,
         C.id AS comment_id,
@@ -46,6 +47,7 @@ const selectPostsQuery = async (idUser) => {
           text: row.text,
           image: row.image,
           likes: row.likes,
+          created_at: row.created_at,
           comments_count: row.comments_count,
           comments: [],
         };

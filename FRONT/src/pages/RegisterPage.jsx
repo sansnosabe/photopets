@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import { createUser } from "../services/index.js";
+import { createUserService } from "../services/index.js";
 
 import React, { useState } from "react";
 
@@ -22,7 +22,7 @@ export const RegisterPage = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
-			await createUser(formData);
+			await createUserService(formData);
 			setIsSubmitted(true);
 		} catch (error) {
 			console.error(error);
@@ -38,10 +38,7 @@ export const RegisterPage = () => {
 				<form className="border-2 rounded p-5 mt-1 text-gray-400" onSubmit={handleSubmit}>
 					<div className="flex flex-col text-start">
 						<div className="inline-block pl-1 pb-1">
-							<label
-								className="font-semibold bg-gradient-to-r from-pink-500 via-blue-500 to-orange-500 bg-clip-text text-transparent"
-								htmlFor="username"
-							>
+							<label htmlFor="username">
 								Usuario
 							</label>
 						</div>
@@ -50,10 +47,7 @@ export const RegisterPage = () => {
 
 					<div className="flex flex-col text-start pt-4">
 						<div className="inline-block pl-1 pb-1">
-							<label
-								className="font-semibold bg-gradient-to-r from-pink-500 via-blue-500 to-orange-500 bg-clip-text text-transparent"
-								htmlFor="password"
-							>
+							<label htmlFor="password">
 								Contraseña
 							</label>
 						</div>
@@ -62,10 +56,7 @@ export const RegisterPage = () => {
 
 					<div className="flex flex-col text-start pt-4">
 						<div className="inline-block pl-1 pb-1">
-							<label
-								className="font-semibold bg-gradient-to-r from-pink-500 via-blue-500 to-orange-500 bg-clip-text text-transparent"
-								htmlFor="email"
-							>
+							<label htmlFor="email">
 								Email
 							</label>
 						</div>
@@ -74,7 +65,7 @@ export const RegisterPage = () => {
 
 					<div className="flex flex-col text-start pt-4">
 						<div className="inline-block pl-1 pb-1">
-							<label className="font-semibold bg-gradient-to-r from-pink-500 via-blue-500 to-orange-500 bg-clip-text text-transparent" htmlFor="kind">
+							<label htmlFor="kind">
 								¿Que animal eres?
 							</label>
 						</div>
@@ -83,10 +74,7 @@ export const RegisterPage = () => {
 
 					<div className="flex flex-col text-start pt-4">
 						<div className="inline-block pl-1 pb-1">
-							<label
-								className="font-semibold bg-gradient-to-r from-pink-500 via-blue-500 to-orange-500 bg-clip-text text-transparent"
-								htmlFor="breed"
-							>
+							<label htmlFor="breed">
 								¿Que raza eres?
 							</label>
 						</div>

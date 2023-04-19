@@ -7,9 +7,7 @@ const getOwnUser = async (req, res, next) => {
     res.send({
       code: 200,
       status: "ok",
-      data: {
-        user,
-      },
+      data: user
     });
   } catch (err) {
     next(err);

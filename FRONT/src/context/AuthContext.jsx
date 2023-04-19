@@ -1,43 +1,40 @@
 import { createContext, useEffect, useState } from "react";
-import { getMyDataService } from "../services";
+import { getMyUserDataService } from "../services";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
-export const AuthContextProviderComponent = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState(null);
+export const AuthProviderComponent = ({ children }) => {
+	const [token, setToken] = useState(localStorage.getItem("token"));
+	const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem("token", token);
-  }, [token]);
+	useEffect(() => {
+		localStorage.setItem("token", token);
+	}, [token]);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const data = await getMyDataService(token);
+	useEffect(() => {
+		const getUserData = async () => {
+			try {
+				const data = await getMyUserDataService({ token });
+				setUser(data);
+			} catch (error) {
+				logOut();
+			}
+		};
+		if (token) getUserData();
+	}, [token]);
 
-        setUser(data);
-      } catch (error) {
-        setToken("");
-        setUser(null);
-      }
-    };
+	const logIn = (token) => {
+		setToken(token);
+	};
 
-    if (token) getUserData();
-  }, [token, setToken]);
+	const logOut = () => {
+		setToken("");
+		setUser(null);
+	};
 
-  const logout = () => {
-    setToken("");
-    setUser(null);
-  };
-
-  const login = (token) => {
-    setToken(token);
-  };
-
-  return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+	return (
+	<AuthContext.Provider value={{ token, user, logIn, logOut }}>
+		{children}
+	</AuthContext.Provider>
+	)
 };
