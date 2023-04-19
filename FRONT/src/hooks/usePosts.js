@@ -2,32 +2,29 @@ import { useEffect, useState } from "react";
 import { getPostsData } from "../services";
 
 const usePosts = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+	const [posts, setPosts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState("");
 
-  useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        setLoading(true);
-        
-        const data  = await getPostsData();
+	useEffect(() => {
+		const loadPosts = async () => {
+			try {
+				setLoading(true);
 
-        
-        setPosts(data);
+				const data = await getPostsData();
 
-      } catch (error) {
-        setError(error.message);
+				setPosts(data);
+			} catch (error) {
+				setError(error.message);
+			} finally {
+				setLoading(false);
+			}
+		};
 
-      } finally {
-        setLoading(false);
-      }
-    };
+		loadPosts();
+	}, []);
 
-    loadPosts();
-  }, []);
-
-  return { posts, error, loading};
+	return { posts, error, loading };
 };
 
 export default usePosts;

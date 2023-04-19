@@ -5,7 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ValidatedPage } from "./pages/ValidatedPage";
-import { PostsPage } from "./pages/PostsPage";
+import { MyProfilePage } from "./pages/MyProfilePage";
 
 import Footer from "./components/Footer";
 
@@ -18,7 +18,7 @@ function App() {
           <Route path="/users/login" element={<LoginPage />} />
           <Route path="/users/register" element={<RegisterPage />} />
           <Route path="/users/validate/:registrationCode" element={<ValidatedPage />} />
-          <Route path="/posts" element={<PostsPage />} />
+          <Route path="/:username" element={<MyProfilePage />} />
         </Routes>
       </section>
       <Footer className="mt-auto" />
