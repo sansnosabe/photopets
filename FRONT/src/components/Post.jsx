@@ -2,11 +2,14 @@ import moment from "moment";
 import "moment/locale/es";
 import { useState } from "react";
 
+import LikeButton from "./LikeButton";
+
 moment.locale("es");
 
 export const Post = ({ post }) => {
 	const createdAt = moment(post.created_at);
 	const [showComments, setShowComments] = useState(false);
+	const [likes, setLikes] = useState(post.likes);
 	const commentsLength = post.comments_count;
 
 	return (
@@ -17,8 +20,11 @@ export const Post = ({ post }) => {
 					<p className="text-sm font-medium mb-2">· {createdAt.fromNow()}</p>
 				</div>
 				<img className="object-cover w-full h-48" src={post.image} alt="imagen de post" />
+				<div className="flex space-x-2">
+					<LikeButton postId={post.post_id} setLikes={setLikes} />
+				</div>
 				<div className="flex items-center justify-between">
-					<p className="text-black text-sm">{post.likes} Me gusta</p>
+					<p className="text-black text-sm font-medium pt-2 pb-1">{likes} Me gusta</p>
 				</div>
 				<p className="text-black text-base mb-2">{post.text}</p>
 			</div>
@@ -33,7 +39,7 @@ export const Post = ({ post }) => {
 			{commentsLength > 1 && (
 				<div>
 					<p className="text-black text-base  px-4 cursor-pointer" onClick={() => setShowComments(!showComments)}>
-						Ver los {post.comments_count} comentarios 
+						Ver los {post.comments_count} comentarios
 					</p>
 					{showComments && (
 						<div className="px-4 pt-2">
@@ -51,3 +57,4 @@ export const Post = ({ post }) => {
 		</article>
 	);
 };
+

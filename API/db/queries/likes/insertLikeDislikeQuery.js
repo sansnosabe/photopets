@@ -1,6 +1,6 @@
 const getDB = require("../../getDB");
 
-const insertLikeDislikeQuery = async (value, idUser, idPost) => {
+const insertLikeDislikeQuery = async (idUser, idPost) => {
   let connection;
 
   try {
@@ -13,7 +13,7 @@ const insertLikeDislikeQuery = async (value, idUser, idPost) => {
       return "eliminado";
     }
 
-    await connection.query(`INSERT INTO likes (value, id_user, id_post) VALUES (?, ?, ?)`, [value, idUser, idPost]);
+    await connection.query(`INSERT INTO likes (value, id_user, id_post) VALUES (?, ?, ?)`, [1, idUser, idPost]);
     return "añadido";
   } finally {
     if (connection) connection.release();

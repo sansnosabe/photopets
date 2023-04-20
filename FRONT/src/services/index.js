@@ -75,6 +75,26 @@ export const getPostsData = async () => {
 	return json.data;
 };
 
+
+export const likeDislikePostService = async (idPost, vote) => {
+  const response = await fetch(`${API_URL}/posts/${idPost}/likeDislike`, {
+    method: "POST",
+    headers: {
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({ vote: vote.toString() }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+
 // export const getSinglePostData = async (id) => {
 // 	const response = await fetch(`${API_URL}/posts/${id}`);
 

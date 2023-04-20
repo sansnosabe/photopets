@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-import adjust from "../../public/images/adjust.svg";
+import adjust from "../images/adjust.svg";
 
 function ToggleMenu() {
 	const { logOut } = useContext(AuthContext);

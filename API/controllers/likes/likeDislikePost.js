@@ -11,13 +11,15 @@ const likeDislikePost = async (req, res, next) => {
       generateError("Faltan campos", 400);
     }
 
-    const validVotes = [true];
+    const vote = !!req.body.vote;
 
-    if (!validVotes.includes(like.vote)) {
-      generateError("Voto no válido, solo admite true", 400);
+    const validVotes = [true, false];
+
+    if (!validVotes.includes(vote)) {
+      generateError("Voto no válido, solo admite true o false", 400);
     }
 
-    const result = await insertLikeDislikeQuery(like.vote, req.user.id, idPost);
+    const result = await insertLikeDislikeQuery(req.user.id, idPost);
 
     let message;
     if (result === "añadido") {
@@ -37,3 +39,4 @@ const likeDislikePost = async (req, res, next) => {
 };
 
 module.exports = likeDislikePost;
+

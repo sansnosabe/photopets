@@ -5,7 +5,6 @@
 	font-family: system-ui, sans-serif;
 }
 
-
 input {
 	background-color: #e8f0fe;
 	border-radius: 5px;
@@ -15,12 +14,6 @@ label {
 	font-weight: 600;
 	color: #65bdf0;
 }
-
-/* .gradientTitle {
-	background: linear-gradient(90deg, rgba(242, 43, 150, 1) 0%, rgba(93, 192, 247, 1) 50%, rgba(252, 144, 115, 1) 100%);
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-} */
 
 .headersmall{
 	top: 0;
@@ -73,3 +66,9 @@ label {
 .menu {
 	display: block;
 }
+
+/* .gradientTitle {
+	background: linear-gradient(90deg, rgba(242, 43, 150, 1) 0%, rgba(93, 192, 247, 1) 50%, rgba(252, 144, 115, 1) 100%);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+} */
