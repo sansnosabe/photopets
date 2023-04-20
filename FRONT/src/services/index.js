@@ -75,25 +75,60 @@ export const getPostsData = async () => {
 	return json.data;
 };
 
-
 export const likeDislikePostService = async (idPost, vote) => {
-  const response = await fetch(`${API_URL}/posts/${idPost}/likeDislike`, {
-    method: "POST",
-    headers: {
-      Authorization: `${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify({ vote: vote.toString() }),
-  });
+	const response = await fetch(`${API_URL}/posts/${idPost}/likeDislike`, {
+		method: "POST",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
+		body: JSON.stringify({ vote: vote.toString() }),
+	});
 
-  const json = await response.json();
+	const json = await response.json();
 
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
 
-  return json.data;
+	return json.data;
 };
 
+export const addComentService = async (idPost, comment) => {
+	const response = await fetch(`${API_URL}/posts/comments/${idPost}`, {
+		method: "POST",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(comment),
+	});
+
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+
+	return json.data;
+};
+
+export const deleteCommentService = async (idPost) => {
+	const response = await fetch(`${API_URL}/posts/comments/${idPost}`, {
+		method: "DELETE",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
+		body: JSON.stringify(idPost),
+	});
+
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+
+	return json.data;
+};
 
 // export const getSinglePostData = async (id) => {
 // 	const response = await fetch(`${API_URL}/posts/${id}`);
