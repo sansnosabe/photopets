@@ -3,6 +3,7 @@ import "moment/locale/es";
 import { useState } from "react";
 
 import LikeButton from "./LikeButton";
+import comment from "../images/comment.svg";
 
 moment.locale("es");
 
@@ -22,6 +23,7 @@ export const Post = ({ post }) => {
 				<img className="object-cover w-full h-48" src={post.image} alt="imagen de post" />
 				<div className="flex space-x-2">
 					<LikeButton postId={post.post_id} setLikes={setLikes} />
+					<img src={comment} alt="" />
 				</div>
 				<div className="flex items-center justify-between">
 					<p className="text-black text-sm font-medium pt-2 pb-1">{likes} Me gusta</p>
