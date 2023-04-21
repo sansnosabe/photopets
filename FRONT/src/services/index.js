@@ -139,7 +139,6 @@ export const createPostService = async (post) => {
     method: 'POST',
     headers: {
       Authorization: `${localStorage.getItem('token')}`,
-			"Content-Type": "multipart/form-data",
     },
     body: formData,
   });

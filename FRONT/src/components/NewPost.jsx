@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { createPostService } from "../services";
 
-import Dropzone from "react-dropzone";
+// import Dropzone from "react-dropzone";
 
 const NewPost = () => {
 	const [image, setImage] = useState(null);
