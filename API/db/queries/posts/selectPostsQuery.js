@@ -16,7 +16,11 @@ const selectPostsQuery = async (idUser) => {
         P.image,
         P.created_at,
         COUNT(DISTINCT L.id) AS likes,
-        COUNT( C.id) AS comments_count,
+        (
+          SELECT COUNT(*)
+          FROM comments C
+          WHERE C.id_post = P.id
+        ) AS comments_count,
         C.id AS comment_id,
         C.comment,
         UC.username AS user_name
