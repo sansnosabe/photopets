@@ -4,7 +4,7 @@ import Portfolio from './Portfolio';
 
 function Footer() {
   return (
-    <footer className='flex flex-col justify-center items-center mt-5 mb-1'>
+    <footer className='flex flex-col justify-center items-center py-2'>
 			<span className='text-[#cacaca] text-[10px]'>by</span>
 			<Link to={'/'}><img src={logo} alt='Logo photopets' className='h-8'/></Link>
 			<Portfolio />

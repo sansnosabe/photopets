@@ -130,6 +130,29 @@ export const deleteCommentService = async (idPost) => {
 	return json.data;
 };
 
+export const createPostService = async (post) => {
+  const formData = new FormData();
+  formData.append('image', post.image);
+  formData.append('text', post.text);
+
+  const response = await fetch(`${API_URL}/posts`, {
+    method: 'POST',
+    headers: {
+      Authorization: `${localStorage.getItem('token')}`,
+			"Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
 // export const getSinglePostData = async (id) => {
 // 	const response = await fetch(`${API_URL}/posts/${id}`);
 

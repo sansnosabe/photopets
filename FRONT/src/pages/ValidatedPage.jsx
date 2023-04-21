@@ -24,7 +24,7 @@ export const ValidatedPage = () => {
 	return (
 		<div>
 			<Header />
-			<p className="text-xl mb-5">Email verificado, disfruta de Photopets.</p>
+			<p className="text-xl mb-5">La cuenta ha sido activada correctamente, disfruta de Photopets.</p>
 			<Link to="/users/login" className="text-lg text-[#65BDF0] hover:underline">
 				Entrar
 			</Link>

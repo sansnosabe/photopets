@@ -14,17 +14,20 @@ const usePosts = () => {
 				const data = await getPostsData();
 
 				setPosts(data);
+				setLoading(false);
 			} catch (error) {
 				setError(error.message);
-			} finally {
 				setLoading(false);
 			}
 		};
 
-		loadPosts();
-	}, []);
+		if (posts.length === 0) {
+			loadPosts();
+		}
+	}, [posts]);
 
 	return { posts, error, loading };
 };
 
 export default usePosts;
+

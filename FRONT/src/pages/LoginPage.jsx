@@ -9,6 +9,7 @@ export const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 	const { logIn } = useContext(AuthContext)
 	const navigate = useNavigate();
 
@@ -22,40 +23,48 @@ export const LoginPage = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		setIsLoading(true);
 		try {
 			const data = await loginUserService(email, password);
 			logIn(data.token)
 			navigate("/")
-			
 		} catch (error) {
 			setError(error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
 	return (
 		<section>
 			<Header />
-			<form className="border-2 rounded p-5 mt-1 text-gray-400" onSubmit={handleSubmit}>
-				<div className="flex flex-col text-start">
-					<div className="inline-block pl-1 pb-1">
-						<label htmlFor="email">
-							Email
-						</label>
-					</div>
-					<input className="text-sm p-1" type="email" id="email" value={email} required onChange={handleEmailChange} />
+			{isLoading ? (
+				<div className="flex justify-center items-center p-5">
+					<div className="loader"></div>
 				</div>
+			) : (
+				<form className="border-2 rounded p-5 m-3 text-gray-400" onSubmit={handleSubmit}>
+					<div className="flex flex-col text-start">
+						<div className="inline-block pl-1 pb-1">
+							<label htmlFor="email">
+								Email
+							</label>
+						</div>
+						<input className="text-sm p-1" type="email" id="email" value={email} required onChange={handleEmailChange} />
+					</div>
 
-				<div className="flex flex-col text-start pt-4">
-					<div className="inline-block pl-1 pb-1">
-						<label htmlFor="password">
-							Password
-						</label>
+					<div className="flex flex-col text-start pt-4">
+						<div className="inline-block pl-1 pb-1">
+							<label htmlFor="password">
+								Password
+							</label>
+						</div>
+						<input className="text-sm p-1" type="password" id="password" value={password} required onChange={handlePasswordChange} />
 					</div>
-					<input className="text-sm p-1" type="password" id="password" value={password} required onChange={handlePasswordChange} />
-				</div>
-				{error ? <p className="text-red-600 text-left text-[12px] p-1">{error}</p> : null}
-				<button className="bg-[#65BDF0] py-1 px-4 text-white font-semibold rounded mt-3" type="submit">Enviar</button>
-			</form>
+					{error ? <p className="text-red-600 text-left text-[12px] p-1">{error}</p> : null}
+					<button className="bg-[#65BDF0] py-1 px-4 text-white font-semibold rounded mt-3" type="submit">Enviar</button>
+				</form>
+			)}
 		</section>
 	);
 };

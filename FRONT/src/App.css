@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 #root {
-	min-height: 100vh;
+	/* min-height: 100vh; */
+	height: 100%;
 	font-family: system-ui, sans-serif;
 }
 
@@ -15,12 +16,6 @@ label {
 	color: #65bdf0;
 }
 
-.headersmall{
-	top: 0;
-	height: 4rem;
-	display: flex;
-	align-items: center;
-}
 .toggle {
 	position: relative;
 }
@@ -33,15 +28,15 @@ label {
 
 .toggle img {
 	display: block;
-  margin-top: 8px;
+	margin-top: 8px;
 }
 
 .menu {
 	position: absolute;
-  width: 150px;
+	width: 150px;
 	top: calc(100% + 5px);
 	left: 50%;
-	transform: translateX(-95%);
+	transform: translateX(-97%);
 	background-color: white;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -52,14 +47,14 @@ label {
 
 .menu ul {
 	list-style: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  color: #65bdf0;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	color: #65bdf0;
 }
 
-.menu li:hover{
+.menu li:hover {
 	text-decoration: underline;
 }
 
@@ -67,6 +62,39 @@ label {
 	display: block;
 }
 
+.loader {
+	border: 4px solid #f3f3f3;
+	border-top: 4px solid #65bdf0;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.my-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+	flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	text-align: center;
+  min-width: 300px;
+  max-width: 400px;
+  height: 60%;
+  background-color: rgb(255, 255, 255);
+}
 /* .gradientTitle {
 	background: linear-gradient(90deg, rgba(242, 43, 150, 1) 0%, rgba(93, 192, 247, 1) 50%, rgba(252, 144, 115, 1) 100%);
 	background-clip: text;

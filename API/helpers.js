@@ -55,7 +55,7 @@ const sendMail = async (to, subject, text) => {
 
 const saveImg = async (img, resizePx) => {
   const uploadsPath = path.join(__dirname, UPLOADS_DIR);
-
+  console.log(path.join(__dirname, UPLOADS_DIR));
   try {
     await fs.access(uploadsPath);
   } catch {

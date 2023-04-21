@@ -4,6 +4,7 @@ const express = require("express");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
@@ -11,8 +12,11 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpload());
-app.use("/uploads", express.static("./uploads"));
-
+// app.use("/uploads", express.static("./uploads"));
+app.use('/uploads', express.static(__dirname + '/uploads'));
+// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+const ruta = path.join(__dirname, '/uploads');
+console.log(ruta);
 const isAuth = require("./middlewares/isAuth");
 const isAuthOptional = require("./middlewares/isAuthOptional");
 
