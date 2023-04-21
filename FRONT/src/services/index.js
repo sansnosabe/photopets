@@ -71,7 +71,7 @@ export const getPostsData = async () => {
 	if (!response.ok) {
 		throw new Error(json.message);
 	}
-
+	
 	return json.data;
 };
 

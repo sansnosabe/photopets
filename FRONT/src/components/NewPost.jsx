@@ -5,7 +5,7 @@ import { createPostService } from "../services";
 import Dropzone from "react-dropzone";
 
 const NewPost = () => {
-	const [image, setImage] = useState("");
+	const [image, setImage] = useState(null);
 	const [text, setText] = useState("");
 	const [showModal, setShowModal] = useState(false);
 

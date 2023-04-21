@@ -30,7 +30,7 @@ export const RegisterPage = () => {
 		} catch (error) {
 			setError(error.message);
 		} finally {
-			setTimeout(() => setIsLoading(false), 1000);
+			setTimeout(() => setIsLoading(false), 3000);
 		}
 	};
 

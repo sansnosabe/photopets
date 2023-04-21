@@ -12,11 +12,12 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpload());
+
+app.use(express.static('public'));
 // app.use("/uploads", express.static("./uploads"));
-app.use('/uploads', express.static(__dirname + '/uploads'));
+// app.use('/uploads', express.static(__dirname + '/uploads'));
 // app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-const ruta = path.join(__dirname, '/uploads');
-console.log(ruta);
+app.use(express.static(path.join(__dirname, "public")));
 const isAuth = require("./middlewares/isAuth");
 const isAuthOptional = require("./middlewares/isAuthOptional");
 
