@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+import Home from "../components/Home";
 import HeaderSmall from "../components/HeaderSmall";
-import usePosts from "../hooks/usePosts";
-import { PostList } from "../components/PostList";
-import Auth from "../components/Auth";
 import NewPost from "../components/NewPost";
+import PostsList from "../components/PostsList";
+
+import usePosts from "../hooks/usePosts";
 
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -20,7 +20,7 @@ export const HomePage = () => {
 					<NewPost />
 					{posts.length !== 0 ? (
 						<article className="flex justify-center ">
-							<PostList posts={posts}/>
+							<PostsList posts={posts} />
 						</article>
 					) : (
 						<article>
@@ -29,15 +29,7 @@ export const HomePage = () => {
 					)}
 				</section>
 			) : (
-				<section className="h-full flex flex-col justify-center align-center">
-					<Header />
-					<h2 className="text-xl mb-5">
-						Regístrate para ver <span className="gradientTitle">fotos</span> de tus amigos peludos.
-					</h2>
-					<nav className="flex justify-center">
-						<Auth />
-					</nav>
-				</section>
+				<Home />
 			)}
 		</article>
 	);
