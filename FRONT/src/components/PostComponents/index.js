@@ -4,3 +4,4 @@ export { default as PostIcons } from "./PostIcons";
 export { default as PostLikes } from "./PostLikes";
 export { default as PostText } from "./PostText";
 export { default as PostComments } from "./PostComments";
+export { default as NewComment } from "./NewComment";

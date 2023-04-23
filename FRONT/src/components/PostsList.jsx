@@ -1,4 +1,4 @@
-import { Post } from "./PostComponents/Post";
+import Post from "./PostComponents/Post";
 
 function PostsList({ posts: { posts } }) {
 	return (

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./like.css";
 import { likeDislikePostService } from "../services";
 
-function LikeButton({postId, setLikes}) {
+function AddLikeButton({postId, setLikes}) {
 	const [liked, setLiked] = useState(
 		localStorage.getItem(`post_${postId}_liked`) === "true"
 	);
@@ -60,4 +60,4 @@ function LikeButton({postId, setLikes}) {
 	);
 }
 
-export default LikeButton;
+export default AddLikeButton;
