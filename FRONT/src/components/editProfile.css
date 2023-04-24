@@ -1,0 +1,34 @@
+.form-group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.form-label {
+	margin-right: 1rem;
+	margin-bottom: 0;
+	width: 7rem;
+	text-align: right;
+	font-weight: 600;
+}
+
+.form-input {
+	padding: 0.5rem 1rem;
+	width: 65%;
+}
+
+@media (max-width: 639px) {
+	.form-group {
+		flex-direction: column;
+	}
+
+	.form-label {
+		margin-bottom: 0.5rem;
+		width: auto;
+	}
+
+	.form-input {
+		width: 100%;
+	}
+}

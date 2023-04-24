@@ -15,6 +15,7 @@ function AddLikeButton({postId, setLikes}) {
 		if (newLiked) {
 			setLikes((likes) => likes + 1);
 		} else {
+			localStorage.removeItem(`post_${postId}_liked`, newLiked);
 			setLikes((likes) => likes - 1);
 		}
 	};

@@ -60,10 +60,36 @@ export const getMyUserDataService = async ({ token }) => {
 		throw new Error(json.message);
 	}
 
+	// console.log(json.data);
 	return json.data;
 };
 
-export const getPostsData = async () => {
+export const UpdateMyUserDataService = async (user) => {
+	const formData = new FormData();
+	formData.append("username", user.username);
+	formData.append("kind", user.kind);
+	formData.append("breed", user.breed);
+	formData.append("about_me", user.about_me);
+	formData.append("avatar", user.avatar);
+
+	const response = await fetch(`${API_URL}/user/profile`, {
+		method: "PUT",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
+		body: formData,
+	});
+
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+
+	return json.data;
+};
+
+export const getPostsDataService = async () => {
 	const response = await fetch(`${API_URL}/posts`);
 
 	const json = await response.json();
@@ -71,7 +97,7 @@ export const getPostsData = async () => {
 	if (!response.ok) {
 		throw new Error(json.message);
 	}
-	
+
 	return json.data;
 };
 
@@ -89,8 +115,8 @@ export const likeDislikePostService = async (idPost, vote) => {
 	if (!response.ok) {
 		throw new Error(json.message);
 	}
-
-	return json.data;
+	console.log(json);
+	return json;
 };
 
 export const addComentService = async (idPost, comment) => {
@@ -131,25 +157,25 @@ export const deleteCommentService = async (idPost) => {
 };
 
 export const createPostService = async (post) => {
-  const formData = new FormData();
-  formData.append('image', post.image);
-  formData.append('text', post.text);
+	const formData = new FormData();
+	formData.append("image", post.image);
+	formData.append("text", post.text);
 
-  const response = await fetch(`${API_URL}/posts`, {
-    method: 'POST',
-    headers: {
-      Authorization: `${localStorage.getItem('token')}`,
-    },
-    body: formData,
-  });
+	const response = await fetch(`${API_URL}/posts`, {
+		method: "POST",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
+		body: formData,
+	});
 
-  const json = await response.json();
+	const json = await response.json();
 
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
 
-  return json.data;
+	return json.data;
 };
 
 // export const getSinglePostData = async (id) => {

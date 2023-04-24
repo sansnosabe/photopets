@@ -15,11 +15,11 @@ export const HomePage = () => {
 	return (
 		<article className="h-full">
 			{user ? (
-				<section>
+				<section className="flex flex-col justify-start align-top bg-red-300">
 					<HeaderSmall />
 					<NewPost />
 					{posts.length !== 0 ? (
-						<article className="flex justify-center ">
+						<article className="flex justify-center">
 							<PostsList posts={posts} />
 						</article>
 					) : (

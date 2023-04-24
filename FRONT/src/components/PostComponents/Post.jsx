@@ -8,7 +8,7 @@ function Post ({ post }) {
 	const [showNewComment, setShowNewComment] = useState(false);
 
 	return (
-		<article className="w-full bg-white rounded-lg shadow-md overflow-hidden text-left">
+		<article className="w-full bg-gray-100 text-black rounded-lg shadow-md overflow-hidden text-left">
 			<div className="p-4">
 				<PostHeader owner={post.owner} createdAt={post.created_at} />
 				<PostImage imageURL={post.image} />

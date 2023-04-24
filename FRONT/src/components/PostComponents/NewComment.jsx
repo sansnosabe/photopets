@@ -23,9 +23,9 @@ function NewComment({ postId, setShowNewComment }) {
 					value={comment}
 					onChange={(event) => setComment(event.target.value)}
 					placeholder="Añade un comentario..."
-					className="border rounded-lg p-2"
+					className="border rounded-lg p-2 bg-gray-200 text-black font-normal"
 				/>
-				<button type="submit" className="px-4 py-2 rounded-lg">
+				<button type="submit" className="px-4 py-2 rounded-lg hover:underline">
 					Enviar
 				</button>
 			</form>

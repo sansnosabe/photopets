@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 #root {
-	/* min-height: 100vh; */
 	height: 100%;
 	font-family: system-ui, sans-serif;
+	background-color: #222222;
+	color: #fff;
 }
 
-input {
-	background-color: #e8f0fe;
+input, textarea {
+	background-color: #727272;
 	border-radius: 5px;
+	color: #f3f3f3;
+	font-weight: 600;
 }
 
 label {

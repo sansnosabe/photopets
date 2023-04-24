@@ -1,26 +1,14 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import ToggleMenu from "./ToggleMenu";
 
 import { Logo, Search, Input, UserLink, ProfileImage } from "./HeaderSmallComponents";
 
+import "./headerSmall.css";
+
 function HeaderSmall() {
 	const { user } = useContext(AuthContext);
-	const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-	useEffect(() => {
-		const mediaQuery = window.matchMedia("(max-width: 640px)");
-		setIsSmallScreen(mediaQuery.matches);
-
-		const handleScreenResize = (e) => {
-			setIsSmallScreen(e.matches);
-		};
-		mediaQuery.addEventListener("change", handleScreenResize);
-		return () => {
-			mediaQuery.removeEventListener("change", handleScreenResize);
-		};
-	}, []);
 
 	const handleSearchClick = () => {
 		const inputValue = prompt("Buscar");
@@ -32,24 +20,26 @@ function HeaderSmall() {
 	return (
 		<header className="h-full px-2 py-4 flex justify-between align-center">
 			<Link to={"/"}>
-				<Logo isSmallScreen={isSmallScreen} />
+				<Logo />
 			</Link>
 
-			{isSmallScreen ? <Search isSmallScreen={isSmallScreen} handleSearchClick={handleSearchClick} /> : <Input isSmallScreen={isSmallScreen} />}
+			<div className="input-large-screen">
+				<Input />
+			</div>
 
-			{!isSmallScreen && (
-				<div className="flex">
-					<UserLink isSmallScreen={isSmallScreen} user={user} />
-					<ToggleMenu />
-				</div>
-			)}
+			<div className="search-large-screen">
+				<Search handleSearchClick={handleSearchClick} />
+			</div>
 
-			{isSmallScreen && (
-				<div className="flex">
-					<ProfileImage isSmallScreen={isSmallScreen} user={user} />
-					<ToggleMenu />
-				</div>
-			)}
+			<div className="user-link-large-screen">
+				{user && <UserLink user={user} />}
+				<ToggleMenu />
+			</div>
+
+			<div className="profile-image-large-screen">
+				{user && <ProfileImage user={user} />}
+				<ToggleMenu />
+			</div>
 		</header>
 	);
 }

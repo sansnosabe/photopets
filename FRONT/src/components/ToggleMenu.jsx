@@ -12,21 +12,21 @@ function ToggleMenu() {
 	const handleToggle = () => {
 		setShowMenu(!showMenu);
 	};
-
+	
 
 	return (
 		<div className="toggle">
 			<button onClick={handleToggle}>
-				<img className="h-6" src={adjust} alt="" />
+				<img className="h-7" src={adjust} alt="" />
 			</button>
 			{showMenu && (
 				<div className="menu">
 					<ul>
+						<Link to="/accounts/edit">
+							<li onClick={() => setShowMenu(false)}>Editar perfil</li>
+						</Link>
 						<Link to="/">
 							<li onClick={() => logOut()}>Cerrar sesión</li>
-						</Link>
-						<Link to="/settings">
-							<li>Ajustes</li>
 						</Link>
 						<li onClick={() => setShowMenu(false)}>Cancelar</li>
 					</ul>

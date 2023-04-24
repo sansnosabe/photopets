@@ -1,12 +1,13 @@
 import logo from "../../../public/images/logo.svg";
 import ph from "../../images/ph.svg";
 
-function Logo ({ isSmallScreen }) {
+function Logo() {
 	return (
 		<figure>
-			<img className={`h-${isSmallScreen ? "10" : "11"} w-full`} src={isSmallScreen ? ph : logo} alt="Logo photopets" />
+			<img className="h-11 logo-large-screen" src={logo} alt="Logo photopets" />
+			<img className="h-11 logo-small-screen" src={ph} alt="Logo photopets" />
 		</figure>
 	);
-};
+}
 
 export default Logo;

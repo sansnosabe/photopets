@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPostsData } from "../services";
+import { getPostsDataService } from "../services";
 
 const usePosts = () => {
 	const [posts, setPosts] = useState([]);
@@ -11,7 +11,7 @@ const usePosts = () => {
 			try {
 				setLoading(true);
 
-				const data = await getPostsData();
+				const data = await getPostsDataService();
 
 				setPosts(data);
 				setLoading(false);
