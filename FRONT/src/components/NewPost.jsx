@@ -52,7 +52,7 @@ const NewPost = () => {
 
 					<div className="flex flex-col mt-3 mb-1">
 						<label htmlFor="text">Descripción</label>
-						<textarea rows="3" id="text" value={text} onChange={(event) => setText(event.target.value)} required></textarea>
+						<textarea className="bg-[#979797]" rows="3" id="text" value={text} onChange={(event) => setText(event.target.value)} required></textarea>
 					</div>
 
 					<button className="bg-[#65BDF0] py-1 px-4 text-white font-semibold rounded mt-3" type="submit">

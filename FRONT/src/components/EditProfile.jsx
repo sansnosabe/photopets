@@ -73,6 +73,8 @@ function EditProfile() {
 				<button className="bg-[#49aae2] hover:bg-[#2298dd] px-4 py-2 text-white font-semibold rounded" type="submit">
 					Guardar cambios
 				</button>
+
+				<div className="h-64"></div>
 			</form>
 		</section>
 	);
