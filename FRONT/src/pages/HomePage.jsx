@@ -15,7 +15,7 @@ export const HomePage = () => {
 	return (
 		<article className="h-full">
 			{user ? (
-				<section className="flex flex-col justify-start align-top bg-red-300">
+				<section className="flex flex-col justify-start align-top">
 					<HeaderSmall />
 					<NewPost />
 					{posts.length !== 0 ? (
