@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPostsDataService } from "../services";
+import { getPostsDataService, deletePostService } from "../services";
 
 const usePosts = () => {
   const [posts, setPosts] = useState([]);
@@ -29,7 +29,12 @@ const usePosts = () => {
     setRefresh(!refresh);
   };
 
-  return { posts, error, loading, updatePosts };
+  const deletePost = (idPost) => {
+    deletePostService(idPost)
+    updatePosts()
+  };
+
+  return { posts, error, loading, updatePosts, deletePost };
 };
 
 export default usePosts;

@@ -118,6 +118,23 @@ export const getPostsDataService = async () => {
 	return json.data;
 };
 
+export const deletePostService = async (idPost) => {
+	const response = await fetch(`${API_URL}/posts/${idPost}`, {
+		method: "DELETE",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
+	});
+
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+
+	return json.data;
+};
+
 export const likeDislikePostService = async (idPost, vote) => {
 	const response = await fetch(`${API_URL}/posts/${idPost}/likeDislike`, {
 		method: "POST",

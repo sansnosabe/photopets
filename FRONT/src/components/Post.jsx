@@ -12,7 +12,7 @@ export function Post({ post, updatePosts }) {
 			<div className="p-4">
 				<PostHeader owner={post.owner} createdAt={post.created_at} />
 				<PostImage imageURL={post.image} />
-				<PostIcons postId={post.post_id} setLikes={setLikes} setShowNewComment={setShowNewComment} />
+				<PostIcons postId={post.post_id} setLikes={setLikes} setShowNewComment={setShowNewComment} updatePosts={updatePosts}/>
 				<PostLikes likes={likes} />
 				<PostText text={post.text} />
 			</div>

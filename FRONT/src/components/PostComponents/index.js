@@ -5,3 +5,4 @@ export { PostLikes } from "./PostLikes";
 export { PostText } from "./PostText";
 export { PostComments } from "./PostComments";
 export { NewComment } from "./NewComment";
+export { DeletePostButton } from "./DeletePostButton";
