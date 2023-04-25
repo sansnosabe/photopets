@@ -6,7 +6,7 @@ export function ProfileImage({ user }) {
 	return (
 		<Link to={`/${user.username}`}>
 			<div className="h-10 w-10 rounded-full overflow-hidden mt-1 mr-2">
-				<img className="object-cover w-full h-full transform rotate-90" src={`${API_URL}/${user.avatar}`} alt="imagen" />
+				<img className="object-cover w-full h-full transform" src={`${API_URL}/${user.avatar}`} alt="imagen" />
 			</div>
 		</Link>
 	);

@@ -64,13 +64,14 @@ export const getMyUserDataService = async ({ token }) => {
 	return json.data;
 };
 
-export const UpdateMyUserDataService = async (user) => {
+export const UpdateMyUserDataService = async (options) => {
 	const formData = new FormData();
-	formData.append("username", user.username);
-	formData.append("kind", user.kind);
-	formData.append("breed", user.breed);
-	formData.append("about_me", user.about_me);
-	formData.append("avatar", user.avatar);
+
+	Object.entries(options).forEach(([key, value]) => {
+		if (value !== undefined) {
+			formData.append(key, value);
+		}
+	});
 
 	const response = await fetch(`${API_URL}/user/profile`, {
 		method: "PUT",

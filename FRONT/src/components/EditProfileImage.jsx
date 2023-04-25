@@ -1,11 +1,14 @@
 import { useState, useCallback } from "react";
-import Modal from "react-modal";
-import { UpdateMyUserDataService } from "../services";
-
 import { useDropzone } from "react-dropzone";
+import Modal from "react-modal";
+
+import { useUsers } from "../hooks/useUsers";
+
 import dragDrop from "../images/dragDrop.svg";
 
 export function EditProfileImage() {
+	const { updateAvatar } = useUsers();
+
 	const [image, setImage] = useState(null);
 	const [showModal, setShowModal] = useState(false);
 	const [selectedFile, setSelectedFile] = useState(null);
@@ -14,7 +17,7 @@ export function EditProfileImage() {
 		event.preventDefault();
 
 		try {
-			await UpdateMyUserDataService({ avatar });
+			await updateAvatar(image);
 		} catch (error) {
 			console.error("Ha ocurrido un error al cambiar la imagen:", error);
 		} finally {

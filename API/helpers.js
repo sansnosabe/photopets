@@ -7,12 +7,12 @@ const nodemailer = require("nodemailer");
 const { SMTP_USER, SMTP_PASS, SMTP_EMAIL, UPLOADS_DIR } = process.env;
 
 const transport = nodemailer.createTransport({
-  host: "smtp-relay.sendinblue.com",
-  port: 587,
-  auth: {
-    user: SMTP_USER,
-    pass: SMTP_PASS,
-  },
+	host: "smtp-relay.sendinblue.com",
+	port: 587,
+	auth: {
+		user: SMTP_USER,
+		pass: SMTP_PASS,
+	},
 });
 
 /**
@@ -22,9 +22,9 @@ const transport = nodemailer.createTransport({
  */
 
 const generateError = (msg, status) => {
-  const err = new Error(msg);
-  err.httpStatus = status;
-  throw err;
+	const err = new Error(msg);
+	err.httpStatus = status;
+	throw err;
 };
 
 /**
@@ -34,17 +34,17 @@ const generateError = (msg, status) => {
  */
 
 const sendMail = async (to, subject, text) => {
-  try {
-    await transport.sendMail({
-      from: SMTP_EMAIL,
-      to,
-      subject,
-      text,
-    });
-  } catch (err) {
-    console.error(err);
-    generateError("Error al enviar el email de verificación");
-  }
+	try {
+		await transport.sendMail({
+			from: SMTP_EMAIL,
+			to,
+			subject,
+			text,
+		});
+	} catch (err) {
+		console.error(err);
+		generateError("Error al enviar el email de verificación");
+	}
 };
 
 /**
@@ -54,24 +54,24 @@ const sendMail = async (to, subject, text) => {
  */
 
 const saveImg = async (img, resizePx) => {
-  const uploadsPath = path.join(__dirname, UPLOADS_DIR);
-  try {
-    await fs.access(uploadsPath);
-  } catch {
-    await fs.mkdir(uploadsPath);
-  }
+	const uploadsPath = path.join(__dirname, UPLOADS_DIR);
+	try {
+		await fs.access(uploadsPath);
+	} catch {
+		await fs.mkdir(uploadsPath);
+	}
 
-  const sharpImg = sharp(img.data);
+	const sharpImg = sharp(img.data);
 
-  sharpImg.resize(resizePx);
+	sharpImg.resize(resizePx);
 
-  const imgName = `${uuid()}.jpg`;
+	const imgName = `${uuid()}.jpg`;
 
-  const imgPath = path.join(uploadsPath, imgName);
+	const imgPath = path.join(uploadsPath, imgName);
 
-  await sharpImg.toFile(imgPath);
+	await sharpImg.toFile(imgPath);
 
-  return imgName;
+	return imgName;
 };
 
 /**
@@ -81,24 +81,24 @@ const saveImg = async (img, resizePx) => {
  */
 
 const deleteImg = async (imgName) => {
-  try {
-    const imgPath = path.join(__dirname, "uploads", imgName);
-    try {
-      await fs.access(imgPath);
-    } catch (err) {
-      console.error("access error:", err);
-      return;
-    }
+	try {
+		const imgPath = path.join(__dirname, UPLOADS_DIR, imgName);
+		try {
+			await fs.access(imgPath);
+		} catch (err) {
+			console.error("access error:", err);
+			return;
+		}
 
-    await fs.unlink(imgPath);
-  } catch (err) {
-    generateError("Error al eliminar la imagen del servidor");
-  }
+		await fs.unlink(imgPath);
+	} catch (err) {
+		generateError("Error al eliminar la imagen del servidor");
+	}
 };
 
 module.exports = {
-  generateError,
-  sendMail,
-  saveImg,
-  deleteImg,
+	generateError,
+	sendMail,
+	saveImg,
+	deleteImg,
 };
