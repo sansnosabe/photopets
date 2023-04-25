@@ -9,3 +9,5 @@ export const EditProfilePage = () => {
 		</article>
 	);
 };
+
+//Falta renderizar el Profile cuando se actualiza

@@ -3,6 +3,7 @@ import { UpdateMyUserDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 import "./editProfile.css";
+import EditProfileImage from "./editProfileImage";
 
 function EditProfile() {
 	const [username, setUsername] = useState("");
@@ -33,7 +34,7 @@ function EditProfile() {
 						<img className="h-20 w-20 rounded-full object-cover transform rotate-90" src={`${API_URL}/${user.avatar}`} alt="imagen" />
 						<div className="flex flex-col justify-center items-start pl-4">
 							<p className="text-md font-semibold text-[#2298dd]">{user.username}</p>
-							<button className="hover:underline">Cambiar foto de perfil</button>
+							<EditProfileImage/>
 						</div>
 					</div>
 				)}

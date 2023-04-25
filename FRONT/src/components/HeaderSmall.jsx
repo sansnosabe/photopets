@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import ToggleMenu from "./ToggleMenu";
 
 import { Logo, Search, Input, UserLink, ProfileImage } from "./HeaderSmallComponents";
