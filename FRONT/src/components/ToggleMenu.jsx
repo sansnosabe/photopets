@@ -24,9 +24,7 @@ export function ToggleMenu() {
 						<Link to="/accounts/edit">
 							<li onClick={() => setShowMenu(false)}>Editar perfil</li>
 						</Link>
-						<Link to="/">
-							<li onClick={() => logOut()}>Cerrar sesión</li>
-						</Link>
+						<li onClick={() => logOut()}>Cerrar sesión</li>
 						<li onClick={() => setShowMenu(false)}>Cancelar</li>
 					</ul>
 				</div>

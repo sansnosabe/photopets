@@ -60,7 +60,6 @@ export const getMyUserDataService = async ({ token }) => {
 		throw new Error(json.message);
 	}
 
-	// console.log(json.data);
 	return json.data;
 };
 
@@ -79,6 +78,23 @@ export const UpdateMyUserDataService = async (options) => {
 			Authorization: `${localStorage.getItem("token")}`,
 		},
 		body: formData,
+	});
+
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+
+	return json.data;
+};
+
+export const deleteUserService = async () => {
+	const response = await fetch(`${API_URL}/user`, {
+		method: "DELETE",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
 	});
 
 	const json = await response.json();
@@ -204,20 +220,4 @@ export const createPostService = async (post) => {
 // 	if (!response.ok) {
 // 		throw new Error(json.message);
 // 	}
-// };
-
-// export const getMyDataService = async (token) => {
-// 	const response = await fetch(`${API_URL}/user`, {
-// 		headers: {
-// 			Authorization: token,
-// 		},
-// 	});
-
-// 	const json = await response.json();
-
-// 	if (!response.ok) {
-// 		throw new Error(json.message);
-// 	}
-
-// 	return json.data;
 // };

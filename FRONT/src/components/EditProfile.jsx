@@ -4,8 +4,8 @@ import { useUsers } from "../hooks/useUsers";
 import { EditProfileImage } from "./EditProfileImage";
 import "./editProfile.css";
 
-export function EditProfile() {
-	const { user, updateProfile } = useUsers();
+export function EditProfile({ forceUpdate }) {
+	const { user, updateProfile, deleteUser } = useUsers(forceUpdate);
 
 	const [username, setUsername] = useState("");
 	const [kind, setKind] = useState("");
@@ -16,21 +16,36 @@ export function EditProfile() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		window.location.reload();
 		await updateProfile(username, kind, breed, aboutMe);
+	};
+
+	const handleDeleteUser = async () => {
+		try {
+			await deleteUser();
+		} catch (error) {
+			console.error("Error al eliminar al usuario:", error.message);
+		}
 	};
 
 	return (
 		<section className="flex flex-col h-full">
 			<h2 className="text-xl pb-4">Editar perfil</h2>
+
 			{user && (
 				<div className="flex justify-center pb-3">
 					<img className="h-20 w-20 rounded-full object-cover transform" src={`${API_URL}/${user.avatar}`} alt="imagen" />
 					<div className="flex flex-col justify-center items-start pl-4">
 						<p className="text-md font-semibold text-[#2298dd]">{user.username}</p>
-						<EditProfileImage />
+						<EditProfileImage forceUpdate={forceUpdate} />
 					</div>
 				</div>
 			)}
+
+			<button className="text-red-500 pt-5" onClick={handleDeleteUser}>
+				Eliminar usuario
+			</button>
+
 			<form className="rounded p-5 w-full" onSubmit={handleSubmit}>
 				<div className="form-group">
 					<label htmlFor="username" className="form-label">

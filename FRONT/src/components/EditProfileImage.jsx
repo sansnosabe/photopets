@@ -6,8 +6,8 @@ import { useUsers } from "../hooks/useUsers";
 
 import dragDrop from "../images/dragDrop.svg";
 
-export function EditProfileImage() {
-	const { updateAvatar } = useUsers();
+export function EditProfileImage({ forceUpdate }) {
+	const { updateAvatar } = useUsers(forceUpdate);
 
 	const [image, setImage] = useState(null);
 	const [showModal, setShowModal] = useState(false);
@@ -18,6 +18,7 @@ export function EditProfileImage() {
 
 		try {
 			await updateAvatar(image);
+			window.location.reload()
 		} catch (error) {
 			console.error("Ha ocurrido un error al cambiar la imagen:", error);
 		} finally {

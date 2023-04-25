@@ -6,8 +6,8 @@ import { Logo, Search, Input, UserLink, ProfileImage } from "./HeaderSmallCompon
 
 import "./headerSmall.css";
 
-export function HeaderSmall() {
-	const { user } = useUsers();
+export function HeaderSmall({ forceUpdate }) {
+	const { user } = useUsers(forceUpdate);
 
 	const handleSearchClick = () => {
 		const inputValue = prompt("Buscar");
