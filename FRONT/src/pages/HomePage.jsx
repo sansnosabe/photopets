@@ -10,17 +10,17 @@ import { AuthContext } from "../context/AuthContext";
 
 export const HomePage = () => {
 	const { user } = useContext(AuthContext);
-	const { posts } = usePosts();
+	const { posts, updatePosts } = usePosts();
 
 	return (
 		<article className="h-full">
 			{user ? (
 				<section className="flex flex-col justify-start align-top">
 					<HeaderSmall />
-					<NewPost />
+					<NewPost updatePosts={updatePosts}/>
 					{posts.length !== 0 ? (
 						<article className="flex justify-center">
-							<PostsList posts={posts} />
+							<PostsList posts={posts} updatePosts={updatePosts}/>
 						</article>
 					) : (
 						<article>

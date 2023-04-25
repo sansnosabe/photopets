@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addComentService } from "../../services";
 
-function NewComment({ postId, setShowNewComment }) {
+function NewComment({ postId, setShowNewComment, updatePosts }) {
 	const [comment, setComment] = useState("");
 
 	const handleSubmit = async (event) => {
@@ -10,6 +10,7 @@ function NewComment({ postId, setShowNewComment }) {
 			await addComentService(postId, { comment });
 			setComment("");
 			setShowNewComment(false);
+			updatePosts()
 		} catch (error) {
 			console.error(error);
 		}

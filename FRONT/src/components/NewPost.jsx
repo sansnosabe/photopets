@@ -5,7 +5,7 @@ import { createPostService } from "../services";
 import { useDropzone } from "react-dropzone";
 import dragDrop from "../images/dragDrop.svg";
 
-const NewPost = () => {
+const NewPost = ({updatePosts}) => {
 	const [image, setImage] = useState(null);
 	const [text, setText] = useState("");
 	const [showModal, setShowModal] = useState(false);
@@ -16,6 +16,7 @@ const NewPost = () => {
 
 		try {
 			await createPostService({ image, text });
+			updatePosts();
 		} catch (error) {
 			console.error("Ha ocurrido un error al crear el post:", error);
 		} finally {
