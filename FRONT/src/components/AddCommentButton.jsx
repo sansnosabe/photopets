@@ -1,4 +1,4 @@
-function AddCommentButton() {
+export function AddCommentButton() {
 	return (
 		<svg
 			color="#000000"
@@ -15,5 +15,3 @@ function AddCommentButton() {
 		</svg>
 	);
 }
-
-export default AddCommentButton;

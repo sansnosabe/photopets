@@ -5,13 +5,11 @@ import { UpdateMyUserDataService } from "../services";
 import { useDropzone } from "react-dropzone";
 import dragDrop from "../images/dragDrop.svg";
 
-
-const EditProfileImage = () => {
+export function EditProfileImage() {
 	const [image, setImage] = useState(null);
 	const [showModal, setShowModal] = useState(false);
 	const [selectedFile, setSelectedFile] = useState(null);
-	
-	
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -57,6 +55,4 @@ const EditProfileImage = () => {
 			</Modal>
 		</>
 	);
-};
-
-export default EditProfileImage;
+}

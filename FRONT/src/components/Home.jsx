@@ -1,7 +1,7 @@
-import Header from "./Header";
-import Auth from "./Auth";
+import { Header } from "./Header";
+import { Auth } from "./Auth";
 
-function Home() {
+export function Home() {
 	return (
 		<section className="h-full flex flex-col justify-center align-center">
 			<Header />
@@ -14,5 +14,3 @@ function Home() {
 		</section>
 	);
 }
-
-export default Home;

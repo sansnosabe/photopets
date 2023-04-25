@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { createPostService } from "../services";
 
-const NewPost = () => {
+export const NewPost = () => {
 	const [image, setImage] = useState(null);
 	const [text, setText] = useState("");
 	const [showModal, setShowModal] = useState(false);
@@ -42,5 +42,3 @@ const NewPost = () => {
 		</>
 	);
 };
-
-export default NewPost;

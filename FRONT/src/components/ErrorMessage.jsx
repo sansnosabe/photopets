@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ErrorMessage({ message }) {
+export function ErrorMessage({ message }) {
 	return (
 		<section className="error">
 			<h1>Error</h1>
@@ -9,5 +9,3 @@ function ErrorMessage({ message }) {
 		</section>
 	);
 }
-
-export default ErrorMessage;

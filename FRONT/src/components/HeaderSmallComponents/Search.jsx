@@ -1,4 +1,4 @@
-function Search ({ handleSearchClick }) {
+export function Search ({ handleSearchClick }) {
 	return (
 		<div className="p-1 mx-2 pt-3 ml-[140px]">
 			<button onClick={handleSearchClick}>
@@ -27,5 +27,3 @@ function Search ({ handleSearchClick }) {
 		</div>
 	);
 };
-
-export default Search;

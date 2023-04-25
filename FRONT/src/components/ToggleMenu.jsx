@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import adjust from "../images/adjust.svg";
 
-function ToggleMenu() {
+export function ToggleMenu() {
 	const { logOut } = useContext(AuthContext);
 
 	const [showMenu, setShowMenu] = useState(false);
@@ -12,7 +12,6 @@ function ToggleMenu() {
 	const handleToggle = () => {
 		setShowMenu(!showMenu);
 	};
-	
 
 	return (
 		<div className="toggle">
@@ -35,5 +34,3 @@ function ToggleMenu() {
 		</div>
 	);
 }
-
-export default ToggleMenu;

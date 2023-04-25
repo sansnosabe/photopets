@@ -1,12 +1,11 @@
 import React from "react";
 
-function PostComments({ comments, showComments, setShowComments }) {
+export function PostComments({ comments, showComments, setShowComments }) {
 	const commentsCount = comments.length;
-	
+
 	if (commentsCount === 0) {
 		return null;
 	}
-
 
 	return (
 		<div>
@@ -39,5 +38,3 @@ function PostComments({ comments, showComments, setShowComments }) {
 		</div>
 	);
 }
-
-export default PostComments;

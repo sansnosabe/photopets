@@ -1,7 +1,7 @@
 import logo from "../../../public/images/logo.svg";
 import ph from "../../images/ph.svg";
 
-function Logo() {
+export function Logo() {
 	return (
 		<figure>
 			<img className="h-11 logo-large-screen" src={logo} alt="Logo photopets" />
@@ -9,5 +9,3 @@ function Logo() {
 		</figure>
 	);
 }
-
-export default Logo;

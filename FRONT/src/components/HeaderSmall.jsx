@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import ToggleMenu from "./ToggleMenu";
+import { ToggleMenu } from "./ToggleMenu";
 
 import { Logo, Search, Input, UserLink, ProfileImage } from "./HeaderSmallComponents";
 
 import "./headerSmall.css";
 
-function HeaderSmall() {
+export function HeaderSmall() {
 	const { user } = useContext(AuthContext);
 
 	const handleSearchClick = () => {
@@ -43,5 +43,3 @@ function HeaderSmall() {
 		</header>
 	);
 }
-
-export default HeaderSmall;

@@ -1,7 +1,7 @@
-export { default as PostHeader } from "./PostHeader";
-export { default as PostImage } from "./PostImage";
-export { default as PostIcons } from "./PostIcons";
-export { default as PostLikes } from "./PostLikes";
-export { default as PostText } from "./PostText";
-export { default as PostComments } from "./PostComments";
-export { default as NewComment } from "./NewComment";
+export { PostHeader } from "./PostHeader";
+export { PostImage } from "./PostImage";
+export { PostIcons } from "./PostIcons";
+export { PostLikes } from "./PostLikes";
+export { PostText } from "./PostText";
+export { PostComments } from "./PostComments";
+export { NewComment } from "./NewComment";

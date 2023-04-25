@@ -2,10 +2,8 @@ import { useState } from "react";
 import "./like.css";
 import { likeDislikePostService } from "../services";
 
-function AddLikeButton({postId, setLikes}) {
-	const [liked, setLiked] = useState(
-		localStorage.getItem(`post_${postId}_liked`) === "true"
-	);
+export function AddLikeButton({ postId, setLikes }) {
+	const [liked, setLiked] = useState(localStorage.getItem(`post_${postId}_liked`) === "true");
 
 	const handleLikeClick = () => {
 		const newLiked = !liked;
@@ -60,5 +58,3 @@ function AddLikeButton({postId, setLikes}) {
 		</div>
 	);
 }
-
-export default AddLikeButton;

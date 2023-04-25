@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Auth() {
+export function Auth() {
 	return (
 		<span className="text-lg space-x-1">
 			<Link to="/users/login" className="text-[#65BDF0] hover:underline">
@@ -13,5 +13,3 @@ function Auth() {
 		</span>
 	);
 }
-
-export default Auth;

@@ -1,4 +1,4 @@
-import HeaderSmall from "../components/HeaderSmall";
+import { HeaderSmall } from "../components/HeaderSmall";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 

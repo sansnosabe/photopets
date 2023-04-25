@@ -8,7 +8,7 @@ import { ValidatedPage } from "./pages/ValidatedPage";
 import { MyProfilePage } from "./pages/MyProfilePage";
 import { EditProfilePage } from "./pages/EditProfilePage";
 
-import Footer from "./components/Footer";
+import { Footer } from "./components/Footer";
 
 function App() {
 	return (

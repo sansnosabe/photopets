@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import logo from "../../public/images/logo.svg";
-import Portfolio from "./Portfolio";
+import { Portfolio } from "./Portfolio";
 
-function Footer() {
+import logo from "../../public/images/logo.svg";
+
+export function Footer() {
 	return (
 		<footer className="flex flex-col justify-center items-center py-2">
 			<span className="text-[#cacaca] text-[10px]">by</span>
@@ -14,5 +15,3 @@ function Footer() {
 		</footer>
 	);
 }
-
-export default Footer;

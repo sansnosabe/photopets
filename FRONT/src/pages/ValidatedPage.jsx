@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 import { activateUserService } from "../services/index.js";
 
 import React, { useState, useEffect } from "react";

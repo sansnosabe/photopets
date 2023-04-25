@@ -1,5 +1,5 @@
-export { default as Logo } from "./Logo";
-export { default as Search } from "./Search";
-export { default as Input } from "./Input";
-export { default as UserLink } from "./UserLink";
-export { default as ProfileImage } from "./ProfileImage";
+export { Logo } from "./Logo";
+export { Search } from "./Search";
+export { Input } from "./Input";
+export { UserLink } from "./UserLink";
+export { ProfileImage } from "./ProfileImage";

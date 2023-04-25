@@ -5,7 +5,7 @@ import { createPostService } from "../services";
 import { useDropzone } from "react-dropzone";
 import dragDrop from "../images/dragDrop.svg";
 
-const NewPost = ({updatePosts}) => {
+export const NewPost = ({ updatePosts }) => {
 	const [image, setImage] = useState(null);
 	const [text, setText] = useState("");
 	const [showModal, setShowModal] = useState(false);
@@ -64,5 +64,3 @@ const NewPost = ({updatePosts}) => {
 		</>
 	);
 };
-
-export default NewPost;

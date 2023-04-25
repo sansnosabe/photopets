@@ -3,9 +3,9 @@ import { UpdateMyUserDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 import "./editProfile.css";
-import EditProfileImage from "./editProfileImage";
+import { EditProfileImage } from "./EditProfileImage";
 
-function EditProfile() {
+export function EditProfile() {
 	const [username, setUsername] = useState("");
 	const [kind, setKind] = useState("");
 	const [breed, setBreed] = useState("");
@@ -34,7 +34,7 @@ function EditProfile() {
 						<img className="h-20 w-20 rounded-full object-cover transform rotate-90" src={`${API_URL}/${user.avatar}`} alt="imagen" />
 						<div className="flex flex-col justify-center items-start pl-4">
 							<p className="text-md font-semibold text-[#2298dd]">{user.username}</p>
-							<EditProfileImage/>
+							<EditProfileImage />
 						</div>
 					</div>
 				)}
@@ -63,12 +63,7 @@ function EditProfile() {
 					<label htmlFor="aboutMe" className="form-label">
 						Biografía
 					</label>
-					<textarea
-						id="aboutMe"
-						className="form-input"
-						value={aboutMe}
-						onChange={(event) => setAboutMe(event.target.value)}
-					></textarea>
+					<textarea id="aboutMe" className="form-input" value={aboutMe} onChange={(event) => setAboutMe(event.target.value)}></textarea>
 				</div>
 
 				<button className="bg-[#49aae2] hover:bg-[#2298dd] px-4 py-2 text-white font-semibold rounded" type="submit">
@@ -80,5 +75,3 @@ function EditProfile() {
 		</section>
 	);
 }
-
-export default EditProfile;

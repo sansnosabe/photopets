@@ -4,7 +4,7 @@ import "moment/locale/es";
 
 moment.locale("es");
 
-function PostHeader({ owner, createdAt }) {
+export function PostHeader({ owner, createdAt }) {
 	const formattedDate = moment(createdAt).fromNow();
 
 	return (
@@ -14,5 +14,3 @@ function PostHeader({ owner, createdAt }) {
 		</div>
 	);
 }
-
-export default PostHeader;

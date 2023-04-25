@@ -1,4 +1,4 @@
-function PostLikes({ likes }) {
+export function PostLikes({ likes }) {
 	const API_URL = "http://localhost:4000";
 	return (
 		<div className="flex items-center justify-between">
@@ -6,5 +6,3 @@ function PostLikes({ likes }) {
 		</div>
 	);
 }
-
-export default PostLikes;

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { PostHeader, PostImage, PostIcons, PostLikes, PostText, PostComments, NewComment } from "./index";
+import { PostHeader, PostImage, PostIcons, PostLikes, PostText, PostComments, NewComment } from "./PostComponents";
 
-function Post ({ post, updatePosts }) {
+export function Post({ post, updatePosts }) {
 	const [showComments, setShowComments] = useState(false);
 	const [likes, setLikes] = useState(post.likes);
 	const [showNewComment, setShowNewComment] = useState(false);
@@ -19,11 +19,9 @@ function Post ({ post, updatePosts }) {
 			<PostComments comments={post.comments} showComments={showComments} setShowComments={setShowComments} />
 			{showNewComment && (
 				<div>
-					<NewComment postId={post.post_id} setShowNewComment={setShowNewComment} updatePosts={updatePosts}/>
+					<NewComment postId={post.post_id} setShowNewComment={setShowNewComment} updatePosts={updatePosts} />
 				</div>
 			)}
 		</article>
 	);
-};
-
-export default Post;
+}

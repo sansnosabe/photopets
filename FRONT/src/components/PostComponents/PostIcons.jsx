@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import AddLikeButton from "../AddLikeButton";
-import AddCommentButton from "../AddCommentButton";
+import { AddLikeButton } from "../AddLikeButton";
+import { AddCommentButton } from "../AddCommentButton";
 
-function PostIcons({ postId, setLikes, setShowNewComment }) {
+export function PostIcons({ postId, setLikes, setShowNewComment }) {
 	const [showNewCommentState, setShowNewCommentState] = useState(false);
 
 	useEffect(() => {
@@ -21,5 +21,3 @@ function PostIcons({ postId, setLikes, setShowNewComment }) {
 		</div>
 	);
 }
-
-export default PostIcons;

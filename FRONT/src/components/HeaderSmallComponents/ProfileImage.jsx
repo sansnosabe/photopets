@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ProfileImage({ user }) {
+export function ProfileImage({ user }) {
 	const API_URL = "http://localhost:4000";
 
 	return (
@@ -11,5 +11,3 @@ function ProfileImage({ user }) {
 		</Link>
 	);
 }
-
-export default ProfileImage;
