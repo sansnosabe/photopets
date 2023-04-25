@@ -1,29 +1,23 @@
-import { useState, useContext } from "react";
-import { UpdateMyUserDataService } from "../services";
-import { AuthContext } from "../context/AuthContext";
+import { useState } from "react";
+import { useUsers } from "../hooks/useUsers";
 
 import "./editProfile.css";
 import { EditProfileImage } from "./EditProfileImage";
 
 export function EditProfile() {
-	const [username, setUsername] = useState("");
-	const [kind, setKind] = useState("");
-	const [breed, setBreed] = useState("");
-	const [aboutMe, setAboutMe] = useState("");
+  const [username, setUsername] = useState("");
+  const [kind, setKind] = useState("");
+  const [breed, setBreed] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
 
-	const { user } = useContext(AuthContext);
+  const { user, updateProfile } = useUsers();
 
-	const API_URL = "http://localhost:4000";
+  const API_URL = "http://localhost:4000";
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-
-		try {
-			await UpdateMyUserDataService({ username, kind, breed, about_me: aboutMe });
-		} catch (error) {
-			console.error("Error al actualizar el perfil:", error);
-		}
-	};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await updateProfile(username, kind, breed, aboutMe);
+  };
 
 	return (
 		<section className="flex flex-col h-full">

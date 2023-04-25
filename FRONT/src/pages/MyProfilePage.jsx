@@ -1,9 +1,8 @@
 import { HeaderSmall } from "../components/HeaderSmall";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useUsers } from "../hooks/useUsers";
 
 export const MyProfilePage =  () => {
-	const { user } = useContext(AuthContext);
+	const { user } = useUsers();
 
 	return user ? (
 		<section>

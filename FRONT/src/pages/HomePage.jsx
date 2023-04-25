@@ -4,12 +4,11 @@ import { NewPost } from "../components/NewPost";
 import { PostsList } from "../components/PostsList";
 
 import usePosts from "../hooks/usePosts";
+import { useUsers } from "../hooks/useUsers";
 
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 
 export const HomePage = () => {
-	const { user } = useContext(AuthContext);
+	const { user } = useUsers();
 	const { posts, updatePosts } = usePosts();
 
 	return (

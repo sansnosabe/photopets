@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useUsers } from "../hooks/useUsers";
 import { Link } from "react-router-dom";
 import { ToggleMenu } from "./ToggleMenu";
 
@@ -8,7 +7,7 @@ import { Logo, Search, Input, UserLink, ProfileImage } from "./HeaderSmallCompon
 import "./headerSmall.css";
 
 export function HeaderSmall() {
-	const { user } = useContext(AuthContext);
+	const { user } = useUsers();
 
 	const handleSearchClick = () => {
 		const inputValue = prompt("Buscar");
