@@ -7,7 +7,6 @@ const createUser = async (req, res, next) => {
   try {
     const { username, password, email, kind, breed } = req.body;
     if (!username || !kind || !breed || !email || !password) {
-      console.log(username);
       generateError(`Faltan campos ${username}`, 400);
     }
 

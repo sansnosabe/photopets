@@ -7,7 +7,6 @@ export const EditProfilePage = () => {
   const forceUpdate = () => setUpdate(!update);
 
 	useEffect(() => {
-		// console.log("Se actualizó la página");
   }, [update]);
 
   return (

@@ -11,7 +11,7 @@ export function Post({ post, updatePosts }) {
 			<div className="p-4">
 				<PostHeader owner={post.owner} createdAt={post.created_at} />
 				<PostImage imageURL={post.image} />
-				<PostIcons postId={post.post_id} likedByMe={post.likedByMe} setShowNewComment={setShowNewComment} updatePosts={updatePosts}/>
+				<PostIcons postId={post.post_id} likedByMe={post.likedByMe} owner={post.owner} setShowNewComment={setShowNewComment} updatePosts={updatePosts}/>
 				<PostLikes likes={post.likes} />
 				<PostText text={post.text} />
 			</div>
