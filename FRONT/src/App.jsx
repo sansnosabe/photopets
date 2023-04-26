@@ -7,6 +7,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { ValidatedPage } from "./pages/ValidatedPage";
 import { MyProfilePage } from "./pages/MyProfilePage";
 import { EditProfilePage } from "./pages/EditProfilePage";
+import { MyPostsPage } from "./pages/MyPostsPage";
 
 import { Footer } from "./components/Footer";
 import { HeaderSmall } from "./components/HeaderSmall";
@@ -27,6 +28,7 @@ function App() {
 					<Route path="/users/validate/:registrationCode" element={<ValidatedPage />} />
 					<Route path="/:username" element={<MyProfilePage />} />
 					<Route path="/accounts/edit" element={<EditProfilePage />} />
+					<Route path="/posts/:idUser" element={<MyPostsPage />} />
 				</Routes>
 			</article>
 			<Footer />

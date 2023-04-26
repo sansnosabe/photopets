@@ -120,6 +120,20 @@ export const getPostsDataService = async (token) => {
 	return json.data;
 };
 
+export const getMyPostsDataService = async (token, idUser) => {
+  const response = await fetch(`${API_URL}/posts/${idUser}`, {
+    headers: token ? { Authorization: token } : {},
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
 export const searchUsers = async (keyword) => {
 	const params = new URLSearchParams();
 	params.append("keyword", keyword);

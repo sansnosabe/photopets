@@ -47,7 +47,7 @@ app.post("/posts", isAuth, newPost);
 app.get("/posts", isAuthOptional, listPosts);
 app.get("/posts/myPosts", isAuth, listMyPosts);
 app.get("/posts/myPosts/:idPost", isAuth, listMyPostById);
-app.get("/posts/:idUser", isAuthOptional, listUserPosts);
+app.get("/posts/:idUser", isAuth, listUserPosts);
 app.get("/posts/:idUser/:idPost", isAuthOptional, listUserPostById);
 app.get("/postsUsername", isAuthOptional, listUserAndPostsByUsernameParam);
 app.delete("/posts/:idPost", isAuth, deletePost);
