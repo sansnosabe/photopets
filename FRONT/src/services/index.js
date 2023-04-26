@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000";
+const API_URL = import.meta.env.VITE_BACKEND;
 
 export const loginUserService = async (email, password) => {
 	const response = await fetch(`${API_URL}/users/login`, {
