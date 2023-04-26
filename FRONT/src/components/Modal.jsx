@@ -11,10 +11,10 @@ const Modal = ({ show, children, onConfirm, onCancel }) => {
 			<div className="modal-content font-semibold">
 				{children}
 				<div className="modal-actions">
-					<button className="p-2 bg-green-500 rounded" onClick={onConfirm}>
+					<button className="bg-[#65BDF0] rounded" onClick={onConfirm}>
 						Confirmar
 					</button>
-					<button className="p-2 bg-red-500 rounded" onClick={onCancel}>Cancelar</button>
+					<button className="bg-gray-500 rounded" onClick={onCancel}>Cancelar</button>
 				</div>
 			</div>
 		</div>

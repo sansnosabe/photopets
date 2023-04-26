@@ -74,7 +74,7 @@ export const NewPost = ({ updatePosts }) => {
 							<button className="bg-[#65BDF0] rounded" type="submit">
 								Crear post
 							</button>
-							<button className=" bg-gray-500 rounded" onClick={handleCancel}>
+							<button className="bg-gray-500 rounded" onClick={handleCancel}>
 								Cancelar
 							</button>
 						</div>
