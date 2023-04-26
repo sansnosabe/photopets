@@ -1,7 +1,8 @@
-import usePosts from "../../hooks/usePosts";
-import { useUsers } from "../../hooks/useUsers";
-import Modal from "../Modal";
 import { useState } from "react";
+import { useUsers } from "../../hooks/useUsers";
+import { usePosts } from "../../hooks/usePosts";
+
+import { Modal } from "../Modal";
 
 export function DeletePostButton({ postId, owner, updatePosts }) {
 	const { user } = useUsers();

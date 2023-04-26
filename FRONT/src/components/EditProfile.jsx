@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useUsers } from "../hooks/useUsers";
 
 import { EditProfileImage } from "./EditProfileImage";
+import { Modal } from "./Modal";
+
 import "./editProfile.css";
 
 export function EditProfile({ forceUpdate }) {
 	const { user, updateProfile, deleteUser } = useUsers(forceUpdate);
+	const [showModal, setShowModal] = useState(false);
 
 	const [username, setUsername] = useState("");
 	const [kind, setKind] = useState("");
@@ -17,12 +20,21 @@ export function EditProfile({ forceUpdate }) {
 		await updateProfile(username, kind, breed, aboutMe);
 	};
 
-	const handleDeleteUser = async () => {
+	const handleDelete = () => {
+		setShowModal(true);
+	};
+
+	const handleConfirm = async () => {
 		try {
 			await deleteUser();
+			setShowModal(false);
 		} catch (error) {
 			console.error("Error al eliminar al usuario:", error.message);
 		}
+	};
+
+	const handleCancel = () => {
+		setShowModal(false);
 	};
 
 	return (
@@ -39,7 +51,7 @@ export function EditProfile({ forceUpdate }) {
 				</div>
 			)}
 
-			<button className="text-red-500 pt-5" onClick={handleDeleteUser}>
+			<button className="text-red-500 pt-5 hover:underline" onClick={handleDelete}>
 				Eliminar usuario
 			</button>
 
@@ -78,6 +90,9 @@ export function EditProfile({ forceUpdate }) {
 
 				<div className="h-64"></div>
 			</form>
+			<Modal show={showModal} onConfirm={handleConfirm} onCancel={handleCancel}>
+				<p>¿Estás seguro de que quieres eliminar este usuario?</p>
+			</Modal>
 		</section>
 	);
 }

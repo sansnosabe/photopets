@@ -40,7 +40,14 @@ export const NewPost = ({ updatePosts }) => {
 
 	return (
 		<>
-			<button onClick={() => setShowModal(true)}>Crear nuevo post</button>
+			<div className="flex justify-end pr-2">
+				<button
+					onClick={() => setShowModal(true)}
+					className="w-12 h-12 font-semibold text-2xl rounded-md text-white border text-center leading-[10px] transition duration-200 ease-in-out hover:text-black hover:bg-white"
+				>
+					+
+				</button>
+			</div>
 			<Modal className="my-modal" isOpen={showModal} onRequestClose={() => setShowModal(false)}>
 				<div className="modal-content">
 					<form onSubmit={handleSubmit}>

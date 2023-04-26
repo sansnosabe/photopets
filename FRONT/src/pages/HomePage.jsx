@@ -3,16 +3,15 @@ import { HeaderSmall } from "../components/HeaderSmall";
 import { NewPost } from "../components/NewPost";
 import { PostsList } from "../components/PostsList";
 
-import usePosts from "../hooks/usePosts";
+import { usePosts } from "../hooks/usePosts";
 import { useUsers } from "../hooks/useUsers";
-
 
 export const HomePage = () => {
 	const { user } = useUsers();
 	const { posts, updatePosts } = usePosts();
 
 	return (
-		<article className="h-full">
+		<article className="h-full p-2">
 			{user ? (
 				<section className="flex flex-col justify-start align-top">
 					<HeaderSmall />

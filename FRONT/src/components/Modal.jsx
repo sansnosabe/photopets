@@ -1,7 +1,7 @@
 import React from "react";
 import "./modal.css";
 
-const Modal = ({ show, children, onConfirm, onCancel }) => {
+export function Modal({ show, children, onConfirm, onCancel }) {
 	if (!show) {
 		return null;
 	}
@@ -14,11 +14,11 @@ const Modal = ({ show, children, onConfirm, onCancel }) => {
 					<button className="bg-[#65BDF0] rounded" onClick={onConfirm}>
 						Confirmar
 					</button>
-					<button className="bg-gray-500 rounded" onClick={onCancel}>Cancelar</button>
+					<button className="bg-gray-500 rounded" onClick={onCancel}>
+						Cancelar
+					</button>
 				</div>
 			</div>
 		</div>
 	);
-};
-
-export default Modal;
+}
