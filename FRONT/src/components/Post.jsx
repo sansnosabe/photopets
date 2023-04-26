@@ -7,6 +7,8 @@ export function Post({ post, updatePosts }) {
 	const [likes, setLikes] = useState(post.likes);
 	const [showNewComment, setShowNewComment] = useState(false);
 
+	console.log(post);
+
 	return (
 		<article className="w-full bg-gray-100 text-black rounded-lg shadow-md overflow-hidden text-left">
 			<div className="p-4">

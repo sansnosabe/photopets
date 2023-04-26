@@ -12,11 +12,8 @@ export function EditProfile({ forceUpdate }) {
 	const [breed, setBreed] = useState("");
 	const [aboutMe, setAboutMe] = useState("");
 
-	const API_URL = "http://localhost:4000";
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-	//	window.location.reload();
 		await updateProfile(username, kind, breed, aboutMe);
 	};
 
@@ -34,7 +31,7 @@ export function EditProfile({ forceUpdate }) {
 
 			{user && (
 				<div className="flex justify-center pb-3">
-					<img className="h-20 w-20 rounded-full object-cover transform" src={`${API_URL}/public/${user.avatar}`} alt="imagen" />
+					<img className="h-20 w-20 rounded-full object-contain transform" src={`${import.meta.env.VITE_BACKEND}/public/${user.avatar}`} />
 					<div className="flex flex-col justify-center items-start pl-4">
 						<p className="text-md font-semibold text-[#2298dd]">{user.username}</p>
 						<EditProfileImage forceUpdate={forceUpdate} />

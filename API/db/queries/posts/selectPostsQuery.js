@@ -11,7 +11,7 @@ const selectPostsQuery = async (idUser) => {
       `
       SELECT 
         P.id AS post_id, 
-        IFNULL(P.id_user = ?, U.username) AS owner,
+        U.username AS owner,
         P.text, 
         P.image,
         P.created_at,
@@ -33,7 +33,7 @@ const selectPostsQuery = async (idUser) => {
       GROUP BY P.id, C.id
       ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser, idUser]
+      [idUser]
     );
 
     if (rows.length < 1) {
