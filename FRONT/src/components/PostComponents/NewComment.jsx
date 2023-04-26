@@ -10,7 +10,7 @@ export function NewComment({ postId, setShowNewComment, updatePosts }) {
 			await addComentService(postId, { comment });
 			setComment("");
 			setShowNewComment(false);
-			updatePosts()
+			updatePosts();
 		} catch (error) {
 			console.error(error);
 		}
