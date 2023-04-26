@@ -3,8 +3,8 @@ export function AddCommentButton() {
 		<svg
 			color="#000000"
 			fill="#000000"
-			height="24px"
-			width="24px"
+			height="22px"
+			width="22px"
 			viewBox="0 0 24 24"
 			id="newComment"
 			data-name="newComment"

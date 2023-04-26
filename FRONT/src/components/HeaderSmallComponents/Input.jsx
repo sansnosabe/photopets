@@ -38,7 +38,7 @@ export function Input() {
 
 	return (
 		<div className="relative mx-10">
-			<input className="border w-full pl-3 p-1" type="search" placeholder="Buscar" value={search} onInput={(e) => setSearch(e.target.value)} />
+			<input className="border w-full pl-3 p-1" type="search" placeholder="Buscar usuario..." value={search} onInput={(e) => setSearch(e.target.value)} />
 			{error ? <p>{error}</p> : null}
 			{results.length ? (
 				<ul className="absolute w-full bg-white flex flex-col gap-2 p-2 mt-[-1px] z-10">

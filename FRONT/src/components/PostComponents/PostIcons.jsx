@@ -4,7 +4,7 @@ import { AddLikeButton } from "../AddLikeButton";
 import { AddCommentButton } from "../AddCommentButton";
 import { DeletePostButton } from "./DeletePostButton";
 
-export function PostIcons({ postId, setLikes, setShowNewComment, updatePosts }) {
+export function PostIcons({ postId, likedByMe, setShowNewComment, updatePosts }) {
 	const [showNewCommentState, setShowNewCommentState] = useState(false);
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ export function PostIcons({ postId, setLikes, setShowNewComment, updatePosts }) 
 	return (
 		<div className="flex justify-between pt-2">
 			<div className="flex items-center space-x-2">
-				<AddLikeButton postId={postId} setLikes={setLikes} />
+				<AddLikeButton postId={postId} likedByMe={likedByMe} updatePosts={updatePosts}/>
 				<button onClick={() => setShowNewCommentState(true)}>
 					<AddCommentButton />
 				</button>

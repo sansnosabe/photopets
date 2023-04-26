@@ -3,12 +3,6 @@
 }
 
 @media (min-width: 640px) {
-	/* .input-large-screen {
-		display: block;
-	}
-	.search-large-screen {
-		display: none;
-	} */
 	.user-link-large-screen {
 		display: flex;
 	}
@@ -24,12 +18,6 @@
 }
 
 @media (max-width: 639px) {
-	/* .input-large-screen {
-		display: none;
-	}
-	.search-large-screen {
-		display: block;
-	} */
 	.user-link-large-screen {
 		display: none;
 	}

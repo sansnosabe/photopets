@@ -46,6 +46,7 @@ label {
 	padding: 10px;
 	z-index: 1;
 	display: none;
+	font-weight: 600;
 }
 
 .menu ul {

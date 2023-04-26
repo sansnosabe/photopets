@@ -156,6 +156,7 @@ export const likeDislikePostService = async (idPost, vote) => {
 	const response = await fetch(`${API_URL}/posts/${idPost}/likeDislike`, {
 		method: "POST",
 		headers: {
+			"Content-Type": "application/json",
 			Authorization: `${localStorage.getItem("token")}`,
 		},
 		body: JSON.stringify({ vote: vote.toString() }),
@@ -166,7 +167,7 @@ export const likeDislikePostService = async (idPost, vote) => {
 	if (!response.ok) {
 		throw new Error(json.message);
 	}
-	console.log(json);
+	
 	return json;
 };
 

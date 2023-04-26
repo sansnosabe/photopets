@@ -2,33 +2,22 @@ import { useUsers } from "../hooks/useUsers";
 import { Link } from "react-router-dom";
 import { ToggleMenu } from "./ToggleMenu";
 
-import { Logo, Search, Input, UserLink, ProfileImage } from "./HeaderSmallComponents";
+import { Logo, Input, UserLink, ProfileImage } from "./HeaderSmallComponents";
 
 import "./headerSmall.css";
 
 export function HeaderSmall({ forceUpdate }) {
 	const { user } = useUsers(forceUpdate);
 
-	const handleSearchClick = () => {
-		const inputValue = prompt("Buscar");
-		if (inputValue) {
-			console.log(`Buscando ${inputValue}...`);
-		}
-	};
-
 	return (
-		<header className="h-full px-2 py-4 flex justify-between align-center">
+		<header className="h-full px-2 py-4 flex justify-between items-center">
 			<Link to={"/"}>
 				<Logo />
 			</Link>
 
-			<div className="input-large-screen">
+			<div>
 				<Input />
 			</div>
-{/* 
-			<div className="search-large-screen">
-				<Search handleSearchClick={handleSearchClick} />
-			</div> */}
 
 			<div className="user-link-large-screen">
 				{user && <UserLink user={user} />}
