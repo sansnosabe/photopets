@@ -9,11 +9,17 @@ import { MyProfilePage } from "./pages/MyProfilePage";
 import { EditProfilePage } from "./pages/EditProfilePage";
 
 import { Footer } from "./components/Footer";
+import { HeaderSmall } from "./components/HeaderSmall";
+
+import { useUsers } from "./hooks/useUsers";
 
 function App() {
+	const { user } = useUsers();
+
 	return (
 		<main className="flex flex-col min-h-screen">
-			<article className="flex-1 flex flex-col justify-center items-center text-center w-full h-full">
+			{user && <HeaderSmall />}
+			<article className="flex-grow flex flex-col justify-center items-center text-center w-full h-full">
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/users/login" element={<LoginPage />} />

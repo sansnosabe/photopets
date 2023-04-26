@@ -10,23 +10,25 @@ export function HeaderSmall({ forceUpdate }) {
 	const { user } = useUsers(forceUpdate);
 
 	return (
-		<header className="h-full px-2 py-4 flex justify-between items-center">
-			<Link to={"/"}>
-				<Logo />
-			</Link>
+		<header className="flex justify-center">
+			<div className="max-w-2xl px-2 py-4 flex justify-between items-center">
+				<Link to={"/"}>
+					<Logo />
+				</Link>
 
-			<div>
-				<Input />
-			</div>
+				<div>
+					<Input />
+				</div>
 
-			<div className="user-link-large-screen">
-				{user && <UserLink user={user} />}
-				<ToggleMenu />
-			</div>
+				<div className="user-link-large-screen">
+					{user && <UserLink user={user} />}
+					<ToggleMenu />
+				</div>
 
-			<div className="profile-image-large-screen">
-				{user && <ProfileImage user={user} />}
-				<ToggleMenu />
+				<div className="profile-image-large-screen">
+					{user && <ProfileImage user={user} />}
+					<ToggleMenu />
+				</div>
 			</div>
 		</header>
 	);

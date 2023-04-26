@@ -38,11 +38,11 @@ export function EditProfile({ forceUpdate }) {
 	};
 
 	return (
-		<section className="flex flex-col h-full">
+		<section className="flex flex-col">
 			<h2 className="text-xl pb-4">Editar perfil</h2>
 
 			{user && (
-				<div className="flex justify-center pb-3">
+				<div className="flex justify-center pb-1">
 					<img className="h-20 w-20 rounded-full object-contain transform" src={`${import.meta.env.VITE_BACKEND}/public/${user.avatar}`} />
 					<div className="flex flex-col justify-center items-start pl-4">
 						<p className="text-md font-semibold text-[#2298dd]">{user.username}</p>
@@ -51,7 +51,7 @@ export function EditProfile({ forceUpdate }) {
 				</div>
 			)}
 
-			<button className="text-red-500 pt-5 hover:underline" onClick={handleDelete}>
+			<button className="text-red-500  hover:underline" onClick={handleDelete}>
 				Eliminar usuario
 			</button>
 

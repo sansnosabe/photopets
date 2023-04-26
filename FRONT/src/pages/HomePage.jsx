@@ -1,5 +1,4 @@
 import { Home } from "../components/Home";
-import { HeaderSmall } from "../components/HeaderSmall";
 import { NewPost } from "../components/NewPost";
 import { PostsList } from "../components/PostsList";
 
@@ -11,10 +10,9 @@ export const HomePage = () => {
 	const { posts, updatePosts, loading } = usePosts();
 
 	return (
-		<article className="h-full p-2">
+		<article className="p-2">
 			{user ? (
-				<section className="flex flex-col justify-start align-top">
-					<HeaderSmall />
+				<section className="">
 					<NewPost updatePosts={updatePosts} />
 					{!loading && posts.length !== 0 && (
 						<article className="flex justify-center">

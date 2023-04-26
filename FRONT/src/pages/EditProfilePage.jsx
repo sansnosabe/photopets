@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { HeaderSmall } from "../components/HeaderSmall";
 import { EditProfile } from "../components/EditProfile";
 
 export const EditProfilePage = () => {
@@ -11,7 +10,6 @@ export const EditProfilePage = () => {
 
   return (
     <article>
-      <HeaderSmall forceUpdate={forceUpdate} />
       <EditProfile forceUpdate={forceUpdate} />
     </article>
   );

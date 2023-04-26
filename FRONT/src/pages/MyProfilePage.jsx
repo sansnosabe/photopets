@@ -1,4 +1,3 @@
-import { HeaderSmall } from "../components/HeaderSmall";
 import { useUsers } from "../hooks/useUsers";
 
 export const MyProfilePage =  () => {
@@ -6,7 +5,7 @@ export const MyProfilePage =  () => {
 
 	return user ? (
 		<section>
-			<HeaderSmall />
+			aqui va el perfil del usuario
 		</section>
 	) : (
 		<p></p>
