@@ -33,7 +33,7 @@ export const AuthProviderComponent = ({ children }) => {
 
 	const logOut = () => {
 		setUser(null);
-		setToken(null);
+		setToken('');
 		navigate("/");
 	};
 

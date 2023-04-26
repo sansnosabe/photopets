@@ -2,7 +2,7 @@ const selectPostsQuery = require("../../db/queries/posts/selectPostsQuery");
 
 const listPosts = async (req, res, next) => {
 	try {
-		const posts = await selectPostsQuery(req.user?.id, req.user?.id);
+		const posts = await selectPostsQuery(req.user?.id);
 
 		res.send({
 			code: 200,

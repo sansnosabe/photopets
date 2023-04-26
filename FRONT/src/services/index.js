@@ -106,8 +106,25 @@ export const deleteUserService = async () => {
 	return json.data;
 };
 
-export const getPostsDataService = async () => {
-	const response = await fetch(`${API_URL}/posts`);
+export const getPostsDataService = async (token) => {
+	const response = await fetch(`${API_URL}/posts`, {
+		headers: token ? { 'Authorization': token } : {},
+	});
+
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+
+	return json.data;
+};
+
+export const searchUsers = async (keyword) => {
+	const params = new URLSearchParams();
+	params.append("keyword", keyword);
+
+	const response = await fetch(`${API_URL}/postsUsername?${params.toString()}`);
 
 	const json = await response.json();
 

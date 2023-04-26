@@ -9,7 +9,7 @@ export const useUsers = (forceUpdate) => {
 		try {
 			const updatedUser = await UpdateMyUserDataService({ username, kind, breed, about_me: aboutMe });
 			updateUser(updatedUser);
-			forceUpdate();
+			//forceUpdate();
 		} catch (error) {
 			console.error("Error al actualizar el perfil:", error);
 		}
@@ -19,7 +19,7 @@ export const useUsers = (forceUpdate) => {
 		try {
 			const updatedUser = await UpdateMyUserDataService({ avatar });
 			updateUser(updatedUser);
-			forceUpdate();
+			//forceUpdate();
 		} catch (error) {
 			console.error("Error al actualizar el perfil:", error);
 		}

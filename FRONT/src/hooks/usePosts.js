@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getPostsDataService, deletePostService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
 const usePosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [refresh, setRefresh] = useState(false);
+  const {token} = useContext(AuthContext)
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
 
-        const data = await getPostsDataService();
+        const data = await getPostsDataService(token);
 
         setPosts(data);
         setLoading(false);

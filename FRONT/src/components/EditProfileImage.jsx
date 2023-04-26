@@ -18,7 +18,7 @@ export function EditProfileImage({ forceUpdate }) {
 
 		try {
 			await updateAvatar(image);
-			window.location.reload()
+			// window.location.reload()
 		} catch (error) {
 			console.error("Ha ocurrido un error al cambiar la imagen:", error);
 		} finally {

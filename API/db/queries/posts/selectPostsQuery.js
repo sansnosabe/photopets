@@ -21,6 +21,7 @@ const selectPostsQuery = async (idUser) => {
           FROM comments C
           WHERE C.id_post = P.id
         ) AS comments_count,
+        (SELECT COUNT(id) FROM likes WHERE likes.id_user = ? AND likes.id_post = P.id) AS likedByMe,
         C.id AS comment_id,
         C.comment,
         UC.username AS user_name
@@ -32,7 +33,7 @@ const selectPostsQuery = async (idUser) => {
       GROUP BY P.id, C.id
       ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser]
+      [idUser, idUser]
     );
 
     if (rows.length < 1) {
@@ -51,6 +52,7 @@ const selectPostsQuery = async (idUser) => {
           text: row.text,
           image: row.image,
           likes: row.likes,
+          likedByMe: row.likedByMe,
           created_at: row.created_at,
           comments_count: row.comments_count,
           comments: [],

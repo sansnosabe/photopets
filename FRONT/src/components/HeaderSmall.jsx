@@ -25,10 +25,10 @@ export function HeaderSmall({ forceUpdate }) {
 			<div className="input-large-screen">
 				<Input />
 			</div>
-
+{/* 
 			<div className="search-large-screen">
 				<Search handleSearchClick={handleSearchClick} />
-			</div>
+			</div> */}
 
 			<div className="user-link-large-screen">
 				{user && <UserLink user={user} />}

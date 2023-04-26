@@ -22,10 +22,13 @@ const editUser = async (req, res, next) => {
 
     await updateUserQuery(username, kind, breed, about_me, image, req.user.id);
 
+    const updatedUser = await selectUserByIdQuery(req.user.id);
+
     res.send({
       code: 200,
       status: "ok",
       message: "Usuario actualizado",
+      data: updatedUser,
     });
   } catch (err) {
     return next(err);

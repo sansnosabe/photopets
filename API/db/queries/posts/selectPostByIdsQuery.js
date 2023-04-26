@@ -14,6 +14,7 @@ const selectPostByIdsQuery = async (idUser, idPost) => {
         P.text, 
         P.image,
         COUNT(DISTINCT L.id) AS likes,
+        (SELECT COUNT(id) FROM likes WHERE likes.id_user = ? AND likes.id_post = P.id) as likedByMe,
         COUNT(C.id) AS comments_count,
         C.id AS comment_id,
         C.comment,
@@ -27,7 +28,7 @@ const selectPostByIdsQuery = async (idUser, idPost) => {
       GROUP BY P.id, C.id
       ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser, idPost]
+      [idUser, idUser, idPost]
     );
 
     if (rows.length < 1) {
@@ -40,6 +41,7 @@ const selectPostByIdsQuery = async (idUser, idPost) => {
       text: rows[0].text,
       image: rows[0].image,
       likes: rows[0].likes,
+      likedByMe: rows[0].likedByMe,
       comments_count: rows[0].comments_count,
       comments: [],
     };
