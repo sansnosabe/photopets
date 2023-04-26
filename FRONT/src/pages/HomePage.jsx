@@ -8,7 +8,7 @@ import { useUsers } from "../hooks/useUsers";
 
 export const HomePage = () => {
 	const { user } = useUsers();
-	const { posts, updatePosts } = usePosts();
+	const { posts, updatePosts, loading } = usePosts();
 
 	return (
 		<article className="h-full p-2">
@@ -16,13 +16,9 @@ export const HomePage = () => {
 				<section className="flex flex-col justify-start align-top">
 					<HeaderSmall />
 					<NewPost updatePosts={updatePosts} />
-					{posts.length !== 0 ? (
+					{!loading && posts.length !== 0 && (
 						<article className="flex justify-center">
 							<PostsList posts={posts} updatePosts={updatePosts} />
-						</article>
-					) : (
-						<article>
-							<div>No hay posts disponibles</div>
 						</article>
 					)}
 				</section>

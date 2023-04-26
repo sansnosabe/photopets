@@ -2,13 +2,13 @@ const getDB = require("../../getDB");
 const { generateError } = require("../../../helpers");
 
 const selectPostsQuery = async (idUser) => {
-  let connection;
+	let connection;
 
-  try {
-    connection = await getDB();
+	try {
+		connection = await getDB();
 
-    const [rows] = await connection.query(
-      `
+		const [rows] = await connection.query(
+			`
       SELECT 
         P.id AS post_id, 
         U.username AS owner,
@@ -33,47 +33,47 @@ const selectPostsQuery = async (idUser) => {
       GROUP BY P.id, C.id
       ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser]
-    );
+			[idUser]
+		);
 
-    if (rows.length < 1) {
-      return generateError("No existe ningun post para este usuario", 404);
-    }
+		if (rows.length < 1) {
+			return [];
+		}
 
-    const posts = [];
+		const posts = [];
 
-    let currentPost = null;
+		let currentPost = null;
 
-    for (const row of rows) {
-      if (!currentPost || currentPost.post_id !== row.post_id) {
-        currentPost = {
-          post_id: row.post_id,
-          owner: row.owner,
-          text: row.text,
-          image: row.image,
-          likes: row.likes,
-          likedByMe: row.likedByMe,
-          created_at: row.created_at,
-          comments_count: row.comments_count,
-          comments: [],
-        };
+		for (const row of rows) {
+			if (!currentPost || currentPost.post_id !== row.post_id) {
+				currentPost = {
+					post_id: row.post_id,
+					owner: row.owner,
+					text: row.text,
+					image: row.image,
+					likes: row.likes,
+					likedByMe: row.likedByMe,
+					created_at: row.created_at,
+					comments_count: row.comments_count,
+					comments: [],
+				};
 
-        posts.push(currentPost);
-      }
+				posts.push(currentPost);
+			}
 
-      if (row.comment_id) {
-        currentPost.comments.push({
-          id: row.comment_id,
-          comment: row.comment,
-          user: row.user_name,
-        });
-      }
-    }
+			if (row.comment_id) {
+				currentPost.comments.push({
+					id: row.comment_id,
+					comment: row.comment,
+					user: row.user_name,
+				});
+			}
+		}
 
-    return posts;
-  } finally {
-    if (connection) connection.release();
-  }
+		return posts;
+	} finally {
+		if (connection) connection.release();
+	}
 };
 
 module.exports = selectPostsQuery;

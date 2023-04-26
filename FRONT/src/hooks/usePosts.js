@@ -6,6 +6,7 @@ export const usePosts = () => {
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
+	const [noPosts, setNoPosts] = useState(false);
 	const [refresh, setRefresh] = useState(false);
 	const { token } = useContext(AuthContext);
 
@@ -13,9 +14,9 @@ export const usePosts = () => {
 		const fetchPosts = async () => {
 			try {
 				setLoading(true);
-
+		
 				const data = await getPostsDataService(token);
-
+		
 				setPosts(data);
 				setLoading(false);
 			} catch (error) {
@@ -33,7 +34,6 @@ export const usePosts = () => {
 
 	const deletePost = (idPost) => {
 		deletePostService(idPost);
-		updatePosts();
 	};
 
 	return { posts, error, loading, updatePosts, deletePost };
