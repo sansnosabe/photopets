@@ -12,6 +12,7 @@ const selectPostsByUserIdQuery = async (idUser) => {
       U.username AS owner, 
       P.text, 
       P.image,
+			P.created_at,
         COUNT(L.id) AS likes,
         C.id AS comment_id,
         C.comment,
@@ -32,7 +33,7 @@ const selectPostsByUserIdQuery = async (idUser) => {
 		const postsMap = new Map();
 
 		for (const row of rows) {
-			const { post_id, owner, text, image, likes, likedByMe } = row;
+			const { post_id, owner, text, image, created_at, likes, likedByMe } = row;
 
 			let post = postsMap.get(post_id);
 
@@ -42,6 +43,7 @@ const selectPostsByUserIdQuery = async (idUser) => {
 					owner,
 					text,
 					image,
+					created_at,
 					likes,
 					likedByMe,
 					comments_count: 0,
