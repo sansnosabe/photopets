@@ -33,4 +33,3 @@ export function HeaderSmall({ forceUpdate }) {
 		</header>
 	);
 }
-// max-w-2xl

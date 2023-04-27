@@ -94,16 +94,24 @@ export function EditProfile({ forceUpdate }) {
 					<label htmlFor="aboutMe" className="form-label">
 						Sobre mi
 					</label>
-					<textarea id="aboutMe" className="form-input" value={aboutMe} onChange={(event) => setAboutMe(event.target.value)}></textarea>
+					<textarea
+						id="aboutMe"
+						className="form-input"
+						maxLength={30}
+						value={aboutMe}
+						onChange={(event) => {
+							if (event.target.value.length <= 30) {
+								setAboutMe(event.target.value);
+							}
+						}}
+					></textarea>
 				</div>
 
 				<button className="bg-[#49aae2] hover:bg-[#2298dd] px-4 py-2 text-white font-semibold rounded" type="submit">
 					Guardar cambios
 				</button>
 
-				{error && (
-					<p className="text-red-500 mt-2">Este usuario no está disponible</p>
-				)}
+				{error && <p className="text-red-500 mt-2">Este usuario no está disponible</p>}
 
 				<div className="h-64"></div>
 			</form>
