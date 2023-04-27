@@ -2,12 +2,12 @@ const getDB = require("../../getDB");
 const { generateError } = require("../../../helpers");
 
 const selectPostByIdPostQuery = async (idPost) => {
-  let connection;
+	let connection;
 
-  try {
-    connection = await getDB();
-    const [post] = await connection.query(
-      `
+	try {
+		connection = await getDB();
+		const [post] = await connection.query(
+			`
       SELECT P.id, P.image, P.text,
         JSON_OBJECT('id', U.id, 'username', U.username) AS user,
         COUNT(L.id) AS likes,
@@ -20,23 +20,23 @@ const selectPostByIdPostQuery = async (idPost) => {
       WHERE P.id = ?
       GROUP BY P.id, U.id, U.username
       `,
-      [idPost]
-    );
+			[idPost]
+		);
 
-    if (post.length === 0) {
-      generateError("El post no existe", 404);
-    }
+		if (post.length === 0) {
+			generateError("El post no existe", 404);
+		}
 
-    const { comments, ...rest } = post[0];
-    const result = { ...rest };
-    if (comments) {
-      result.comments = comments;
-    }
+		const { comments, ...rest } = post[0];
+		const result = { ...rest };
+		if (comments) {
+			result.comments = comments;
+		}
 
-    return result;
-  } finally {
-    if (connection) connection.release();
-  }
+		return result;
+	} finally {
+		if (connection) connection.release();
+	}
 };
 
 module.exports = selectPostByIdPostQuery;

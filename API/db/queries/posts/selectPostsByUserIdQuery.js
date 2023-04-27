@@ -1,13 +1,13 @@
 const getDB = require("../../getDB");
 
 const selectPostsByUserIdQuery = async (idUser) => {
-  let connection;
+	let connection;
 
-  try {
-    connection = await getDB();
+	try {
+		connection = await getDB();
 
-    const [rows] = await connection.query(
-      `
+		const [rows] = await connection.query(
+			`
       SELECT P.id AS post_id, 
       U.username AS owner, 
       P.text, 
@@ -26,47 +26,47 @@ const selectPostsByUserIdQuery = async (idUser) => {
       GROUP BY P.id, C.id
       ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser, idUser]
-    );
+			[idUser, idUser]
+		);
 
-    const postsMap = new Map();
+		const postsMap = new Map();
 
-    for (const row of rows) {
-      const { post_id, owner, text, image, likes, likedByMe } = row;
+		for (const row of rows) {
+			const { post_id, owner, text, image, likes, likedByMe } = row;
 
-      let post = postsMap.get(post_id);
+			let post = postsMap.get(post_id);
 
-      if (!post) {
-        post = {
-          post_id,
-          owner,
-          text,
-          image,
-          likes,
+			if (!post) {
+				post = {
+					post_id,
+					owner,
+					text,
+					image,
+					likes,
 					likedByMe,
-          comments_count: 0,
-          comments: [],
-        };
+					comments_count: 0,
+					comments: [],
+				};
 
-        postsMap.set(post_id, post);
-      }
+				postsMap.set(post_id, post);
+			}
 
-      if (row.comment_id) {
-        post.comments.push({
-          id: row.comment_id,
-          comment: row.comment,
-          user: row.user_name,
-        });
-        post.comments_count++;
-      }
-    }
+			if (row.comment_id) {
+				post.comments.push({
+					id: row.comment_id,
+					comment: row.comment,
+					user: row.user_name,
+				});
+				post.comments_count++;
+			}
+		}
 
-    const posts = Array.from(postsMap.values());
+		const posts = Array.from(postsMap.values());
 
-    return posts;
-  } finally {
-    if (connection) connection.release();
-  }
+		return posts;
+	} finally {
+		if (connection) connection.release();
+	}
 };
 
 module.exports = selectPostsByUserIdQuery;

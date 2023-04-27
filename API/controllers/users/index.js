@@ -7,11 +7,11 @@ const editUser = require("./editUser");
 const deleteUser = require("./deleteUser");
 
 module.exports = {
-  createUser,
-  validateUser,
-  loginUser,
-  getOwnUser,
-  getUsers,
-  editUser,
-  deleteUser,
+	createUser,
+	validateUser,
+	loginUser,
+	getOwnUser,
+	getUsers,
+	editUser,
+	deleteUser,
 };

@@ -2,25 +2,25 @@ const selectPostsByUserIdQuery = require("../../db/queries/posts/selectPostsByUs
 const { generateError } = require("../../helpers");
 
 const listMyPosts = async (req, res, next) => {
-  try {
-    const idUser = req.user.id;
+	try {
+		const idUser = req.user.id;
 
-    const posts = await selectPostsByUserIdQuery(idUser);
+		const posts = await selectPostsByUserIdQuery(idUser);
 
-    if (posts.length === 0) {
-      generateError("No existe ningun post con este ID");
-    }
+		if (posts.length === 0) {
+			generateError("No existe ningun post con este ID");
+		}
 
-    res.send({
-      code: 200,
-      status: "ok",
-      data: {
-        posts,
-      },
-    });
-  } catch (err) {
-    next(err);
-  }
+		res.send({
+			code: 200,
+			status: "ok",
+			data: {
+				posts,
+			},
+		});
+	} catch (err) {
+		next(err);
+	}
 };
 
 module.exports = listMyPosts;

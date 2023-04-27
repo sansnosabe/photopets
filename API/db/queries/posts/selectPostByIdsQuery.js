@@ -2,12 +2,12 @@ const getDB = require("../../getDB");
 const { generateError } = require("../../../helpers");
 
 const selectPostByIdsQuery = async (idUser, idPost) => {
-  let connection;
+	let connection;
 
-  try {
-    connection = await getDB();
-    const [rows] = await connection.query(
-      `
+	try {
+		connection = await getDB();
+		const [rows] = await connection.query(
+			`
       SELECT 
         P.id AS post_id, 
         IFNULL(P.id_user = ?, U.username) AS owner,
@@ -28,38 +28,38 @@ const selectPostByIdsQuery = async (idUser, idPost) => {
       GROUP BY P.id, C.id
       ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser, idUser, idPost]
-    );
+			[idUser, idUser, idPost]
+		);
 
-    if (rows.length < 1) {
-      return generateError("No existe el post especificado, o no pertenece a este usuario", 404);
-    }
+		if (rows.length < 1) {
+			return generateError("No existe el post especificado, o no pertenece a este usuario", 404);
+		}
 
-    const post = {
-      post_id: rows[0].post_id,
-      owner: rows[0].owner,
-      text: rows[0].text,
-      image: rows[0].image,
-      likes: rows[0].likes,
-      likedByMe: rows[0].likedByMe,
-      comments_count: rows[0].comments_count,
-      comments: [],
-    };
+		const post = {
+			post_id: rows[0].post_id,
+			owner: rows[0].owner,
+			text: rows[0].text,
+			image: rows[0].image,
+			likes: rows[0].likes,
+			likedByMe: rows[0].likedByMe,
+			comments_count: rows[0].comments_count,
+			comments: [],
+		};
 
-    for (const row of rows) {
-      if (row.comment_id) {
-        post.comments.push({
-          id: row.comment_id,
-          comment: row.comment,
-          user: row.user_name,
-        });
-      }
-    }
+		for (const row of rows) {
+			if (row.comment_id) {
+				post.comments.push({
+					id: row.comment_id,
+					comment: row.comment,
+					user: row.user_name,
+				});
+			}
+		}
 
-    return post;
-  } finally {
-    if (connection) connection.release();
-  }
+		return post;
+	} finally {
+		if (connection) connection.release();
+	}
 };
 
 module.exports = selectPostByIdsQuery;

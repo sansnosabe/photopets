@@ -8,12 +8,12 @@ const listUserAndPostsByUsernameParam = require("./listUserAndPostsByUsernamePar
 const deletePost = require("./deletePost");
 
 module.exports = {
-  newPost,
-  listPosts,
-  listMyPosts,
-  listMyPostById,
-  listUserPosts,
-  listUserPostById,
-  listUserAndPostsByUsernameParam,
-  deletePost,
+	newPost,
+	listPosts,
+	listMyPosts,
+	listMyPostById,
+	listUserPosts,
+	listUserPostById,
+	listUserAndPostsByUsernameParam,
+	deletePost,
 };

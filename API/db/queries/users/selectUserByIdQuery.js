@@ -2,13 +2,13 @@ const getDB = require("../../getDB");
 const { generateError } = require("../../../helpers");
 
 const selectUserByIdQuery = async (idUser) => {
-  let connection;
+	let connection;
 
-  try {
-    connection = await getDB();
+	try {
+		connection = await getDB();
 
-    const [users] = await connection.query(
-      `
+		const [users] = await connection.query(
+			`
       SELECT U.id, U.username, U.kind, U.breed, U.email, U.about_me, U.avatar, U.role, U.active, 
       COUNT(P.id) AS posts_count
       FROM users U
@@ -16,17 +16,17 @@ const selectUserByIdQuery = async (idUser) => {
       WHERE U.id = ?
       GROUP BY U.id
       `,
-      [idUser]
-    );
+			[idUser]
+		);
 
-    if (users.length < 1) {
-      generateError("Usuario no encontrado", 404);
-    }
+		if (users.length < 1) {
+			generateError("Usuario no encontrado", 404);
+		}
 
-    return users[0];
-  } finally {
-    if (connection) connection.release();
-  }
+		return users[0];
+	} finally {
+		if (connection) connection.release();
+	}
 };
 
 module.exports = selectUserByIdQuery;
