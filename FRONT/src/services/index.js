@@ -245,3 +245,22 @@ export const getUserPostsService = async (idUser) => {
 	
 	return json.data;
 };
+
+export const getUsersDataService = async () => {
+	const response = await fetch(`${API_URL}/users`, {
+		method: "GET",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		}
+	});
+	const json = await response.json();
+
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
+	
+	return json.data;
+};
+
+
+
