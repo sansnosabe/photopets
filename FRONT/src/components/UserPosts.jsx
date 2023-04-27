@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getUsersDataService } from "../services";
 
 import { PostHeader, PostImage, PostIcons, PostLikes, PostText, PostComments, NewComment } from "./PostComponents";
 
 export function UserPosts({ post, updatePosts, updateUserPosts, onUpdate }) {
 	const [showComments, setShowComments] = useState(false);
 	const [showNewComment, setShowNewComment] = useState(false);
-	
+	const [profileImage, setProfileImage] = useState(null);
+
+	const postOwner = post.owner;
+
+	useEffect(() => {
+		const fetchProfileImage = async () => {
+			try {
+				const { users } = await getUsersDataService();
+				const user = users.find((user) => user.username === postOwner);
+				setProfileImage(user.avatar);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchProfileImage();
+	}, [postOwner]);
 	return (
 		<article className="w-full bg-gray-100 text-black rounded-lg shadow-md overflow-hidden text-left">
 			<div className="p-4">
-				<PostHeader owner={post.owner} createdAt={post.created_at} />
+				<PostHeader owner={post.owner} createdAt={post.created_at} profileImage={profileImage} />
 				<PostImage imageURL={post.image} />
 				<PostIcons
 					postId={post.post_id}
