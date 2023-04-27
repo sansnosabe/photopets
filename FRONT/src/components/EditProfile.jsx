@@ -50,10 +50,11 @@ export function EditProfile({ forceUpdate }) {
 					</div>
 				</div>
 			)}
-
-			<button className="text-red-500  hover:underline" onClick={handleDelete}>
-				Eliminar usuario
-			</button>
+			<div className="flex justify-center">
+				<button className="text-red-500 w-36 p-2 hover:underline" onClick={handleDelete}>
+					Eliminar usuario
+				</button>
+			</div>
 
 			<form className="rounded p-5 w-full" onSubmit={handleSubmit}>
 				<div className="form-group">
