@@ -261,6 +261,3 @@ export const getUsersDataService = async () => {
 	
 	return json.data;
 };
-
-
-
