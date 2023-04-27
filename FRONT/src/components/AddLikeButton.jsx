@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./like.css";
 import { likeDislikePostService } from "../services";
 
-export function AddLikeButton({ postId, likedByMe, updatePosts, updateUserPosts }) {
+export function AddLikeButton({ postId, likedByMe, updatePosts, updateUserPosts, onUpdate }) {
 	const [liked, setLiked] = useState(likedByMe);
 
 	const handleLikeClick = async () => {
@@ -15,6 +15,9 @@ export function AddLikeButton({ postId, likedByMe, updatePosts, updateUserPosts 
 			}
 			if (updateUserPosts) {
 				updateUserPosts();
+			}
+			if (onUpdate) {
+				onUpdate();
 			}
 		} catch (error) {
 			console.error("Error al dar like/dislike:", error.message);

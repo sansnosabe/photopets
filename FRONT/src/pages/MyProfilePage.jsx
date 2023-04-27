@@ -4,6 +4,7 @@ import { useUsers } from "../hooks/useUsers";
 
 import { UserPostsList } from "../components/UserPostsList";
 import { NewPost } from "../components/NewPost";
+import { Home } from "../components/Home";
 
 export const MyProfilePage = () => {
 	const { user } = useUsers();

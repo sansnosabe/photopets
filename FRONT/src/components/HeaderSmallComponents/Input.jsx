@@ -44,7 +44,7 @@ export function Input() {
 				<ul className="absolute w-full bg-white flex flex-col gap-2 p-2 mt-[-1px] z-10">
 					{results.map((result) => (
 						<li key={result.id}>
-							<Link to={`/${result.username}`} className="flex gap-2 items-center">
+							<Link to={`/users/${result.username}/${result.id}`} className="flex gap-2 items-center">
 								<img
 									src={`${import.meta.env.VITE_BACKEND}/public/${result.avatar}`}
 									alt={result.username}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addComentService } from "../../services";
 
-export function NewComment({ postId, setShowNewComment, updatePosts, updateUserPosts }) {
+export function NewComment({ postId, setShowNewComment, updatePosts, updateUserPosts, onUpdate }) {
 	const [comment, setComment] = useState("");
 
 	const handleSubmit = async (event) => {
@@ -15,6 +15,9 @@ export function NewComment({ postId, setShowNewComment, updatePosts, updateUserP
 			}
 			if (updateUserPosts) {
 				updateUserPosts();
+			}
+			if (onUpdate) {
+				onUpdate();
 			}
 		} catch (error) {
 			console.error(error);
