@@ -120,7 +120,7 @@ export const getPostsDataService = async (token) => {
 	return json.data;
 };
 
-export const searchUsers = async (keyword) => {
+export const searchUsersService = async (keyword) => {
 	const params = new URLSearchParams();
 	params.append("keyword", keyword);
 
@@ -230,29 +230,18 @@ export const createPostService = async (post) => {
 	return json.data;
 };
 
-// export const getSinglePostData = async (id) => {
-// 	const response = await fetch(`${API_URL}/posts/${id}`);
+export const getUserPostsService = async (idUser) => {
+	const response = await fetch(`${API_URL}/posts/${idUser}`, {
+		method: "GET",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		}
+	});
+	const json = await response.json();
 
-// 	const json = await response.json();
+	if (!response.ok) {
+		throw new Error(json.message);
+	}
 
-// 	if (!response.ok) {
-// 		throw new Error(json.message);
-// 	}
-
-// 	return json.data;
-// };
-
-// export const deletePostService = async ({ id, token }) => {
-// 	const response = await fetch(`${API_URL}/posts/${id}`, {
-// 		method: "DELETE",
-// 		headers: {
-// 			Authorization: token,
-// 		},
-// 	});
-
-// 	const json = await response.json();
-
-// 	if (!response.ok) {
-// 		throw new Error(json.message);
-// 	}
-// };
+	return json.data;
+};

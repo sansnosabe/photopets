@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { searchUsers } from "../../services";
+import { searchUsersService } from "../../services";
 import { Link } from "react-router-dom";
 
 export function Input() {
@@ -12,7 +12,7 @@ export function Input() {
 		setResults([]);
 		const loadResults = async () => {
 			try {
-				const results = await searchUsers(search);
+				const results = await searchUsersService(search);
 				setResults(results);
 			} catch (error) {
 				setError(error.message);

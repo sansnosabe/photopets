@@ -11,7 +11,7 @@ export function HeaderSmall({ forceUpdate }) {
 
 	return (
 		<header className="flex justify-center">
-			<div className="max-w-2xl px-2 py-4 flex justify-between items-center">
+			<div className="px-2 py-4 flex justify-between items-center">
 				<Link to={"/"}>
 					<Logo />
 				</Link>
@@ -33,3 +33,4 @@ export function HeaderSmall({ forceUpdate }) {
 		</header>
 	);
 }
+// max-w-2xl

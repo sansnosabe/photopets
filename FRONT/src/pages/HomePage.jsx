@@ -7,19 +7,19 @@ import { useUsers } from "../hooks/useUsers";
 
 export const HomePage = () => {
 	const { user } = useUsers();
-	const { posts, updatePosts, loading } = usePosts();
+	const { posts, updatePosts } = usePosts();
 
 	return (
-		<article className="p-2">
+		<article>
 			{user ? (
-				<section className="">
+				<div>
 					<NewPost updatePosts={updatePosts} />
-					{!loading && posts.length !== 0 && (
-						<article className="flex justify-center">
+					<section className="flex justify-center">
+						{posts.length !== 0 && 
 							<PostsList posts={posts} updatePosts={updatePosts} />
-						</article>
-					)}
-				</section>
+						}
+					</section>
+				</div>
 			) : (
 				<Home />
 			)}

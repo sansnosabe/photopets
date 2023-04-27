@@ -1,24 +1,28 @@
 import { useContext, useEffect, useState } from "react";
-import { getPostsDataService, deletePostService } from "../services";
+import { getPostsDataService, deletePostService, getUserPostsService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
+import { useUsers } from "./useUsers";
+
 export const usePosts = () => {
+	const { user } = useUsers();
+	
 	const [posts, setPosts] = useState([]);
+	const [refresh, setRefresh] = useState(false);
+
+	const [userPosts, setUserPosts] = useState([]);
+	const [userPostsRefresh, setUserPostsRefresh] = useState(false);
+
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
-	const [noPosts, setNoPosts] = useState(false);
-	const [refresh, setRefresh] = useState(false);
 	const { token } = useContext(AuthContext);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				setLoading(true);
-		
 				const data = await getPostsDataService(token);
-		
+
 				setPosts(data);
-				setLoading(false);
 			} catch (error) {
 				setError(error.message);
 				setLoading(false);
@@ -32,9 +36,46 @@ export const usePosts = () => {
 		setRefresh(!refresh);
 	};
 
-	const deletePost = (idPost) => {
-		deletePostService(idPost);
+	useEffect(() => {
+		const fetchUserPosts = async (userId) => {
+			try {
+				setLoading(true);
+
+				const data = await getUserPostsService(userId);
+
+				setUserPosts(data);
+				setLoading(false);
+			} catch (error) {
+				setError(error.message);
+				setLoading(false);
+			}
+		};
+
+		if (user) {
+			fetchUserPosts(user.id);
+		}
+	}, [user, userPostsRefresh]);
+
+	const updateUserPosts = () => {
+		setUserPostsRefresh(!userPostsRefresh);
 	};
 
-	return { posts, error, loading, updatePosts, deletePost };
+	const deletePost = async (idPost) => {
+		await deletePostService(idPost);
+		setRefresh(!refresh);
+	};
+
+	const getUserPosts = async (idUser) => {
+		try {
+			setLoading(true);
+			const data = await getUserPostsService(idUser);
+			setUserPosts(data);
+			setLoading(false);
+		} catch (error) {
+			setError(error.message);
+			setLoading(false);
+		}
+	};
+
+	return { error, loading, posts, userPosts, getUserPosts, updatePosts, updateUserPosts, deletePost };
 };

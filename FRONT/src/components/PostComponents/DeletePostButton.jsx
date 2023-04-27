@@ -4,7 +4,7 @@ import { usePosts } from "../../hooks/usePosts";
 
 import { Modal } from "../Modal";
 
-export function DeletePostButton({ postId, owner, updatePosts }) {
+export function DeletePostButton({ postId, owner, updatePosts, updateUserPosts}) {
 	const { user } = useUsers();
 	const { deletePost } = usePosts();
 	const [showModal, setShowModal] = useState(false);
@@ -15,7 +15,12 @@ export function DeletePostButton({ postId, owner, updatePosts }) {
 
 	const handleConfirm = () => {
 		deletePost(postId);
-		updatePosts();
+		if (updatePosts) {
+			updatePosts();
+		}
+		if (updateUserPosts) {
+			updateUserPosts();
+		}
 		setShowModal(false);
 	};
 

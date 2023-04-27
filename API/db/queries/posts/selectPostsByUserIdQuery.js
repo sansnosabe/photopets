@@ -8,10 +8,14 @@ const selectPostsByUserIdQuery = async (idUser) => {
 
     const [rows] = await connection.query(
       `
-      SELECT P.id AS post_id, U.username AS owner, P.text, P.image,
+      SELECT P.id AS post_id, 
+      U.username AS owner, 
+      P.text, 
+      P.image,
         COUNT(L.id) AS likes,
         C.id AS comment_id,
         C.comment,
+				(SELECT COUNT(id) FROM likes WHERE likes.id_user = ? AND likes.id_post = P.id) AS likedByMe,
         CU.username AS user_name
       FROM posts P
       INNER JOIN users U ON U.id = P.id_user
@@ -20,14 +24,15 @@ const selectPostsByUserIdQuery = async (idUser) => {
       LEFT JOIN users CU ON C.id_user = CU.id
       WHERE P.id_user = ?
       GROUP BY P.id, C.id
+      ORDER BY P.id DESC, C.id ASC
       `,
-      [idUser]
+      [idUser, idUser]
     );
 
     const postsMap = new Map();
 
     for (const row of rows) {
-      const { post_id, owner, text, image, likes } = row;
+      const { post_id, owner, text, image, likes, likedByMe } = row;
 
       let post = postsMap.get(post_id);
 
@@ -38,6 +43,7 @@ const selectPostsByUserIdQuery = async (idUser) => {
           text,
           image,
           likes,
+					likedByMe,
           comments_count: 0,
           comments: [],
         };
