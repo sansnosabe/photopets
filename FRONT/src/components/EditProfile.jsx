@@ -97,10 +97,10 @@ export function EditProfile({ forceUpdate }) {
 					<textarea
 						id="aboutMe"
 						className="form-input"
-						maxLength={30}
+						maxLength={50}
 						value={aboutMe}
 						onChange={(event) => {
-							if (event.target.value.length <= 30) {
+							if (event.target.value.length <= 50) {
 								setAboutMe(event.target.value);
 							}
 						}}

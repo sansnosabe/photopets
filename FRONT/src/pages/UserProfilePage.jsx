@@ -51,7 +51,7 @@ export const UserProfilePage = () => {
 								/>
 							</figure>
 							<main>
-								<h1 className="text-2xl text-left pl-1 font-bold mt-4">{searchedUser.username}</h1>
+								<h1 className="text-2xl text-left pl-1 font-bold">{searchedUser.username}</h1>
 								<div className="flex mt-2">
 									<span className="bg-gray-200 text-gray-700 rounded-full px-2 py-1 text-xs font-bold mr-2">{searchedUser.breed}</span>
 									<span className="bg-gray-200 text-gray-700 rounded-full px-2 py-1 text-xs font-bold">{searchedUser.kind}</span>
