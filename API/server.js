@@ -13,11 +13,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpload());
 
-app.use('/public',express.static('public'));
+app.use("/public", express.static("public"));
 //app.use(express.static(path.join(__dirname, "public")));
 const isAuth = require("./middlewares/isAuth");
 const isAuthOptional = require("./middlewares/isAuthOptional");
-
 
 /**
  * ##############################
@@ -41,7 +40,16 @@ app.delete("/user", isAuth, deleteUser);
  * ############################
  */
 
-const { newPost, listPosts, listMyPosts, listMyPostById, listUserPosts, listUserPostById, listUserAndPostsByUsernameParam, deletePost } = require("./controllers/posts");
+const {
+	newPost,
+	listPosts,
+	listMyPosts,
+	listMyPostById,
+	listUserPosts,
+	listUserPostById,
+	listUserAndPostsByUsernameParam,
+	deletePost,
+} = require("./controllers/posts");
 
 app.post("/posts", isAuth, newPost);
 app.get("/posts", isAuthOptional, listPosts);
@@ -77,24 +85,24 @@ app.delete("/posts/comments/:idComment", isAuth, deleteCommentPost);
 
 // Middleware de error.
 app.use((err, req, res, next) => {
-  console.error(err);
+	console.error(err);
 
-  res.status(err.httpStatus || 500).send({
-    status: "error",
-    message: err.message,
-  });
+	res.status(err.httpStatus || 500).send({
+		status: "error",
+		message: err.message,
+	});
 });
 
 // Middleware de ruta no encontrada.
 app.use((req, res) => {
-  res.status(404).send({
-    status: "error",
-    message: "Ruta no encontrada",
-  });
+	res.status(404).send({
+		status: "error",
+		message: "Ruta no encontrada",
+	});
 });
 
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log(`Server listening at http://localhost:${PORT}`);
+	console.log(`Server listening at http://localhost:${PORT}`);
 });
