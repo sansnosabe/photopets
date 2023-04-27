@@ -14,10 +14,21 @@ export function EditProfile({ forceUpdate }) {
 	const [kind, setKind] = useState("");
 	const [breed, setBreed] = useState("");
 	const [aboutMe, setAboutMe] = useState("");
+	const [error, setError] = useState(false);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await updateProfile(username, kind, breed, aboutMe);
+		try {
+			await updateProfile(username, kind, breed, aboutMe);
+			setUsername("");
+			setKind("");
+			setBreed("");
+			setAboutMe("");
+			setError(false);
+		} catch (error) {
+			console.error("Error al actualizar el perfil:", error.message);
+			setError(true);
+		}
 	};
 
 	const handleDelete = () => {
@@ -29,7 +40,8 @@ export function EditProfile({ forceUpdate }) {
 			await deleteUser();
 			setShowModal(false);
 		} catch (error) {
-			console.error("Error al eliminar al usuario:", error.message);
+			console.error("Error al actualizar el perfil:", error.message);
+			setError(true);
 		}
 	};
 
@@ -43,7 +55,7 @@ export function EditProfile({ forceUpdate }) {
 
 			{user && (
 				<div className="flex justify-center pb-1">
-					<img className="h-20 w-20 rounded-full object-contain transform" src={`${import.meta.env.VITE_BACKEND}/public/${user.avatar}`} />
+					<img className="h-20 w-20 rounded-full object-cover transform" src={`${import.meta.env.VITE_BACKEND}/public/${user.avatar}`} />
 					<div className="flex flex-col justify-center items-start pl-4">
 						<p className="text-md font-semibold text-[#2298dd]">{user.username}</p>
 						<EditProfileImage forceUpdate={forceUpdate} />
@@ -80,7 +92,7 @@ export function EditProfile({ forceUpdate }) {
 
 				<div className="form-group">
 					<label htmlFor="aboutMe" className="form-label">
-						Biografía
+						Sobre mi
 					</label>
 					<textarea id="aboutMe" className="form-input" value={aboutMe} onChange={(event) => setAboutMe(event.target.value)}></textarea>
 				</div>
@@ -88,6 +100,10 @@ export function EditProfile({ forceUpdate }) {
 				<button className="bg-[#49aae2] hover:bg-[#2298dd] px-4 py-2 text-white font-semibold rounded" type="submit">
 					Guardar cambios
 				</button>
+
+				{error && (
+					<p className="text-red-500 mt-2">Este usuario no está disponible</p>
+				)}
 
 				<div className="h-64"></div>
 			</form>
