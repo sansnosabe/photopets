@@ -5,6 +5,7 @@ const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
+const {PORT} = require("./config.js")
 
 const app = express();
 
@@ -15,8 +16,8 @@ app.use(fileUpload());
 
 app.use("/public", express.static("public"));
 //app.use(express.static(path.join(__dirname, "public")));
-const isAuth = require("./middlewares/isAuth");
-const isAuthOptional = require("./middlewares/isAuthOptional");
+const isAuth = require("../middlewares/isAuth");
+const isAuthOptional = require("../middlewares/isAuthOptional");
 
 /**
  * ##############################
@@ -24,7 +25,7 @@ const isAuthOptional = require("./middlewares/isAuthOptional");
  * ##############################
  */
 
-const { createUser, validateUser, loginUser, getOwnUser, getUsers, editUser, deleteUser } = require("./controllers/users");
+const { createUser, validateUser, loginUser, getOwnUser, getUsers, editUser, deleteUser } = require("../controllers/users");
 
 app.post("/users/register", createUser);
 app.put("/users/validate/:registrationCode", validateUser);
@@ -49,7 +50,7 @@ const {
 	listUserPostById,
 	listUserAndPostsByUsernameParam,
 	deletePost,
-} = require("./controllers/posts");
+} = require("../controllers/posts");
 
 app.post("/posts", isAuth, newPost);
 app.get("/posts", isAuthOptional, listPosts);
@@ -66,7 +67,7 @@ app.delete("/posts/:idPost", isAuth, deletePost);
  * ############################
  */
 
-const { likePost, dislikePost, likeDislikePost } = require("./controllers/likes");
+const { likePost, dislikePost, likeDislikePost } = require("../controllers/likes");
 
 app.post("/posts/:idPost/likes", isAuth, likePost);
 app.delete("/posts/:idPost/dislikes", isAuth, dislikePost);
@@ -79,7 +80,7 @@ app.post("/posts/:idPost/likeDislike", isAuth, likeDislikePost);
  * ###############################
  */
 
-const { commentPost, deleteCommentPost } = require("./controllers/comments");
+const { commentPost, deleteCommentPost } = require("../controllers/comments");
 app.post("/posts/comments/:idPost", isAuth, commentPost);
 app.delete("/posts/comments/:idComment", isAuth, deleteCommentPost);
 
@@ -101,8 +102,8 @@ app.use((req, res) => {
 	});
 });
 
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-	console.log(`Server listening at http://localhost:${PORT}`);
+	console.log(`Server listening on port: ${PORT}`);
 });

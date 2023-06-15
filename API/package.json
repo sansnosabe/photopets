@@ -4,7 +4,7 @@
   "description": "- Aplicación que permite publicar tus fotos (añadiendo o no textos) y que otras personas puedan verlas.",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon src/server.js",
     "initDB": "node db/initDB.js"
   },
   "repository": {
